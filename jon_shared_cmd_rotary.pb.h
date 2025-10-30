@@ -166,6 +166,9 @@ extern SetPlatformBankDefaultTypeInternal _SetPlatformBank_default_instance_;
 class SetPlatformElevation;
 struct SetPlatformElevationDefaultTypeInternal;
 extern SetPlatformElevationDefaultTypeInternal _SetPlatformElevation_default_instance_;
+class SetSpiritLevel;
+struct SetSpiritLevelDefaultTypeInternal;
+extern SetSpiritLevelDefaultTypeInternal _SetSpiritLevel_default_instance_;
 class Start;
 struct StartDefaultTypeInternal;
 extern StartDefaultTypeInternal _Start_default_instance_;
@@ -666,6 +669,232 @@ class Start final : public ::google::protobuf::internal::ZeroFieldsBase
                           const Start& from_msg);
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
+  friend struct ::TableStruct_jon_5fshared_5fcmd_5frotary_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetSpiritLevel final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:cmd.RotaryPlatform.SetSpiritLevel) */ {
+ public:
+  inline SetSpiritLevel() : SetSpiritLevel(nullptr) {}
+  ~SetSpiritLevel() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetSpiritLevel* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetSpiritLevel));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetSpiritLevel(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetSpiritLevel(const SetSpiritLevel& from) : SetSpiritLevel(nullptr, from) {}
+  inline SetSpiritLevel(SetSpiritLevel&& from) noexcept
+      : SetSpiritLevel(nullptr, std::move(from)) {}
+  inline SetSpiritLevel& operator=(const SetSpiritLevel& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetSpiritLevel& operator=(SetSpiritLevel&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetSpiritLevel& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetSpiritLevel* internal_default_instance() {
+    return reinterpret_cast<const SetSpiritLevel*>(
+        &_SetSpiritLevel_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 40;
+  friend void swap(SetSpiritLevel& a, SetSpiritLevel& b) { a.Swap(&b); }
+  inline void Swap(SetSpiritLevel* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetSpiritLevel* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetSpiritLevel* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetSpiritLevel>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetSpiritLevel& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetSpiritLevel& from) { SetSpiritLevel::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetSpiritLevel* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "cmd.RotaryPlatform.SetSpiritLevel"; }
+
+ protected:
+  explicit SetSpiritLevel(::google::protobuf::Arena* arena);
+  SetSpiritLevel(::google::protobuf::Arena* arena, const SetSpiritLevel& from);
+  SetSpiritLevel(::google::protobuf::Arena* arena, SetSpiritLevel&& from) noexcept
+      : SetSpiritLevel(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kPitchFieldNumber = 1,
+    kRollFieldNumber = 2,
+    kPanOffsetFieldNumber = 3,
+    kTiltOffsetFieldNumber = 4,
+  };
+  // double pitch = 1;
+  void clear_pitch() ;
+  double pitch() const;
+  void set_pitch(double value);
+
+  private:
+  double _internal_pitch() const;
+  void _internal_set_pitch(double value);
+
+  public:
+  // double roll = 2;
+  void clear_roll() ;
+  double roll() const;
+  void set_roll(double value);
+
+  private:
+  double _internal_roll() const;
+  void _internal_set_roll(double value);
+
+  public:
+  // double pan_offset = 3;
+  void clear_pan_offset() ;
+  double pan_offset() const;
+  void set_pan_offset(double value);
+
+  private:
+  double _internal_pan_offset() const;
+  void _internal_set_pan_offset(double value);
+
+  public:
+  // double tilt_offset = 4;
+  void clear_tilt_offset() ;
+  double tilt_offset() const;
+  void set_tilt_offset(double value);
+
+  private:
+  double _internal_tilt_offset() const;
+  void _internal_set_tilt_offset(double value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:cmd.RotaryPlatform.SetSpiritLevel)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetSpiritLevel& from_msg);
+    double pitch_;
+    double roll_;
+    double pan_offset_;
+    double tilt_offset_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_jon_5fshared_5fcmd_5frotary_2eproto;
 };
 // -------------------------------------------------------------------
@@ -7827,6 +8056,7 @@ class Root final : public ::google::protobuf::Message
     kScanUpdateNode = 23,
     kScanAddNode = 24,
     kHaltWithNdc = 25,
+    kSetSpiritLevel = 26,
     CMD_NOT_SET = 0,
   };
   static inline const Root* internal_default_instance() {
@@ -7945,6 +8175,7 @@ class Root final : public ::google::protobuf::Message
     kScanUpdateNodeFieldNumber = 23,
     kScanAddNodeFieldNumber = 24,
     kHaltWithNdcFieldNumber = 25,
+    kSetSpiritLevelFieldNumber = 26,
   };
   // .cmd.RotaryPlatform.Start start = 1;
   bool has_start() const;
@@ -8421,6 +8652,25 @@ class Root final : public ::google::protobuf::Message
   ::cmd::RotaryPlatform::HaltWithNDC* _internal_mutable_halt_with_ndc();
 
   public:
+  // .cmd.RotaryPlatform.SetSpiritLevel set_spirit_level = 26;
+  bool has_set_spirit_level() const;
+  private:
+  bool _internal_has_set_spirit_level() const;
+
+  public:
+  void clear_set_spirit_level() ;
+  const ::cmd::RotaryPlatform::SetSpiritLevel& set_spirit_level() const;
+  PROTOBUF_NODISCARD ::cmd::RotaryPlatform::SetSpiritLevel* release_set_spirit_level();
+  ::cmd::RotaryPlatform::SetSpiritLevel* mutable_set_spirit_level();
+  void set_allocated_set_spirit_level(::cmd::RotaryPlatform::SetSpiritLevel* value);
+  void unsafe_arena_set_allocated_set_spirit_level(::cmd::RotaryPlatform::SetSpiritLevel* value);
+  ::cmd::RotaryPlatform::SetSpiritLevel* unsafe_arena_release_set_spirit_level();
+
+  private:
+  const ::cmd::RotaryPlatform::SetSpiritLevel& _internal_set_spirit_level() const;
+  ::cmd::RotaryPlatform::SetSpiritLevel* _internal_mutable_set_spirit_level();
+
+  public:
   void clear_cmd();
   CmdCase cmd_case() const;
   // @@protoc_insertion_point(class_scope:cmd.RotaryPlatform.Root)
@@ -8451,11 +8701,12 @@ class Root final : public ::google::protobuf::Message
   void set_has_scan_update_node();
   void set_has_scan_add_node();
   void set_has_halt_with_ndc();
+  void set_has_set_spirit_level();
   inline bool has_cmd() const;
   inline void clear_has_cmd();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 25, 25,
+      0, 26, 26,
       0, 2>
       _table_;
 
@@ -8501,6 +8752,7 @@ class Root final : public ::google::protobuf::Message
       ::cmd::RotaryPlatform::ScanUpdateNode* scan_update_node_;
       ::cmd::RotaryPlatform::ScanAddNode* scan_add_node_;
       ::cmd::RotaryPlatform::HaltWithNDC* halt_with_ndc_;
+      ::cmd::RotaryPlatform::SetSpiritLevel* set_spirit_level_;
     } cmd_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
@@ -10498,6 +10750,85 @@ inline ::cmd::RotaryPlatform::HaltWithNDC* Root::_internal_mutable_halt_with_ndc
 inline ::cmd::RotaryPlatform::HaltWithNDC* Root::mutable_halt_with_ndc() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::cmd::RotaryPlatform::HaltWithNDC* _msg = _internal_mutable_halt_with_ndc();
   // @@protoc_insertion_point(field_mutable:cmd.RotaryPlatform.Root.halt_with_ndc)
+  return _msg;
+}
+
+// .cmd.RotaryPlatform.SetSpiritLevel set_spirit_level = 26;
+inline bool Root::has_set_spirit_level() const {
+  return cmd_case() == kSetSpiritLevel;
+}
+inline bool Root::_internal_has_set_spirit_level() const {
+  return cmd_case() == kSetSpiritLevel;
+}
+inline void Root::set_has_set_spirit_level() {
+  _impl_._oneof_case_[0] = kSetSpiritLevel;
+}
+inline void Root::clear_set_spirit_level() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (cmd_case() == kSetSpiritLevel) {
+    if (GetArena() == nullptr) {
+      delete _impl_.cmd_.set_spirit_level_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.cmd_.set_spirit_level_);
+    }
+    clear_has_cmd();
+  }
+}
+inline ::cmd::RotaryPlatform::SetSpiritLevel* Root::release_set_spirit_level() {
+  // @@protoc_insertion_point(field_release:cmd.RotaryPlatform.Root.set_spirit_level)
+  if (cmd_case() == kSetSpiritLevel) {
+    clear_has_cmd();
+    auto* temp = _impl_.cmd_.set_spirit_level_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.cmd_.set_spirit_level_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::cmd::RotaryPlatform::SetSpiritLevel& Root::_internal_set_spirit_level() const {
+  return cmd_case() == kSetSpiritLevel ? *_impl_.cmd_.set_spirit_level_ : reinterpret_cast<::cmd::RotaryPlatform::SetSpiritLevel&>(::cmd::RotaryPlatform::_SetSpiritLevel_default_instance_);
+}
+inline const ::cmd::RotaryPlatform::SetSpiritLevel& Root::set_spirit_level() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:cmd.RotaryPlatform.Root.set_spirit_level)
+  return _internal_set_spirit_level();
+}
+inline ::cmd::RotaryPlatform::SetSpiritLevel* Root::unsafe_arena_release_set_spirit_level() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:cmd.RotaryPlatform.Root.set_spirit_level)
+  if (cmd_case() == kSetSpiritLevel) {
+    clear_has_cmd();
+    auto* temp = _impl_.cmd_.set_spirit_level_;
+    _impl_.cmd_.set_spirit_level_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Root::unsafe_arena_set_allocated_set_spirit_level(::cmd::RotaryPlatform::SetSpiritLevel* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_cmd();
+  if (value) {
+    set_has_set_spirit_level();
+    _impl_.cmd_.set_spirit_level_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:cmd.RotaryPlatform.Root.set_spirit_level)
+}
+inline ::cmd::RotaryPlatform::SetSpiritLevel* Root::_internal_mutable_set_spirit_level() {
+  if (cmd_case() != kSetSpiritLevel) {
+    clear_cmd();
+    set_has_set_spirit_level();
+    _impl_.cmd_.set_spirit_level_ =
+        ::google::protobuf::Message::DefaultConstruct<::cmd::RotaryPlatform::SetSpiritLevel>(GetArena());
+  }
+  return _impl_.cmd_.set_spirit_level_;
+}
+inline ::cmd::RotaryPlatform::SetSpiritLevel* Root::mutable_set_spirit_level() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::cmd::RotaryPlatform::SetSpiritLevel* _msg = _internal_mutable_set_spirit_level();
+  // @@protoc_insertion_point(field_mutable:cmd.RotaryPlatform.Root.set_spirit_level)
   return _msg;
 }
 
@@ -13120,6 +13451,98 @@ inline ::uint64_t HaltWithNDC::_internal_state_time() const {
 inline void HaltWithNDC::_internal_set_state_time(::uint64_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.state_time_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetSpiritLevel
+
+// double pitch = 1;
+inline void SetSpiritLevel::clear_pitch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pitch_ = 0;
+}
+inline double SetSpiritLevel::pitch() const {
+  // @@protoc_insertion_point(field_get:cmd.RotaryPlatform.SetSpiritLevel.pitch)
+  return _internal_pitch();
+}
+inline void SetSpiritLevel::set_pitch(double value) {
+  _internal_set_pitch(value);
+  // @@protoc_insertion_point(field_set:cmd.RotaryPlatform.SetSpiritLevel.pitch)
+}
+inline double SetSpiritLevel::_internal_pitch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.pitch_;
+}
+inline void SetSpiritLevel::_internal_set_pitch(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pitch_ = value;
+}
+
+// double roll = 2;
+inline void SetSpiritLevel::clear_roll() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.roll_ = 0;
+}
+inline double SetSpiritLevel::roll() const {
+  // @@protoc_insertion_point(field_get:cmd.RotaryPlatform.SetSpiritLevel.roll)
+  return _internal_roll();
+}
+inline void SetSpiritLevel::set_roll(double value) {
+  _internal_set_roll(value);
+  // @@protoc_insertion_point(field_set:cmd.RotaryPlatform.SetSpiritLevel.roll)
+}
+inline double SetSpiritLevel::_internal_roll() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.roll_;
+}
+inline void SetSpiritLevel::_internal_set_roll(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.roll_ = value;
+}
+
+// double pan_offset = 3;
+inline void SetSpiritLevel::clear_pan_offset() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pan_offset_ = 0;
+}
+inline double SetSpiritLevel::pan_offset() const {
+  // @@protoc_insertion_point(field_get:cmd.RotaryPlatform.SetSpiritLevel.pan_offset)
+  return _internal_pan_offset();
+}
+inline void SetSpiritLevel::set_pan_offset(double value) {
+  _internal_set_pan_offset(value);
+  // @@protoc_insertion_point(field_set:cmd.RotaryPlatform.SetSpiritLevel.pan_offset)
+}
+inline double SetSpiritLevel::_internal_pan_offset() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.pan_offset_;
+}
+inline void SetSpiritLevel::_internal_set_pan_offset(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pan_offset_ = value;
+}
+
+// double tilt_offset = 4;
+inline void SetSpiritLevel::clear_tilt_offset() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.tilt_offset_ = 0;
+}
+inline double SetSpiritLevel::tilt_offset() const {
+  // @@protoc_insertion_point(field_get:cmd.RotaryPlatform.SetSpiritLevel.tilt_offset)
+  return _internal_tilt_offset();
+}
+inline void SetSpiritLevel::set_tilt_offset(double value) {
+  _internal_set_tilt_offset(value);
+  // @@protoc_insertion_point(field_set:cmd.RotaryPlatform.SetSpiritLevel.tilt_offset)
+}
+inline double SetSpiritLevel::_internal_tilt_offset() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.tilt_offset_;
+}
+inline void SetSpiritLevel::_internal_set_tilt_offset(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.tilt_offset_ = value;
 }
 
 #ifdef __GNUC__

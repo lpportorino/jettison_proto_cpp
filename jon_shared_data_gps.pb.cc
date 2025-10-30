@@ -36,6 +36,7 @@ inline constexpr JonGuiDataGps::Impl_::Impl_(
         manual_altitude_{0},
         fix_type_{static_cast< ::ser::JonGuiDataGpsFixType >(0)},
         use_manual_{false},
+        timestamp_{::int64_t{0}},
         _cached_size_{0} {}
 
 template <typename>
@@ -81,6 +82,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::ser::JonGuiDataGps, _impl_.manual_altitude_),
         PROTOBUF_FIELD_OFFSET(::ser::JonGuiDataGps, _impl_.fix_type_),
         PROTOBUF_FIELD_OFFSET(::ser::JonGuiDataGps, _impl_.use_manual_),
+        PROTOBUF_FIELD_OFFSET(::ser::JonGuiDataGps, _impl_.timestamp_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -93,14 +95,15 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_jon_5fshared_5fdata_5fgps_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\031jon_shared_data_gps.proto\022\003ser\032\033jon_sh"
-    "ared_data_types.proto\"\323\001\n\rJonGuiDataGps\022"
+    "ared_data_types.proto\"\346\001\n\rJonGuiDataGps\022"
     "\021\n\tlongitude\030\001 \001(\001\022\020\n\010latitude\030\002 \001(\001\022\020\n\010"
     "altitude\030\003 \001(\001\022\030\n\020manual_longitude\030\004 \001(\001"
     "\022\027\n\017manual_latitude\030\005 \001(\001\022\027\n\017manual_alti"
     "tude\030\006 \001(\001\022+\n\010fix_type\030\007 \001(\0162\031.ser.JonGu"
-    "iDataGpsFixType\022\022\n\nuse_manual\030\010 \001(\010BKZIg"
-    "it-codecommit.eu-central-1.amazonaws.com"
-    "/v1/repos/jettison/jonp/data/gpsb\006proto3"
+    "iDataGpsFixType\022\022\n\nuse_manual\030\010 \001(\010\022\021\n\tt"
+    "imestamp\030\t \001(\003BKZIgit-codecommit.eu-cent"
+    "ral-1.amazonaws.com/v1/repos/jettison/jo"
+    "np/data/gpsb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_jon_5fshared_5fdata_5fgps_2eproto_deps[1] =
     {
@@ -110,7 +113,7 @@ static ::absl::once_flag descriptor_table_jon_5fshared_5fdata_5fgps_2eproto_once
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_jon_5fshared_5fdata_5fgps_2eproto = {
     false,
     false,
-    360,
+    379,
     descriptor_table_protodef_jon_5fshared_5fdata_5fgps_2eproto,
     "jon_shared_data_gps.proto",
     &descriptor_table_jon_5fshared_5fdata_5fgps_2eproto_once,
@@ -154,9 +157,9 @@ inline void JonGuiDataGps::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, longitude_),
            0,
-           offsetof(Impl_, use_manual_) -
+           offsetof(Impl_, timestamp_) -
                offsetof(Impl_, longitude_) +
-               sizeof(Impl_::use_manual_));
+               sizeof(Impl_::timestamp_));
 }
 JonGuiDataGps::~JonGuiDataGps() {
   // @@protoc_insertion_point(destructor:ser.JonGuiDataGps)
@@ -205,15 +208,15 @@ const ::google::protobuf::internal::ClassData* JonGuiDataGps::GetClassData() con
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 8, 0, 0, 2> JonGuiDataGps::_table_ = {
+const ::_pbi::TcParseTable<4, 9, 0, 0, 2> JonGuiDataGps::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    8, 56,  // max_field_number, fast_idx_mask
+    9, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967040,  // skipmap
+    4294966784,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
+    9,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -223,9 +226,7 @@ const ::_pbi::TcParseTable<3, 8, 0, 0, 2> JonGuiDataGps::_table_ = {
     ::_pbi::TcParser::GetTable<::ser::JonGuiDataGps>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // bool use_manual = 8;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(JonGuiDataGps, _impl_.use_manual_), 63>(),
-     {64, 63, 0, PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.use_manual_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // double longitude = 1;
     {::_pbi::TcParser::FastF64S1,
      {9, 63, 0, PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.longitude_)}},
@@ -247,6 +248,18 @@ const ::_pbi::TcParseTable<3, 8, 0, 0, 2> JonGuiDataGps::_table_ = {
     // .ser.JonGuiDataGpsFixType fix_type = 7;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(JonGuiDataGps, _impl_.fix_type_), 63>(),
      {56, 63, 0, PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.fix_type_)}},
+    // bool use_manual = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(JonGuiDataGps, _impl_.use_manual_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.use_manual_)}},
+    // int64 timestamp = 9;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(JonGuiDataGps, _impl_.timestamp_), 63>(),
+     {72, 63, 0, PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.timestamp_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -274,6 +287,9 @@ const ::_pbi::TcParseTable<3, 8, 0, 0, 2> JonGuiDataGps::_table_ = {
     // bool use_manual = 8;
     {PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.use_manual_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // int64 timestamp = 9;
+    {PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.timestamp_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt64)},
   }},
   // no aux_entries
   {{
@@ -288,8 +304,8 @@ PROTOBUF_NOINLINE void JonGuiDataGps::Clear() {
   (void) cached_has_bits;
 
   ::memset(&_impl_.longitude_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.use_manual_) -
-      reinterpret_cast<char*>(&_impl_.longitude_)) + sizeof(_impl_.use_manual_));
+      reinterpret_cast<char*>(&_impl_.timestamp_) -
+      reinterpret_cast<char*>(&_impl_.longitude_)) + sizeof(_impl_.timestamp_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -364,6 +380,13 @@ PROTOBUF_NOINLINE void JonGuiDataGps::Clear() {
                 8, this_._internal_use_manual(), target);
           }
 
+          // int64 timestamp = 9;
+          if (this_._internal_timestamp() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt64ToArrayWithField<9>(
+                    stream, this_._internal_timestamp(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -422,6 +445,11 @@ PROTOBUF_NOINLINE void JonGuiDataGps::Clear() {
             if (this_._internal_use_manual() != 0) {
               total_size += 2;
             }
+            // int64 timestamp = 9;
+            if (this_._internal_timestamp() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+                  this_._internal_timestamp());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -459,6 +487,9 @@ void JonGuiDataGps::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::g
   if (from._internal_use_manual() != 0) {
     _this->_impl_.use_manual_ = from._impl_.use_manual_;
   }
+  if (from._internal_timestamp() != 0) {
+    _this->_impl_.timestamp_ = from._impl_.timestamp_;
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -474,8 +505,8 @@ void JonGuiDataGps::InternalSwap(JonGuiDataGps* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.use_manual_)
-      + sizeof(JonGuiDataGps::_impl_.use_manual_)
+      PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.timestamp_)
+      + sizeof(JonGuiDataGps::_impl_.timestamp_)
       - PROTOBUF_FIELD_OFFSET(JonGuiDataGps, _impl_.longitude_)>(
           reinterpret_cast<char*>(&_impl_.longitude_),
           reinterpret_cast<char*>(&other->_impl_.longitude_));

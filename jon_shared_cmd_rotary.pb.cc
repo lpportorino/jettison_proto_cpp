@@ -88,6 +88,34 @@ struct StartDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StartDefaultTypeInternal _Start_default_instance_;
 
+inline constexpr SetSpiritLevel::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : pitch_{0},
+        roll_{0},
+        pan_offset_{0},
+        tilt_offset_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetSpiritLevel::SetSpiritLevel(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetSpiritLevelDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetSpiritLevelDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetSpiritLevelDefaultTypeInternal() {}
+  union {
+    SetSpiritLevel _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetSpiritLevelDefaultTypeInternal _SetSpiritLevel_default_instance_;
+
 inline constexpr SetPlatformElevation::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : value_{0},
@@ -1017,6 +1045,7 @@ const ::uint32_t
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
         PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::Root, _impl_.cmd_),
         PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::Axis, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::Axis, _internal_metadata_),
@@ -1407,50 +1436,63 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::HaltWithNDC, _impl_.y_),
         PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::HaltWithNDC, _impl_.frame_time_),
         PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::HaltWithNDC, _impl_.state_time_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::SetSpiritLevel, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::SetSpiritLevel, _impl_.pitch_),
+        PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::SetSpiritLevel, _impl_.roll_),
+        PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::SetSpiritLevel, _impl_.pan_offset_),
+        PROTOBUF_FIELD_OFFSET(::cmd::RotaryPlatform::SetSpiritLevel, _impl_.tilt_offset_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::cmd::RotaryPlatform::Root)},
-        {34, 44, -1, sizeof(::cmd::RotaryPlatform::Axis)},
-        {46, -1, -1, sizeof(::cmd::RotaryPlatform::SetMode)},
-        {55, -1, -1, sizeof(::cmd::RotaryPlatform::SetAzimuthValue)},
-        {65, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuthTo)},
-        {76, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuth)},
-        {86, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevation)},
-        {96, -1, -1, sizeof(::cmd::RotaryPlatform::SetElevationValue)},
-        {105, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevationTo)},
-        {115, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevationRelative)},
-        {126, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevationRelativeSet)},
-        {136, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuthRelative)},
-        {147, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuthRelativeSet)},
-        {157, -1, -1, sizeof(::cmd::RotaryPlatform::SetPlatformAzimuth)},
-        {166, -1, -1, sizeof(::cmd::RotaryPlatform::SetPlatformElevation)},
-        {175, -1, -1, sizeof(::cmd::RotaryPlatform::SetPlatformBank)},
-        {184, -1, -1, sizeof(::cmd::RotaryPlatform::GetMeteo)},
-        {192, -1, -1, sizeof(::cmd::RotaryPlatform::Azimuth)},
-        {207, -1, -1, sizeof(::cmd::RotaryPlatform::Start)},
-        {215, -1, -1, sizeof(::cmd::RotaryPlatform::Stop)},
-        {223, -1, -1, sizeof(::cmd::RotaryPlatform::Halt)},
-        {231, -1, -1, sizeof(::cmd::RotaryPlatform::ScanStart)},
-        {239, -1, -1, sizeof(::cmd::RotaryPlatform::ScanStop)},
-        {247, -1, -1, sizeof(::cmd::RotaryPlatform::ScanPause)},
-        {255, -1, -1, sizeof(::cmd::RotaryPlatform::ScanUnpause)},
-        {263, -1, -1, sizeof(::cmd::RotaryPlatform::HaltAzimuth)},
-        {271, -1, -1, sizeof(::cmd::RotaryPlatform::HaltElevation)},
-        {279, -1, -1, sizeof(::cmd::RotaryPlatform::ScanPrev)},
-        {287, -1, -1, sizeof(::cmd::RotaryPlatform::ScanNext)},
-        {295, -1, -1, sizeof(::cmd::RotaryPlatform::ScanRefreshNodeList)},
-        {303, -1, -1, sizeof(::cmd::RotaryPlatform::ScanSelectNode)},
-        {312, -1, -1, sizeof(::cmd::RotaryPlatform::ScanDeleteNode)},
-        {321, -1, -1, sizeof(::cmd::RotaryPlatform::ScanUpdateNode)},
-        {336, -1, -1, sizeof(::cmd::RotaryPlatform::ScanAddNode)},
-        {351, -1, -1, sizeof(::cmd::RotaryPlatform::Elevation)},
-        {366, -1, -1, sizeof(::cmd::RotaryPlatform::setUseRotaryAsCompass)},
-        {375, -1, -1, sizeof(::cmd::RotaryPlatform::RotateToGPS)},
-        {386, -1, -1, sizeof(::cmd::RotaryPlatform::SetOriginGPS)},
-        {397, -1, -1, sizeof(::cmd::RotaryPlatform::RotateToNDC)},
-        {410, -1, -1, sizeof(::cmd::RotaryPlatform::HaltWithNDC)},
+        {35, 45, -1, sizeof(::cmd::RotaryPlatform::Axis)},
+        {47, -1, -1, sizeof(::cmd::RotaryPlatform::SetMode)},
+        {56, -1, -1, sizeof(::cmd::RotaryPlatform::SetAzimuthValue)},
+        {66, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuthTo)},
+        {77, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuth)},
+        {87, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevation)},
+        {97, -1, -1, sizeof(::cmd::RotaryPlatform::SetElevationValue)},
+        {106, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevationTo)},
+        {116, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevationRelative)},
+        {127, -1, -1, sizeof(::cmd::RotaryPlatform::RotateElevationRelativeSet)},
+        {137, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuthRelative)},
+        {148, -1, -1, sizeof(::cmd::RotaryPlatform::RotateAzimuthRelativeSet)},
+        {158, -1, -1, sizeof(::cmd::RotaryPlatform::SetPlatformAzimuth)},
+        {167, -1, -1, sizeof(::cmd::RotaryPlatform::SetPlatformElevation)},
+        {176, -1, -1, sizeof(::cmd::RotaryPlatform::SetPlatformBank)},
+        {185, -1, -1, sizeof(::cmd::RotaryPlatform::GetMeteo)},
+        {193, -1, -1, sizeof(::cmd::RotaryPlatform::Azimuth)},
+        {208, -1, -1, sizeof(::cmd::RotaryPlatform::Start)},
+        {216, -1, -1, sizeof(::cmd::RotaryPlatform::Stop)},
+        {224, -1, -1, sizeof(::cmd::RotaryPlatform::Halt)},
+        {232, -1, -1, sizeof(::cmd::RotaryPlatform::ScanStart)},
+        {240, -1, -1, sizeof(::cmd::RotaryPlatform::ScanStop)},
+        {248, -1, -1, sizeof(::cmd::RotaryPlatform::ScanPause)},
+        {256, -1, -1, sizeof(::cmd::RotaryPlatform::ScanUnpause)},
+        {264, -1, -1, sizeof(::cmd::RotaryPlatform::HaltAzimuth)},
+        {272, -1, -1, sizeof(::cmd::RotaryPlatform::HaltElevation)},
+        {280, -1, -1, sizeof(::cmd::RotaryPlatform::ScanPrev)},
+        {288, -1, -1, sizeof(::cmd::RotaryPlatform::ScanNext)},
+        {296, -1, -1, sizeof(::cmd::RotaryPlatform::ScanRefreshNodeList)},
+        {304, -1, -1, sizeof(::cmd::RotaryPlatform::ScanSelectNode)},
+        {313, -1, -1, sizeof(::cmd::RotaryPlatform::ScanDeleteNode)},
+        {322, -1, -1, sizeof(::cmd::RotaryPlatform::ScanUpdateNode)},
+        {337, -1, -1, sizeof(::cmd::RotaryPlatform::ScanAddNode)},
+        {352, -1, -1, sizeof(::cmd::RotaryPlatform::Elevation)},
+        {367, -1, -1, sizeof(::cmd::RotaryPlatform::setUseRotaryAsCompass)},
+        {376, -1, -1, sizeof(::cmd::RotaryPlatform::RotateToGPS)},
+        {387, -1, -1, sizeof(::cmd::RotaryPlatform::SetOriginGPS)},
+        {398, -1, -1, sizeof(::cmd::RotaryPlatform::RotateToNDC)},
+        {411, -1, -1, sizeof(::cmd::RotaryPlatform::HaltWithNDC)},
+        {424, -1, -1, sizeof(::cmd::RotaryPlatform::SetSpiritLevel)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::cmd::RotaryPlatform::_Root_default_instance_._instance,
@@ -1493,11 +1535,12 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::cmd::RotaryPlatform::_SetOriginGPS_default_instance_._instance,
     &::cmd::RotaryPlatform::_RotateToNDC_default_instance_._instance,
     &::cmd::RotaryPlatform::_HaltWithNDC_default_instance_._instance,
+    &::cmd::RotaryPlatform::_SetSpiritLevel_default_instance_._instance,
 };
 const char descriptor_table_protodef_jon_5fshared_5fcmd_5frotary_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\033jon_shared_cmd_rotary.proto\022\022cmd.Rotar"
-    "yPlatform\032\033jon_shared_data_types.proto\"\254"
+    "yPlatform\032\033jon_shared_data_types.proto\"\354"
     "\013\n\004Root\022*\n\005start\030\001 \001(\0132\031.cmd.RotaryPlatf"
     "orm.StartH\000\022(\n\004stop\030\002 \001(\0132\030.cmd.RotaryPl"
     "atform.StopH\000\022(\n\004axis\030\003 \001(\0132\030.cmd.Rotary"
@@ -1534,80 +1577,84 @@ const char descriptor_table_protodef_jon_5fshared_5fcmd_5frotary_2eproto[] ABSL_
     "dateNodeH\000\0228\n\rscan_add_node\030\030 \001(\0132\037.cmd."
     "RotaryPlatform.ScanAddNodeH\000\0228\n\rhalt_wit"
     "h_ndc\030\031 \001(\0132\037.cmd.RotaryPlatform.HaltWit"
-    "hNDCH\000B\005\n\003cmd\"f\n\004Axis\022,\n\007azimuth\030\001 \001(\0132\033"
-    ".cmd.RotaryPlatform.Azimuth\0220\n\televation"
-    "\030\002 \001(\0132\035.cmd.RotaryPlatform.Elevation\"2\n"
-    "\007SetMode\022\'\n\004mode\030\001 \001(\0162\031.ser.JonGuiDataR"
-    "otaryMode\"S\n\017SetAzimuthValue\022\r\n\005value\030\001 "
-    "\001(\001\0221\n\tdirection\030\002 \001(\0162\036.ser.JonGuiDataR"
-    "otaryDirection\"i\n\017RotateAzimuthTo\022\024\n\014tar"
-    "get_value\030\001 \001(\001\022\r\n\005speed\030\002 \001(\001\0221\n\tdirect"
-    "ion\030\003 \001(\0162\036.ser.JonGuiDataRotaryDirectio"
-    "n\"Q\n\rRotateAzimuth\022\r\n\005speed\030\001 \001(\001\0221\n\tdir"
-    "ection\030\002 \001(\0162\036.ser.JonGuiDataRotaryDirec"
-    "tion\"S\n\017RotateElevation\022\r\n\005speed\030\001 \001(\001\0221"
-    "\n\tdirection\030\002 \001(\0162\036.ser.JonGuiDataRotary"
-    "Direction\"\"\n\021SetElevationValue\022\r\n\005value\030"
-    "\001 \001(\001\"8\n\021RotateElevationTo\022\024\n\014target_val"
-    "ue\030\001 \001(\001\022\r\n\005speed\030\002 \001(\001\"j\n\027RotateElevati"
-    "onRelative\022\r\n\005value\030\001 \001(\001\022\r\n\005speed\030\002 \001(\001"
-    "\0221\n\tdirection\030\003 \001(\0162\036.ser.JonGuiDataRota"
-    "ryDirection\"^\n\032RotateElevationRelativeSe"
-    "t\022\r\n\005value\030\001 \001(\001\0221\n\tdirection\030\002 \001(\0162\036.se"
-    "r.JonGuiDataRotaryDirection\"h\n\025RotateAzi"
-    "muthRelative\022\r\n\005value\030\001 \001(\001\022\r\n\005speed\030\002 \001"
-    "(\001\0221\n\tdirection\030\003 \001(\0162\036.ser.JonGuiDataRo"
-    "taryDirection\"\\\n\030RotateAzimuthRelativeSe"
-    "t\022\r\n\005value\030\001 \001(\001\0221\n\tdirection\030\002 \001(\0162\036.se"
-    "r.JonGuiDataRotaryDirection\"#\n\022SetPlatfo"
-    "rmAzimuth\022\r\n\005value\030\001 \001(\001\"%\n\024SetPlatformE"
-    "levation\022\r\n\005value\030\001 \001(\001\" \n\017SetPlatformBa"
-    "nk\022\r\n\005value\030\001 \001(\001\"\n\n\010GetMeteo\"\357\002\n\007Azimut"
-    "h\0228\n\tset_value\030\001 \001(\0132#.cmd.RotaryPlatfor"
-    "m.SetAzimuthValueH\000\0228\n\trotate_to\030\002 \001(\0132#"
-    ".cmd.RotaryPlatform.RotateAzimuthToH\000\0223\n"
-    "\006rotate\030\003 \001(\0132!.cmd.RotaryPlatform.Rotat"
-    "eAzimuthH\000\022=\n\010relative\030\004 \001(\0132).cmd.Rotar"
-    "yPlatform.RotateAzimuthRelativeH\000\022D\n\014rel"
-    "ative_set\030\005 \001(\0132,.cmd.RotaryPlatform.Rot"
-    "ateAzimuthRelativeSetH\000\022/\n\004halt\030\006 \001(\0132\037."
-    "cmd.RotaryPlatform.HaltAzimuthH\000B\005\n\003cmd\""
-    "\007\n\005Start\"\006\n\004Stop\"\006\n\004Halt\"\013\n\tScanStart\"\n\n"
-    "\010ScanStop\"\013\n\tScanPause\"\r\n\013ScanUnpause\"\r\n"
-    "\013HaltAzimuth\"\017\n\rHaltElevation\"\n\n\010ScanPre"
-    "v\"\n\n\010ScanNext\"\025\n\023ScanRefreshNodeList\"\037\n\016"
-    "ScanSelectNode\022\r\n\005index\030\001 \001(\005\"\037\n\016ScanDel"
-    "eteNode\022\r\n\005index\030\001 \001(\005\"\231\001\n\016ScanUpdateNod"
-    "e\022\r\n\005index\030\001 \001(\005\022\031\n\021DayZoomTableValue\030\002 "
-    "\001(\005\022\032\n\022HeatZoomTableValue\030\003 \001(\005\022\017\n\007azimu"
-    "th\030\004 \001(\001\022\021\n\televation\030\005 \001(\001\022\016\n\006linger\030\006 "
-    "\001(\001\022\r\n\005speed\030\007 \001(\001\"\226\001\n\013ScanAddNode\022\r\n\005in"
-    "dex\030\001 \001(\005\022\031\n\021DayZoomTableValue\030\002 \001(\005\022\032\n\022"
-    "HeatZoomTableValue\030\003 \001(\005\022\017\n\007azimuth\030\004 \001("
-    "\001\022\021\n\televation\030\005 \001(\001\022\016\n\006linger\030\006 \001(\001\022\r\n\005"
-    "speed\030\007 \001(\001\"\375\002\n\tElevation\022:\n\tset_value\030\001"
-    " \001(\0132%.cmd.RotaryPlatform.SetElevationVa"
-    "lueH\000\022:\n\trotate_to\030\002 \001(\0132%.cmd.RotaryPla"
-    "tform.RotateElevationToH\000\0225\n\006rotate\030\003 \001("
-    "\0132#.cmd.RotaryPlatform.RotateElevationH\000"
-    "\022\?\n\010relative\030\004 \001(\0132+.cmd.RotaryPlatform."
-    "RotateElevationRelativeH\000\022F\n\014relative_se"
-    "t\030\005 \001(\0132..cmd.RotaryPlatform.RotateEleva"
-    "tionRelativeSetH\000\0221\n\004halt\030\006 \001(\0132!.cmd.Ro"
-    "taryPlatform.HaltElevationH\000B\005\n\003cmd\"%\n\025s"
-    "etUseRotaryAsCompass\022\014\n\004flag\030\001 \001(\010\"D\n\013Ro"
-    "tateToGPS\022\020\n\010latitude\030\001 \001(\001\022\021\n\tlongitude"
-    "\030\002 \001(\001\022\020\n\010altitude\030\003 \001(\001\"E\n\014SetOriginGPS"
-    "\022\020\n\010latitude\030\001 \001(\001\022\021\n\tlongitude\030\002 \001(\001\022\020\n"
-    "\010altitude\030\003 \001(\001\"y\n\013RotateToNDC\022,\n\007channe"
-    "l\030\001 \001(\0162\033.ser.JonGuiDataVideoChannel\022\t\n\001"
-    "x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\022\n\nframe_time\030\004 \001(\004\022\022"
-    "\n\nstate_time\030\005 \001(\004\"y\n\013HaltWithNDC\022,\n\007cha"
-    "nnel\030\001 \001(\0162\033.ser.JonGuiDataVideoChannel\022"
-    "\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\022\n\nframe_time\030\004 \001("
-    "\004\022\022\n\nstate_time\030\005 \001(\004BMZKgit-codecommit."
-    "eu-central-1.amazonaws.com/v1/repos/jett"
-    "ison/jonp/cmd/rotaryb\006proto3"
+    "hNDCH\000\022>\n\020set_spirit_level\030\032 \001(\0132\".cmd.R"
+    "otaryPlatform.SetSpiritLevelH\000B\005\n\003cmd\"f\n"
+    "\004Axis\022,\n\007azimuth\030\001 \001(\0132\033.cmd.RotaryPlatf"
+    "orm.Azimuth\0220\n\televation\030\002 \001(\0132\035.cmd.Rot"
+    "aryPlatform.Elevation\"2\n\007SetMode\022\'\n\004mode"
+    "\030\001 \001(\0162\031.ser.JonGuiDataRotaryMode\"S\n\017Set"
+    "AzimuthValue\022\r\n\005value\030\001 \001(\001\0221\n\tdirection"
+    "\030\002 \001(\0162\036.ser.JonGuiDataRotaryDirection\"i"
+    "\n\017RotateAzimuthTo\022\024\n\014target_value\030\001 \001(\001\022"
+    "\r\n\005speed\030\002 \001(\001\0221\n\tdirection\030\003 \001(\0162\036.ser."
+    "JonGuiDataRotaryDirection\"Q\n\rRotateAzimu"
+    "th\022\r\n\005speed\030\001 \001(\001\0221\n\tdirection\030\002 \001(\0162\036.s"
+    "er.JonGuiDataRotaryDirection\"S\n\017RotateEl"
+    "evation\022\r\n\005speed\030\001 \001(\001\0221\n\tdirection\030\002 \001("
+    "\0162\036.ser.JonGuiDataRotaryDirection\"\"\n\021Set"
+    "ElevationValue\022\r\n\005value\030\001 \001(\001\"8\n\021RotateE"
+    "levationTo\022\024\n\014target_value\030\001 \001(\001\022\r\n\005spee"
+    "d\030\002 \001(\001\"j\n\027RotateElevationRelative\022\r\n\005va"
+    "lue\030\001 \001(\001\022\r\n\005speed\030\002 \001(\001\0221\n\tdirection\030\003 "
+    "\001(\0162\036.ser.JonGuiDataRotaryDirection\"^\n\032R"
+    "otateElevationRelativeSet\022\r\n\005value\030\001 \001(\001"
+    "\0221\n\tdirection\030\002 \001(\0162\036.ser.JonGuiDataRota"
+    "ryDirection\"h\n\025RotateAzimuthRelative\022\r\n\005"
+    "value\030\001 \001(\001\022\r\n\005speed\030\002 \001(\001\0221\n\tdirection\030"
+    "\003 \001(\0162\036.ser.JonGuiDataRotaryDirection\"\\\n"
+    "\030RotateAzimuthRelativeSet\022\r\n\005value\030\001 \001(\001"
+    "\0221\n\tdirection\030\002 \001(\0162\036.ser.JonGuiDataRota"
+    "ryDirection\"#\n\022SetPlatformAzimuth\022\r\n\005val"
+    "ue\030\001 \001(\001\"%\n\024SetPlatformElevation\022\r\n\005valu"
+    "e\030\001 \001(\001\" \n\017SetPlatformBank\022\r\n\005value\030\001 \001("
+    "\001\"\n\n\010GetMeteo\"\357\002\n\007Azimuth\0228\n\tset_value\030\001"
+    " \001(\0132#.cmd.RotaryPlatform.SetAzimuthValu"
+    "eH\000\0228\n\trotate_to\030\002 \001(\0132#.cmd.RotaryPlatf"
+    "orm.RotateAzimuthToH\000\0223\n\006rotate\030\003 \001(\0132!."
+    "cmd.RotaryPlatform.RotateAzimuthH\000\022=\n\010re"
+    "lative\030\004 \001(\0132).cmd.RotaryPlatform.Rotate"
+    "AzimuthRelativeH\000\022D\n\014relative_set\030\005 \001(\0132"
+    ",.cmd.RotaryPlatform.RotateAzimuthRelati"
+    "veSetH\000\022/\n\004halt\030\006 \001(\0132\037.cmd.RotaryPlatfo"
+    "rm.HaltAzimuthH\000B\005\n\003cmd\"\007\n\005Start\"\006\n\004Stop"
+    "\"\006\n\004Halt\"\013\n\tScanStart\"\n\n\010ScanStop\"\013\n\tSca"
+    "nPause\"\r\n\013ScanUnpause\"\r\n\013HaltAzimuth\"\017\n\r"
+    "HaltElevation\"\n\n\010ScanPrev\"\n\n\010ScanNext\"\025\n"
+    "\023ScanRefreshNodeList\"\037\n\016ScanSelectNode\022\r"
+    "\n\005index\030\001 \001(\005\"\037\n\016ScanDeleteNode\022\r\n\005index"
+    "\030\001 \001(\005\"\231\001\n\016ScanUpdateNode\022\r\n\005index\030\001 \001(\005"
+    "\022\031\n\021DayZoomTableValue\030\002 \001(\005\022\032\n\022HeatZoomT"
+    "ableValue\030\003 \001(\005\022\017\n\007azimuth\030\004 \001(\001\022\021\n\telev"
+    "ation\030\005 \001(\001\022\016\n\006linger\030\006 \001(\001\022\r\n\005speed\030\007 \001"
+    "(\001\"\226\001\n\013ScanAddNode\022\r\n\005index\030\001 \001(\005\022\031\n\021Day"
+    "ZoomTableValue\030\002 \001(\005\022\032\n\022HeatZoomTableVal"
+    "ue\030\003 \001(\005\022\017\n\007azimuth\030\004 \001(\001\022\021\n\televation\030\005"
+    " \001(\001\022\016\n\006linger\030\006 \001(\001\022\r\n\005speed\030\007 \001(\001\"\375\002\n\t"
+    "Elevation\022:\n\tset_value\030\001 \001(\0132%.cmd.Rotar"
+    "yPlatform.SetElevationValueH\000\022:\n\trotate_"
+    "to\030\002 \001(\0132%.cmd.RotaryPlatform.RotateElev"
+    "ationToH\000\0225\n\006rotate\030\003 \001(\0132#.cmd.RotaryPl"
+    "atform.RotateElevationH\000\022\?\n\010relative\030\004 \001"
+    "(\0132+.cmd.RotaryPlatform.RotateElevationR"
+    "elativeH\000\022F\n\014relative_set\030\005 \001(\0132..cmd.Ro"
+    "taryPlatform.RotateElevationRelativeSetH"
+    "\000\0221\n\004halt\030\006 \001(\0132!.cmd.RotaryPlatform.Hal"
+    "tElevationH\000B\005\n\003cmd\"%\n\025setUseRotaryAsCom"
+    "pass\022\014\n\004flag\030\001 \001(\010\"D\n\013RotateToGPS\022\020\n\010lat"
+    "itude\030\001 \001(\001\022\021\n\tlongitude\030\002 \001(\001\022\020\n\010altitu"
+    "de\030\003 \001(\001\"E\n\014SetOriginGPS\022\020\n\010latitude\030\001 \001"
+    "(\001\022\021\n\tlongitude\030\002 \001(\001\022\020\n\010altitude\030\003 \001(\001\""
+    "y\n\013RotateToNDC\022,\n\007channel\030\001 \001(\0162\033.ser.Jo"
+    "nGuiDataVideoChannel\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001"
+    "(\001\022\022\n\nframe_time\030\004 \001(\004\022\022\n\nstate_time\030\005 \001"
+    "(\004\"y\n\013HaltWithNDC\022,\n\007channel\030\001 \001(\0162\033.ser"
+    ".JonGuiDataVideoChannel\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030"
+    "\003 \001(\001\022\022\n\nframe_time\030\004 \001(\004\022\022\n\nstate_time\030"
+    "\005 \001(\004\"V\n\016SetSpiritLevel\022\r\n\005pitch\030\001 \001(\001\022\014"
+    "\n\004roll\030\002 \001(\001\022\022\n\npan_offset\030\003 \001(\001\022\023\n\013tilt"
+    "_offset\030\004 \001(\001BMZKgit-codecommit.eu-centr"
+    "al-1.amazonaws.com/v1/repos/jettison/jon"
+    "p/cmd/rotaryb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_jon_5fshared_5fcmd_5frotary_2eproto_deps[1] =
     {
@@ -1617,13 +1664,13 @@ static ::absl::once_flag descriptor_table_jon_5fshared_5fcmd_5frotary_2eproto_on
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_jon_5fshared_5fcmd_5frotary_2eproto = {
     false,
     false,
-    4468,
+    4620,
     descriptor_table_protodef_jon_5fshared_5fcmd_5frotary_2eproto,
     "jon_shared_cmd_rotary.proto",
     &descriptor_table_jon_5fshared_5fcmd_5frotary_2eproto_once,
     descriptor_table_jon_5fshared_5fcmd_5frotary_2eproto_deps,
     1,
-    40,
+    41,
     schemas,
     file_default_instances,
     TableStruct_jon_5fshared_5fcmd_5frotary_2eproto::offsets,
@@ -1965,6 +2012,19 @@ void Root::set_allocated_halt_with_ndc(::cmd::RotaryPlatform::HaltWithNDC* halt_
   }
   // @@protoc_insertion_point(field_set_allocated:cmd.RotaryPlatform.Root.halt_with_ndc)
 }
+void Root::set_allocated_set_spirit_level(::cmd::RotaryPlatform::SetSpiritLevel* set_spirit_level) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_cmd();
+  if (set_spirit_level) {
+    ::google::protobuf::Arena* submessage_arena = set_spirit_level->GetArena();
+    if (message_arena != submessage_arena) {
+      set_spirit_level = ::google::protobuf::internal::GetOwnedMessage(message_arena, set_spirit_level, submessage_arena);
+    }
+    set_has_set_spirit_level();
+    _impl_.cmd_.set_spirit_level_ = set_spirit_level;
+  }
+  // @@protoc_insertion_point(field_set_allocated:cmd.RotaryPlatform.Root.set_spirit_level)
+}
 Root::Root(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
     : ::google::protobuf::Message(arena, _class_data_.base()) {
@@ -2071,6 +2131,9 @@ Root::Root(
         break;
       case kHaltWithNdc:
         _impl_.cmd_.halt_with_ndc_ = ::google::protobuf::Message::CopyConstruct<::cmd::RotaryPlatform::HaltWithNDC>(arena, *from._impl_.cmd_.halt_with_ndc_);
+        break;
+      case kSetSpiritLevel:
+        _impl_.cmd_.set_spirit_level_ = ::google::protobuf::Message::CopyConstruct<::cmd::RotaryPlatform::SetSpiritLevel>(arena, *from._impl_.cmd_.set_spirit_level_);
         break;
   }
 
@@ -2304,6 +2367,14 @@ void Root::clear_cmd() {
       }
       break;
     }
+    case kSetSpiritLevel: {
+      if (GetArena() == nullptr) {
+        delete _impl_.cmd_.set_spirit_level_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.cmd_.set_spirit_level_);
+      }
+      break;
+    }
     case CMD_NOT_SET: {
       break;
     }
@@ -2348,16 +2419,16 @@ const ::google::protobuf::internal::ClassData* Root::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 25, 25, 0, 2> Root::_table_ = {
+const ::_pbi::TcParseTable<0, 26, 26, 0, 2> Root::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    25, 0,  // max_field_number, fast_idx_mask
+    26, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4261412864,  // skipmap
+    4227858432,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    25,  // num_field_entries
-    25,  // num_aux_entries
+    26,  // num_field_entries
+    26,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -2445,6 +2516,9 @@ const ::_pbi::TcParseTable<0, 25, 25, 0, 2> Root::_table_ = {
     // .cmd.RotaryPlatform.HaltWithNDC halt_with_ndc = 25;
     {PROTOBUF_FIELD_OFFSET(Root, _impl_.cmd_.halt_with_ndc_), _Internal::kOneofCaseOffset + 0, 24,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .cmd.RotaryPlatform.SetSpiritLevel set_spirit_level = 26;
+    {PROTOBUF_FIELD_OFFSET(Root, _impl_.cmd_.set_spirit_level_), _Internal::kOneofCaseOffset + 0, 25,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::cmd::RotaryPlatform::Start>()},
     {::_pbi::TcParser::GetTable<::cmd::RotaryPlatform::Stop>()},
@@ -2471,6 +2545,7 @@ const ::_pbi::TcParseTable<0, 25, 25, 0, 2> Root::_table_ = {
     {::_pbi::TcParser::GetTable<::cmd::RotaryPlatform::ScanUpdateNode>()},
     {::_pbi::TcParser::GetTable<::cmd::RotaryPlatform::ScanAddNode>()},
     {::_pbi::TcParser::GetTable<::cmd::RotaryPlatform::HaltWithNDC>()},
+    {::_pbi::TcParser::GetTable<::cmd::RotaryPlatform::SetSpiritLevel>()},
   }}, {{
   }},
 };
@@ -2652,6 +2727,12 @@ PROTOBUF_NOINLINE void Root::Clear() {
                   stream);
               break;
             }
+            case kSetSpiritLevel: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  26, *this_._impl_.cmd_.set_spirit_level_, this_._impl_.cmd_.set_spirit_level_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
             default:
               break;
           }
@@ -2827,6 +2908,12 @@ PROTOBUF_NOINLINE void Root::Clear() {
             case kHaltWithNdc: {
               total_size += 2 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.cmd_.halt_with_ndc_);
+              break;
+            }
+            // .cmd.RotaryPlatform.SetSpiritLevel set_spirit_level = 26;
+            case kSetSpiritLevel: {
+              total_size += 2 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.cmd_.set_spirit_level_);
               break;
             }
             case CMD_NOT_SET: {
@@ -3079,6 +3166,15 @@ void Root::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::pr
               ::google::protobuf::Message::CopyConstruct<::cmd::RotaryPlatform::HaltWithNDC>(arena, *from._impl_.cmd_.halt_with_ndc_);
         } else {
           _this->_impl_.cmd_.halt_with_ndc_->MergeFrom(from._internal_halt_with_ndc());
+        }
+        break;
+      }
+      case kSetSpiritLevel: {
+        if (oneof_needs_init) {
+          _this->_impl_.cmd_.set_spirit_level_ =
+              ::google::protobuf::Message::CopyConstruct<::cmd::RotaryPlatform::SetSpiritLevel>(arena, *from._impl_.cmd_.set_spirit_level_);
+        } else {
+          _this->_impl_.cmd_.set_spirit_level_->MergeFrom(from._internal_set_spirit_level());
         }
         break;
       }
@@ -11522,6 +11618,285 @@ void HaltWithNDC::InternalSwap(HaltWithNDC* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata HaltWithNDC::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetSpiritLevel::_Internal {
+ public:
+};
+
+SetSpiritLevel::SetSpiritLevel(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:cmd.RotaryPlatform.SetSpiritLevel)
+}
+SetSpiritLevel::SetSpiritLevel(
+    ::google::protobuf::Arena* arena, const SetSpiritLevel& from)
+    : SetSpiritLevel(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SetSpiritLevel::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetSpiritLevel::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, pitch_),
+           0,
+           offsetof(Impl_, tilt_offset_) -
+               offsetof(Impl_, pitch_) +
+               sizeof(Impl_::tilt_offset_));
+}
+SetSpiritLevel::~SetSpiritLevel() {
+  // @@protoc_insertion_point(destructor:cmd.RotaryPlatform.SetSpiritLevel)
+  SharedDtor(*this);
+}
+inline void SetSpiritLevel::SharedDtor(MessageLite& self) {
+  SetSpiritLevel& this_ = static_cast<SetSpiritLevel&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SetSpiritLevel::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetSpiritLevel(arena);
+}
+constexpr auto SetSpiritLevel::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetSpiritLevel),
+                                            alignof(SetSpiritLevel));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetSpiritLevel::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetSpiritLevel_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetSpiritLevel::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetSpiritLevel>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetSpiritLevel::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetSpiritLevel>(), &SetSpiritLevel::ByteSizeLong,
+            &SetSpiritLevel::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_._cached_size_),
+        false,
+    },
+    &SetSpiritLevel::kDescriptorMethods,
+    &descriptor_table_jon_5fshared_5fcmd_5frotary_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetSpiritLevel::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 0, 2> SetSpiritLevel::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::cmd::RotaryPlatform::SetSpiritLevel>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // double tilt_offset = 4;
+    {::_pbi::TcParser::FastF64S1,
+     {33, 63, 0, PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.tilt_offset_)}},
+    // double pitch = 1;
+    {::_pbi::TcParser::FastF64S1,
+     {9, 63, 0, PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.pitch_)}},
+    // double roll = 2;
+    {::_pbi::TcParser::FastF64S1,
+     {17, 63, 0, PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.roll_)}},
+    // double pan_offset = 3;
+    {::_pbi::TcParser::FastF64S1,
+     {25, 63, 0, PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.pan_offset_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // double pitch = 1;
+    {PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.pitch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double roll = 2;
+    {PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.roll_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double pan_offset = 3;
+    {PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.pan_offset_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+    // double tilt_offset = 4;
+    {PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.tilt_offset_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kDouble)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetSpiritLevel::Clear() {
+// @@protoc_insertion_point(message_clear_start:cmd.RotaryPlatform.SetSpiritLevel)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.pitch_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.tilt_offset_) -
+      reinterpret_cast<char*>(&_impl_.pitch_)) + sizeof(_impl_.tilt_offset_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetSpiritLevel::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetSpiritLevel& this_ = static_cast<const SetSpiritLevel&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetSpiritLevel::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetSpiritLevel& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:cmd.RotaryPlatform.SetSpiritLevel)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // double pitch = 1;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_pitch()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                1, this_._internal_pitch(), target);
+          }
+
+          // double roll = 2;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_roll()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                2, this_._internal_roll(), target);
+          }
+
+          // double pan_offset = 3;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_pan_offset()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                3, this_._internal_pan_offset(), target);
+          }
+
+          // double tilt_offset = 4;
+          if (::absl::bit_cast<::uint64_t>(this_._internal_tilt_offset()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+                4, this_._internal_tilt_offset(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:cmd.RotaryPlatform.SetSpiritLevel)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetSpiritLevel::ByteSizeLong(const MessageLite& base) {
+          const SetSpiritLevel& this_ = static_cast<const SetSpiritLevel&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetSpiritLevel::ByteSizeLong() const {
+          const SetSpiritLevel& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:cmd.RotaryPlatform.SetSpiritLevel)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // double pitch = 1;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_pitch()) != 0) {
+              total_size += 9;
+            }
+            // double roll = 2;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_roll()) != 0) {
+              total_size += 9;
+            }
+            // double pan_offset = 3;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_pan_offset()) != 0) {
+              total_size += 9;
+            }
+            // double tilt_offset = 4;
+            if (::absl::bit_cast<::uint64_t>(this_._internal_tilt_offset()) != 0) {
+              total_size += 9;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetSpiritLevel::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetSpiritLevel*>(&to_msg);
+  auto& from = static_cast<const SetSpiritLevel&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:cmd.RotaryPlatform.SetSpiritLevel)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (::absl::bit_cast<::uint64_t>(from._internal_pitch()) != 0) {
+    _this->_impl_.pitch_ = from._impl_.pitch_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_roll()) != 0) {
+    _this->_impl_.roll_ = from._impl_.roll_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_pan_offset()) != 0) {
+    _this->_impl_.pan_offset_ = from._impl_.pan_offset_;
+  }
+  if (::absl::bit_cast<::uint64_t>(from._internal_tilt_offset()) != 0) {
+    _this->_impl_.tilt_offset_ = from._impl_.tilt_offset_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetSpiritLevel::CopyFrom(const SetSpiritLevel& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:cmd.RotaryPlatform.SetSpiritLevel)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetSpiritLevel::InternalSwap(SetSpiritLevel* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.tilt_offset_)
+      + sizeof(SetSpiritLevel::_impl_.tilt_offset_)
+      - PROTOBUF_FIELD_OFFSET(SetSpiritLevel, _impl_.pitch_)>(
+          reinterpret_cast<char*>(&_impl_.pitch_),
+          reinterpret_cast<char*>(&other->_impl_.pitch_));
+}
+
+::google::protobuf::Metadata SetSpiritLevel::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

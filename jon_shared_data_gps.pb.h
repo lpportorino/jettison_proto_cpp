@@ -223,6 +223,7 @@ class JonGuiDataGps final : public ::google::protobuf::Message
     kManualAltitudeFieldNumber = 6,
     kFixTypeFieldNumber = 7,
     kUseManualFieldNumber = 8,
+    kTimestampFieldNumber = 9,
   };
   // double longitude = 1;
   void clear_longitude() ;
@@ -304,12 +305,22 @@ class JonGuiDataGps final : public ::google::protobuf::Message
   void _internal_set_use_manual(bool value);
 
   public:
+  // int64 timestamp = 9;
+  void clear_timestamp() ;
+  ::int64_t timestamp() const;
+  void set_timestamp(::int64_t value);
+
+  private:
+  ::int64_t _internal_timestamp() const;
+  void _internal_set_timestamp(::int64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:ser.JonGuiDataGps)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 8, 0,
+      4, 9, 0,
       0, 2>
       _table_;
 
@@ -335,6 +346,7 @@ class JonGuiDataGps final : public ::google::protobuf::Message
     double manual_altitude_;
     int fix_type_;
     bool use_manual_;
+    ::int64_t timestamp_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -532,6 +544,28 @@ inline bool JonGuiDataGps::_internal_use_manual() const {
 inline void JonGuiDataGps::_internal_set_use_manual(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.use_manual_ = value;
+}
+
+// int64 timestamp = 9;
+inline void JonGuiDataGps::clear_timestamp() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.timestamp_ = ::int64_t{0};
+}
+inline ::int64_t JonGuiDataGps::timestamp() const {
+  // @@protoc_insertion_point(field_get:ser.JonGuiDataGps.timestamp)
+  return _internal_timestamp();
+}
+inline void JonGuiDataGps::set_timestamp(::int64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:ser.JonGuiDataGps.timestamp)
+}
+inline ::int64_t JonGuiDataGps::_internal_timestamp() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.timestamp_;
+}
+inline void JonGuiDataGps::_internal_set_timestamp(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.timestamp_ = value;
 }
 
 #ifdef __GNUC__
