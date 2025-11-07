@@ -1,6 +1,8 @@
 # Jettison Proto C++ Bindings
 
-Auto-generated C++ bindings.
+Auto-generated C++ bindings with buf.validate support.
 
-Generated: 2025-11-02 14:01:44 UTC
-Commit: f43e708e40a8776961bbb2637f3bd955f147edcc
+**Runtime validation requires**: [protovalidate-cc](https://github.com/bufbuild/protovalidate-cc) and [CEL-C++](https://github.com/google/cel-cpp)
+
+Generated: 2025-11-07 12:34:43 UTC
+Commit: 8adaa8b074f98894334b7496520b9051dd9babc2
