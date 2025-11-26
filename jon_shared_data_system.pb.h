@@ -240,6 +240,8 @@ class JonGuiDataSystem final : public ::google::protobuf::Message
     kCvDumpingFieldNumber = 22,
     kRecognitionModeFieldNumber = 23,
     kAccumulatorStateFieldNumber = 24,
+    kExtBatCapacityFieldNumber = 25,
+    kExtBatStatusFieldNumber = 26,
   };
   // double cpu_temperature = 1 [(.buf.validate.field) = {
   void clear_cpu_temperature() ;
@@ -481,12 +483,32 @@ class JonGuiDataSystem final : public ::google::protobuf::Message
   void _internal_set_accumulator_state(::ser::JonGuiDataAccumulatorStateIdx value);
 
   public:
+  // int32 ext_bat_capacity = 25 [(.buf.validate.field) = {
+  void clear_ext_bat_capacity() ;
+  ::int32_t ext_bat_capacity() const;
+  void set_ext_bat_capacity(::int32_t value);
+
+  private:
+  ::int32_t _internal_ext_bat_capacity() const;
+  void _internal_set_ext_bat_capacity(::int32_t value);
+
+  public:
+  // .ser.JonGuiDataExtBatStatus ext_bat_status = 26;
+  void clear_ext_bat_status() ;
+  ::ser::JonGuiDataExtBatStatus ext_bat_status() const;
+  void set_ext_bat_status(::ser::JonGuiDataExtBatStatus value);
+
+  private:
+  ::ser::JonGuiDataExtBatStatus _internal_ext_bat_status() const;
+  void _internal_set_ext_bat_status(::ser::JonGuiDataExtBatStatus value);
+
+  public:
   // @@protoc_insertion_point(class_scope:ser.JonGuiDataSystem)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 24, 0,
+      5, 26, 0,
       0, 2>
       _table_;
 
@@ -528,6 +550,8 @@ class JonGuiDataSystem final : public ::google::protobuf::Message
     bool cv_dumping_;
     bool recognition_mode_;
     int accumulator_state_;
+    ::int32_t ext_bat_capacity_;
+    int ext_bat_status_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1077,6 +1101,50 @@ inline ::ser::JonGuiDataAccumulatorStateIdx JonGuiDataSystem::_internal_accumula
 inline void JonGuiDataSystem::_internal_set_accumulator_state(::ser::JonGuiDataAccumulatorStateIdx value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.accumulator_state_ = value;
+}
+
+// int32 ext_bat_capacity = 25 [(.buf.validate.field) = {
+inline void JonGuiDataSystem::clear_ext_bat_capacity() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ext_bat_capacity_ = 0;
+}
+inline ::int32_t JonGuiDataSystem::ext_bat_capacity() const {
+  // @@protoc_insertion_point(field_get:ser.JonGuiDataSystem.ext_bat_capacity)
+  return _internal_ext_bat_capacity();
+}
+inline void JonGuiDataSystem::set_ext_bat_capacity(::int32_t value) {
+  _internal_set_ext_bat_capacity(value);
+  // @@protoc_insertion_point(field_set:ser.JonGuiDataSystem.ext_bat_capacity)
+}
+inline ::int32_t JonGuiDataSystem::_internal_ext_bat_capacity() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ext_bat_capacity_;
+}
+inline void JonGuiDataSystem::_internal_set_ext_bat_capacity(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ext_bat_capacity_ = value;
+}
+
+// .ser.JonGuiDataExtBatStatus ext_bat_status = 26;
+inline void JonGuiDataSystem::clear_ext_bat_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ext_bat_status_ = 0;
+}
+inline ::ser::JonGuiDataExtBatStatus JonGuiDataSystem::ext_bat_status() const {
+  // @@protoc_insertion_point(field_get:ser.JonGuiDataSystem.ext_bat_status)
+  return _internal_ext_bat_status();
+}
+inline void JonGuiDataSystem::set_ext_bat_status(::ser::JonGuiDataExtBatStatus value) {
+  _internal_set_ext_bat_status(value);
+  // @@protoc_insertion_point(field_set:ser.JonGuiDataSystem.ext_bat_status)
+}
+inline ::ser::JonGuiDataExtBatStatus JonGuiDataSystem::_internal_ext_bat_status() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::ser::JonGuiDataExtBatStatus>(_impl_.ext_bat_status_);
+}
+inline void JonGuiDataSystem::_internal_set_ext_bat_status(::ser::JonGuiDataExtBatStatus value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ext_bat_status_ = value;
 }
 
 #ifdef __GNUC__

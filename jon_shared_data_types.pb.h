@@ -719,6 +719,41 @@ inline bool JonGuiDataClientType_Parse(absl::string_view name, JonGuiDataClientT
   return ::google::protobuf::internal::ParseNamedEnum<JonGuiDataClientType>(
       JonGuiDataClientType_descriptor(), name, value);
 }
+enum JonGuiDataExtBatStatus : int {
+  JON_GUI_DATA_EXT_BAT_STATUS_UNSPECIFIED = 0,
+  JON_GUI_DATA_EXT_BAT_STATUS_CHARGING = 1,
+  JON_GUI_DATA_EXT_BAT_STATUS_DISCHARGING = 2,
+  JON_GUI_DATA_EXT_BAT_STATUS_BALANCING = 3,
+  JonGuiDataExtBatStatus_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  JonGuiDataExtBatStatus_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool JonGuiDataExtBatStatus_IsValid(int value);
+extern const uint32_t JonGuiDataExtBatStatus_internal_data_[];
+constexpr JonGuiDataExtBatStatus JonGuiDataExtBatStatus_MIN = static_cast<JonGuiDataExtBatStatus>(0);
+constexpr JonGuiDataExtBatStatus JonGuiDataExtBatStatus_MAX = static_cast<JonGuiDataExtBatStatus>(3);
+constexpr int JonGuiDataExtBatStatus_ARRAYSIZE = 3 + 1;
+const ::google::protobuf::EnumDescriptor*
+JonGuiDataExtBatStatus_descriptor();
+template <typename T>
+const std::string& JonGuiDataExtBatStatus_Name(T value) {
+  static_assert(std::is_same<T, JonGuiDataExtBatStatus>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to JonGuiDataExtBatStatus_Name().");
+  return JonGuiDataExtBatStatus_Name(static_cast<JonGuiDataExtBatStatus>(value));
+}
+template <>
+inline const std::string& JonGuiDataExtBatStatus_Name(JonGuiDataExtBatStatus value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<JonGuiDataExtBatStatus_descriptor,
+                                                 0, 3>(
+      static_cast<int>(value));
+}
+inline bool JonGuiDataExtBatStatus_Parse(absl::string_view name, JonGuiDataExtBatStatus* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<JonGuiDataExtBatStatus>(
+      JonGuiDataExtBatStatus_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -1138,6 +1173,12 @@ struct is_proto_enum<::ser::JonGuiDataClientType> : std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor<::ser::JonGuiDataClientType>() {
   return ::ser::JonGuiDataClientType_descriptor();
+}
+template <>
+struct is_proto_enum<::ser::JonGuiDataExtBatStatus> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::ser::JonGuiDataExtBatStatus>() {
+  return ::ser::JonGuiDataExtBatStatus_descriptor();
 }
 
 }  // namespace protobuf
