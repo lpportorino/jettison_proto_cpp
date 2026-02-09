@@ -451,6 +451,9 @@ class JonGuiDataHeater final : public ::google::protobuf::Message
     kCurrentAFieldNumber = 2,
     kPowerWFieldNumber = 3,
     kAutomaticControlEnabledFieldNumber = 7,
+    kTargetTempChannel0FieldNumber = 8,
+    kTargetTempChannel1FieldNumber = 9,
+    kTargetTempChannel2FieldNumber = 10,
   };
   // .ser.JonGuiDataHeaterChannelStatus channel_0 = 4;
   bool has_channel_0() const;
@@ -537,12 +540,42 @@ class JonGuiDataHeater final : public ::google::protobuf::Message
   void _internal_set_automatic_control_enabled(bool value);
 
   public:
+  // float target_temp_channel_0 = 8 [(.buf.validate.field) = {
+  void clear_target_temp_channel_0() ;
+  float target_temp_channel_0() const;
+  void set_target_temp_channel_0(float value);
+
+  private:
+  float _internal_target_temp_channel_0() const;
+  void _internal_set_target_temp_channel_0(float value);
+
+  public:
+  // float target_temp_channel_1 = 9 [(.buf.validate.field) = {
+  void clear_target_temp_channel_1() ;
+  float target_temp_channel_1() const;
+  void set_target_temp_channel_1(float value);
+
+  private:
+  float _internal_target_temp_channel_1() const;
+  void _internal_set_target_temp_channel_1(float value);
+
+  public:
+  // float target_temp_channel_2 = 10 [(.buf.validate.field) = {
+  void clear_target_temp_channel_2() ;
+  float target_temp_channel_2() const;
+  void set_target_temp_channel_2(float value);
+
+  private:
+  float _internal_target_temp_channel_2() const;
+  void _internal_set_target_temp_channel_2(float value);
+
+  public:
   // @@protoc_insertion_point(class_scope:ser.JonGuiDataHeater)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 7, 3,
+      4, 10, 3,
       0, 2>
       _table_;
 
@@ -569,6 +602,9 @@ class JonGuiDataHeater final : public ::google::protobuf::Message
     float current_a_;
     float power_w_;
     bool automatic_control_enabled_;
+    float target_temp_channel_0_;
+    float target_temp_channel_1_;
+    float target_temp_channel_2_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -1057,6 +1093,72 @@ inline bool JonGuiDataHeater::_internal_automatic_control_enabled() const {
 inline void JonGuiDataHeater::_internal_set_automatic_control_enabled(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.automatic_control_enabled_ = value;
+}
+
+// float target_temp_channel_0 = 8 [(.buf.validate.field) = {
+inline void JonGuiDataHeater::clear_target_temp_channel_0() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.target_temp_channel_0_ = 0;
+}
+inline float JonGuiDataHeater::target_temp_channel_0() const {
+  // @@protoc_insertion_point(field_get:ser.JonGuiDataHeater.target_temp_channel_0)
+  return _internal_target_temp_channel_0();
+}
+inline void JonGuiDataHeater::set_target_temp_channel_0(float value) {
+  _internal_set_target_temp_channel_0(value);
+  // @@protoc_insertion_point(field_set:ser.JonGuiDataHeater.target_temp_channel_0)
+}
+inline float JonGuiDataHeater::_internal_target_temp_channel_0() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.target_temp_channel_0_;
+}
+inline void JonGuiDataHeater::_internal_set_target_temp_channel_0(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.target_temp_channel_0_ = value;
+}
+
+// float target_temp_channel_1 = 9 [(.buf.validate.field) = {
+inline void JonGuiDataHeater::clear_target_temp_channel_1() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.target_temp_channel_1_ = 0;
+}
+inline float JonGuiDataHeater::target_temp_channel_1() const {
+  // @@protoc_insertion_point(field_get:ser.JonGuiDataHeater.target_temp_channel_1)
+  return _internal_target_temp_channel_1();
+}
+inline void JonGuiDataHeater::set_target_temp_channel_1(float value) {
+  _internal_set_target_temp_channel_1(value);
+  // @@protoc_insertion_point(field_set:ser.JonGuiDataHeater.target_temp_channel_1)
+}
+inline float JonGuiDataHeater::_internal_target_temp_channel_1() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.target_temp_channel_1_;
+}
+inline void JonGuiDataHeater::_internal_set_target_temp_channel_1(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.target_temp_channel_1_ = value;
+}
+
+// float target_temp_channel_2 = 10 [(.buf.validate.field) = {
+inline void JonGuiDataHeater::clear_target_temp_channel_2() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.target_temp_channel_2_ = 0;
+}
+inline float JonGuiDataHeater::target_temp_channel_2() const {
+  // @@protoc_insertion_point(field_get:ser.JonGuiDataHeater.target_temp_channel_2)
+  return _internal_target_temp_channel_2();
+}
+inline void JonGuiDataHeater::set_target_temp_channel_2(float value) {
+  _internal_set_target_temp_channel_2(value);
+  // @@protoc_insertion_point(field_set:ser.JonGuiDataHeater.target_temp_channel_2)
+}
+inline float JonGuiDataHeater::_internal_target_temp_channel_2() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.target_temp_channel_2_;
+}
+inline void JonGuiDataHeater::_internal_set_target_temp_channel_2(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.target_temp_channel_2_ = value;
 }
 
 #ifdef __GNUC__

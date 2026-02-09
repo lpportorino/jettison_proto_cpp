@@ -1219,9 +1219,6 @@ class AutomaticControlChannelParams final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kTargetTemperatureFieldNumber = 1,
-    kKpFieldNumber = 2,
-    kKiFieldNumber = 3,
-    kKdFieldNumber = 4,
   };
   // float target_temperature = 1 [(.buf.validate.field) = {
   void clear_target_temperature() ;
@@ -1233,42 +1230,12 @@ class AutomaticControlChannelParams final : public ::google::protobuf::Message
   void _internal_set_target_temperature(float value);
 
   public:
-  // float kp = 2 [(.buf.validate.field) = {
-  void clear_kp() ;
-  float kp() const;
-  void set_kp(float value);
-
-  private:
-  float _internal_kp() const;
-  void _internal_set_kp(float value);
-
-  public:
-  // float ki = 3 [(.buf.validate.field) = {
-  void clear_ki() ;
-  float ki() const;
-  void set_ki(float value);
-
-  private:
-  float _internal_ki() const;
-  void _internal_set_ki(float value);
-
-  public:
-  // float kd = 4 [(.buf.validate.field) = {
-  void clear_kd() ;
-  float kd() const;
-  void set_kd(float value);
-
-  private:
-  float _internal_kd() const;
-  void _internal_set_kd(float value);
-
-  public:
   // @@protoc_insertion_point(class_scope:cmd.Heater.AutomaticControlChannelParams)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 0,
+      0, 1, 0,
       0, 2>
       _table_;
 
@@ -1287,9 +1254,6 @@ class AutomaticControlChannelParams final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const AutomaticControlChannelParams& from_msg);
     float target_temperature_;
-    float kp_;
-    float ki_;
-    float kd_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2636,72 +2600,6 @@ inline float AutomaticControlChannelParams::_internal_target_temperature() const
 inline void AutomaticControlChannelParams::_internal_set_target_temperature(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.target_temperature_ = value;
-}
-
-// float kp = 2 [(.buf.validate.field) = {
-inline void AutomaticControlChannelParams::clear_kp() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.kp_ = 0;
-}
-inline float AutomaticControlChannelParams::kp() const {
-  // @@protoc_insertion_point(field_get:cmd.Heater.AutomaticControlChannelParams.kp)
-  return _internal_kp();
-}
-inline void AutomaticControlChannelParams::set_kp(float value) {
-  _internal_set_kp(value);
-  // @@protoc_insertion_point(field_set:cmd.Heater.AutomaticControlChannelParams.kp)
-}
-inline float AutomaticControlChannelParams::_internal_kp() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.kp_;
-}
-inline void AutomaticControlChannelParams::_internal_set_kp(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.kp_ = value;
-}
-
-// float ki = 3 [(.buf.validate.field) = {
-inline void AutomaticControlChannelParams::clear_ki() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.ki_ = 0;
-}
-inline float AutomaticControlChannelParams::ki() const {
-  // @@protoc_insertion_point(field_get:cmd.Heater.AutomaticControlChannelParams.ki)
-  return _internal_ki();
-}
-inline void AutomaticControlChannelParams::set_ki(float value) {
-  _internal_set_ki(value);
-  // @@protoc_insertion_point(field_set:cmd.Heater.AutomaticControlChannelParams.ki)
-}
-inline float AutomaticControlChannelParams::_internal_ki() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.ki_;
-}
-inline void AutomaticControlChannelParams::_internal_set_ki(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.ki_ = value;
-}
-
-// float kd = 4 [(.buf.validate.field) = {
-inline void AutomaticControlChannelParams::clear_kd() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.kd_ = 0;
-}
-inline float AutomaticControlChannelParams::kd() const {
-  // @@protoc_insertion_point(field_get:cmd.Heater.AutomaticControlChannelParams.kd)
-  return _internal_kd();
-}
-inline void AutomaticControlChannelParams::set_kd(float value) {
-  _internal_set_kd(value);
-  // @@protoc_insertion_point(field_set:cmd.Heater.AutomaticControlChannelParams.kd)
-}
-inline float AutomaticControlChannelParams::_internal_kd() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.kd_;
-}
-inline void AutomaticControlChannelParams::_internal_set_kd(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.kd_ = value;
 }
 
 // -------------------------------------------------------------------

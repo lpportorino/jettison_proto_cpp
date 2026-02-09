@@ -150,9 +150,6 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr AutomaticControlChannelParams::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : target_temperature_{0},
-        kp_{0},
-        ki_{0},
-        kd_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -315,9 +312,6 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::cmd::Heater::AutomaticControlChannelParams, _impl_.target_temperature_),
-        PROTOBUF_FIELD_OFFSET(::cmd::Heater::AutomaticControlChannelParams, _impl_.kp_),
-        PROTOBUF_FIELD_OFFSET(::cmd::Heater::AutomaticControlChannelParams, _impl_.ki_),
-        PROTOBUF_FIELD_OFFSET(::cmd::Heater::AutomaticControlChannelParams, _impl_.kd_),
         PROTOBUF_FIELD_OFFSET(::cmd::Heater::SetAutomaticControlParams, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::cmd::Heater::SetAutomaticControlParams, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -344,7 +338,7 @@ static const ::_pbi::MigrationSchema
         {54, -1, -1, sizeof(::cmd::Heater::EnableAutomaticControl)},
         {62, -1, -1, sizeof(::cmd::Heater::DisableAutomaticControl)},
         {70, -1, -1, sizeof(::cmd::Heater::AutomaticControlChannelParams)},
-        {82, 93, -1, sizeof(::cmd::Heater::SetAutomaticControlParams)},
+        {79, 90, -1, sizeof(::cmd::Heater::SetAutomaticControlParams)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::cmd::Heater::_Root_default_instance_._instance,
@@ -379,18 +373,16 @@ const char descriptor_table_protodef_jon_5fshared_5fcmd_5fheater_2eproto[] ABSL_
     "\272H\014\n\n\035\000\000 B-\000\000\000\000\022%\n\014temp_error_2\030\006 \001(\002B\017\272"
     "H\014\n\n\035\000\000 B-\000\000\000\000\"\013\n\tGetStatus\"\030\n\026EnableAut"
     "omaticControl\"\031\n\027DisableAutomaticControl"
-    "\"\224\001\n\035AutomaticControlChannelParams\022+\n\022ta"
-    "rget_temperature\030\001 \001(\002B\017\272H\014\n\n\035\000\000\310B-\000\000\000\000\022"
-    "\026\n\002kp\030\002 \001(\002B\n\272H\007\n\005-\000\000\000\000\022\026\n\002ki\030\003 \001(\002B\n\272H\007"
-    "\n\005-\000\000\000\000\022\026\n\002kd\030\004 \001(\002B\n\272H\007\n\005-\000\000\000\000\"\325\001\n\031SetA"
-    "utomaticControlParams\022<\n\tchannel_0\030\001 \001(\013"
-    "2).cmd.Heater.AutomaticControlChannelPar"
-    "ams\022<\n\tchannel_1\030\002 \001(\0132).cmd.Heater.Auto"
-    "maticControlChannelParams\022<\n\tchannel_2\030\003"
-    " \001(\0132).cmd.Heater.AutomaticControlChanne"
-    "lParamsBMZKgit-codecommit.eu-central-1.a"
-    "mazonaws.com/v1/repos/jettison/jonp/cmd/"
-    "heaterb\006proto3"
+    "\"L\n\035AutomaticControlChannelParams\022+\n\022tar"
+    "get_temperature\030\001 \001(\002B\017\272H\014\n\n\035\000\000pB-\000\000\000\000\"\325"
+    "\001\n\031SetAutomaticControlParams\022<\n\tchannel_"
+    "0\030\001 \001(\0132).cmd.Heater.AutomaticControlCha"
+    "nnelParams\022<\n\tchannel_1\030\002 \001(\0132).cmd.Heat"
+    "er.AutomaticControlChannelParams\022<\n\tchan"
+    "nel_2\030\003 \001(\0132).cmd.Heater.AutomaticContro"
+    "lChannelParamsBMZKgit-codecommit.eu-cent"
+    "ral-1.amazonaws.com/v1/repos/jettison/jo"
+    "np/cmd/heaterb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_jon_5fshared_5fcmd_5fheater_2eproto_deps[1] =
     {
@@ -400,7 +392,7 @@ static ::absl::once_flag descriptor_table_jon_5fshared_5fcmd_5fheater_2eproto_on
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_jon_5fshared_5fcmd_5fheater_2eproto = {
     false,
     false,
-    1254,
+    1181,
     descriptor_table_protodef_jon_5fshared_5fcmd_5fheater_2eproto,
     "jon_shared_cmd_heater.proto",
     &descriptor_table_jon_5fshared_5fcmd_5fheater_2eproto_once,
@@ -1871,12 +1863,7 @@ inline PROTOBUF_NDEBUG_INLINE AutomaticControlChannelParams::Impl_::Impl_(
 
 inline void AutomaticControlChannelParams::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, target_temperature_),
-           0,
-           offsetof(Impl_, kd_) -
-               offsetof(Impl_, target_temperature_) +
-               sizeof(Impl_::kd_));
+  _impl_.target_temperature_ = {};
 }
 AutomaticControlChannelParams::~AutomaticControlChannelParams() {
   // @@protoc_insertion_point(destructor:cmd.Heater.AutomaticControlChannelParams)
@@ -1925,15 +1912,15 @@ const ::google::protobuf::internal::ClassData* AutomaticControlChannelParams::Ge
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 0, 2> AutomaticControlChannelParams::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> AutomaticControlChannelParams::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    1, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967294,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -1943,32 +1930,14 @@ const ::_pbi::TcParseTable<2, 4, 0, 0, 2> AutomaticControlChannelParams::_table_
     ::_pbi::TcParser::GetTable<::cmd::Heater::AutomaticControlChannelParams>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // float kd = 4 [(.buf.validate.field) = {
-    {::_pbi::TcParser::FastF32S1,
-     {37, 63, 0, PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.kd_)}},
     // float target_temperature = 1 [(.buf.validate.field) = {
     {::_pbi::TcParser::FastF32S1,
      {13, 63, 0, PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.target_temperature_)}},
-    // float kp = 2 [(.buf.validate.field) = {
-    {::_pbi::TcParser::FastF32S1,
-     {21, 63, 0, PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.kp_)}},
-    // float ki = 3 [(.buf.validate.field) = {
-    {::_pbi::TcParser::FastF32S1,
-     {29, 63, 0, PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.ki_)}},
   }}, {{
     65535, 65535
   }}, {{
     // float target_temperature = 1 [(.buf.validate.field) = {
     {PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.target_temperature_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float kp = 2 [(.buf.validate.field) = {
-    {PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.kp_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float ki = 3 [(.buf.validate.field) = {
-    {PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.ki_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float kd = 4 [(.buf.validate.field) = {
-    {PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.kd_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
   }},
   // no aux_entries
@@ -1983,9 +1952,7 @@ PROTOBUF_NOINLINE void AutomaticControlChannelParams::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.target_temperature_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.kd_) -
-      reinterpret_cast<char*>(&_impl_.target_temperature_)) + sizeof(_impl_.kd_));
+  _impl_.target_temperature_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -2011,27 +1978,6 @@ PROTOBUF_NOINLINE void AutomaticControlChannelParams::Clear() {
                 1, this_._internal_target_temperature(), target);
           }
 
-          // float kp = 2 [(.buf.validate.field) = {
-          if (::absl::bit_cast<::uint32_t>(this_._internal_kp()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                2, this_._internal_kp(), target);
-          }
-
-          // float ki = 3 [(.buf.validate.field) = {
-          if (::absl::bit_cast<::uint32_t>(this_._internal_ki()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                3, this_._internal_ki(), target);
-          }
-
-          // float kd = 4 [(.buf.validate.field) = {
-          if (::absl::bit_cast<::uint32_t>(this_._internal_kd()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                4, this_._internal_kd(), target);
-          }
-
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -2055,22 +2001,9 @@ PROTOBUF_NOINLINE void AutomaticControlChannelParams::Clear() {
           // Prevent compiler warnings about cached_has_bits being unused
           (void)cached_has_bits;
 
-          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
             // float target_temperature = 1 [(.buf.validate.field) = {
             if (::absl::bit_cast<::uint32_t>(this_._internal_target_temperature()) != 0) {
-              total_size += 5;
-            }
-            // float kp = 2 [(.buf.validate.field) = {
-            if (::absl::bit_cast<::uint32_t>(this_._internal_kp()) != 0) {
-              total_size += 5;
-            }
-            // float ki = 3 [(.buf.validate.field) = {
-            if (::absl::bit_cast<::uint32_t>(this_._internal_ki()) != 0) {
-              total_size += 5;
-            }
-            // float kd = 4 [(.buf.validate.field) = {
-            if (::absl::bit_cast<::uint32_t>(this_._internal_kd()) != 0) {
               total_size += 5;
             }
           }
@@ -2089,15 +2022,6 @@ void AutomaticControlChannelParams::MergeImpl(::google::protobuf::MessageLite& t
   if (::absl::bit_cast<::uint32_t>(from._internal_target_temperature()) != 0) {
     _this->_impl_.target_temperature_ = from._impl_.target_temperature_;
   }
-  if (::absl::bit_cast<::uint32_t>(from._internal_kp()) != 0) {
-    _this->_impl_.kp_ = from._impl_.kp_;
-  }
-  if (::absl::bit_cast<::uint32_t>(from._internal_ki()) != 0) {
-    _this->_impl_.ki_ = from._impl_.ki_;
-  }
-  if (::absl::bit_cast<::uint32_t>(from._internal_kd()) != 0) {
-    _this->_impl_.kd_ = from._impl_.kd_;
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -2112,12 +2036,7 @@ void AutomaticControlChannelParams::CopyFrom(const AutomaticControlChannelParams
 void AutomaticControlChannelParams::InternalSwap(AutomaticControlChannelParams* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.kd_)
-      + sizeof(AutomaticControlChannelParams::_impl_.kd_)
-      - PROTOBUF_FIELD_OFFSET(AutomaticControlChannelParams, _impl_.target_temperature_)>(
-          reinterpret_cast<char*>(&_impl_.target_temperature_),
-          reinterpret_cast<char*>(&other->_impl_.target_temperature_));
+        swap(_impl_.target_temperature_, other->_impl_.target_temperature_);
 }
 
 ::google::protobuf::Metadata AutomaticControlChannelParams::GetMetadata() const {
