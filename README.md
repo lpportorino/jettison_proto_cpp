@@ -4,5 +4,5 @@ Auto-generated C++ bindings with buf.validate support.
 
 **Runtime validation requires**: [protovalidate-cc](https://github.com/bufbuild/protovalidate-cc) and [CEL-C++](https://github.com/google/cel-cpp)
 
-Generated: 2026-06-19 16:43:23 UTC
-Commit: 0ae408b779fbffed543105499715eba5e54ae75a
+Generated: 2026-06-19 19:09:18 UTC
+Commit: 3df078944384cd4f7a51b4a057e3902642973464
