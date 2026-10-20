@@ -98,6 +98,22 @@ extern const ::google::protobuf::internal::ClassDataFull DeployFingerprint_class
 #else
 extern const DeployFingerprintGlobalsTypeInternal DeployFingerprint_globals_;
 #endif  // PROTOBUF_MESSAGE_GLOBALS
+class GigePacketRing;
+struct GigePacketRingGlobalsTypeInternal;
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+extern GigePacketRingGlobalsTypeInternal GigePacketRing_globals_;
+extern const ::google::protobuf::internal::ClassDataFull GigePacketRing_class_data_;
+#else
+extern const GigePacketRingGlobalsTypeInternal GigePacketRing_globals_;
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+class GigeStatsRing;
+struct GigeStatsRingGlobalsTypeInternal;
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+extern GigeStatsRingGlobalsTypeInternal GigeStatsRing_globals_;
+extern const ::google::protobuf::internal::ClassDataFull GigeStatsRing_class_data_;
+#else
+extern const GigeStatsRingGlobalsTypeInternal GigeStatsRing_globals_;
+#endif  // PROTOBUF_MESSAGE_GLOBALS
 class IntegrityReport;
 struct IntegrityReportGlobalsTypeInternal;
 #ifndef PROTOBUF_MESSAGE_GLOBALS
@@ -297,6 +313,7 @@ enum StreamKind : int {
   STREAM_KIND_FRAME_TAP = 3,
   STREAM_KIND_TSDB_TABLE = 4,
   STREAM_KIND_MOTION_HISTORY = 5,
+  STREAM_KIND_GIGE = 6,
   StreamKind_INT_MIN_SENTINEL_DO_NOT_USE_ =
       ::std::numeric_limits<::int32_t>::min(),
   StreamKind_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -307,11 +324,11 @@ extern const uint32_t StreamKind_internal_data_[];
 inline constexpr StreamKind StreamKind_MIN =
     static_cast<StreamKind>(0);
 inline constexpr StreamKind StreamKind_MAX =
-    static_cast<StreamKind>(5);
+    static_cast<StreamKind>(6);
 [[nodiscard]] inline bool StreamKind_IsValid(int value) {
-  return 0 <= value && value <= 5;
+  return 0 <= value && value <= 6;
 }
-inline constexpr int StreamKind_ARRAYSIZE = 5 + 1;
+inline constexpr int StreamKind_ARRAYSIZE = 6 + 1;
 [[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
 StreamKind_descriptor();
 [[nodiscard]] inline auto ProtobufInternalGetEnumDescriptor(StreamKind) {
@@ -326,7 +343,7 @@ template <typename T>
 }
 template <>
 [[nodiscard]] inline const ::std::string& StreamKind_Name(StreamKind value) {
-  return ::google::protobuf::internal::NameOfDenseEnum<StreamKind_descriptor, 0, 5>(
+  return ::google::protobuf::internal::NameOfDenseEnum<StreamKind_descriptor, 0, 6>(
       static_cast<int>(value));
 }
 [[nodiscard]] inline bool StreamKind_Parse(
@@ -766,7 +783,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED TableRows final : public ::google::
   [[nodiscard]] static const TableRows& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<TableRows>(&TableRows_globals_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(TableRows& a, TableRows& b) { a.Swap(&b); }
   inline void Swap(TableRows* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1319,7 +1336,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RedisStreamField final : public ::g
   [[nodiscard]] static const RedisStreamField& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<RedisStreamField>(&RedisStreamField_globals_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(RedisStreamField& a, RedisStreamField& b) { a.Swap(&b); }
   inline void Swap(RedisStreamField* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1642,6 +1659,8 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED IntegrityReport final : public ::go
     kRecEnableFailedFieldNumber = 6,
     kTelemetryIncompleteFieldNumber = 9,
     kIoRecordsIncompleteFieldNumber = 10,
+    kGigePacketRingsIncompleteFieldNumber = 11,
+    kGigeStatsRingsIncompleteFieldNumber = 12,
   };
   // repeated string no_window_video_channels = 7;
   [[nodiscard]] int no_window_video_channels_size() const;
@@ -1775,11 +1794,31 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED IntegrityReport final : public ::go
   void _internal_set_io_records_incomplete(bool value);
 
   public:
+  // bool gige_packet_rings_incomplete = 11;
+  void clear_gige_packet_rings_incomplete() ;
+  [[nodiscard]] bool gige_packet_rings_incomplete() const;
+  void set_gige_packet_rings_incomplete(bool value);
+
+  private:
+  bool _internal_gige_packet_rings_incomplete() const;
+  void _internal_set_gige_packet_rings_incomplete(bool value);
+
+  public:
+  // bool gige_stats_rings_incomplete = 12;
+  void clear_gige_stats_rings_incomplete() ;
+  [[nodiscard]] bool gige_stats_rings_incomplete() const;
+  void set_gige_stats_rings_incomplete(bool value);
+
+  private:
+  bool _internal_gige_stats_rings_incomplete() const;
+  void _internal_set_gige_stats_rings_incomplete(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:jon.cvdump.IntegrityReport)
  private:
   class _Internal;
   using ParseTableT_ =
-      ::google::protobuf::internal::TcParseTable<4, 10,
+      ::google::protobuf::internal::TcParseTable<4, 12,
                           0, 84,
                           2>;
   static constexpr ParseTableT_ InternalGenerateParseTable_(
@@ -1818,6 +1857,702 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED IntegrityReport final : public ::go
     bool rec_enable_failed_;
     bool telemetry_incomplete_;
     bool io_records_incomplete_;
+    bool gige_packet_rings_incomplete_;
+    bool gige_stats_rings_incomplete_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_jon_5fcv_5fdump_5farchive_2eproto;
+};
+// -------------------------------------------------------------------
+
+class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED GigeStatsRing final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:jon.cvdump.GigeStatsRing) */ {
+  using Super_ = ::google::protobuf::Message;
+
+ public:
+  inline GigeStatsRing() : GigeStatsRing(nullptr) {}
+  ~GigeStatsRing() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GigeStatsRing* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GigeStatsRing));
+  }
+#endif
+
+  template <typename = void>
+  explicit constexpr GigeStatsRing(::google::protobuf::internal::ConstantInitialized,
+                           const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+                               class_data);
+
+  inline GigeStatsRing(const GigeStatsRing& from) : GigeStatsRing(nullptr, from) {}
+  inline GigeStatsRing(GigeStatsRing&& from) noexcept : GigeStatsRing(nullptr, ::std::move(from)) {}
+  inline GigeStatsRing& operator=(const GigeStatsRing& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GigeStatsRing& operator=(GigeStatsRing&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  [[nodiscard]] inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  [[nodiscard]] inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL
+  mutable_unknown_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL
+  GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  [[nodiscard]] static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  [[nodiscard]] static const GigeStatsRing& default_instance() {
+    return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<GigeStatsRing>(&GigeStatsRing_globals_);
+  }
+  static constexpr int kIndexInFileMessages = 11;
+  friend void swap(GigeStatsRing& a, GigeStatsRing& b) { a.Swap(&b); }
+  inline void Swap(GigeStatsRing* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GigeStatsRing* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  [[nodiscard]] GigeStatsRing* PROTOBUF_NONNULL
+  New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return Super_::DefaultConstruct<GigeStatsRing>(arena);
+  }
+  using Super_::CopyFrom;
+  void CopyFrom(const GigeStatsRing& from);
+  using Super_::MergeFrom;
+  void MergeFrom(const GigeStatsRing& from) { GigeStatsRing::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  [[nodiscard]] bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  [[nodiscard]] static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  [[nodiscard]] static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  [[nodiscard]] ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] ::size_t ByteSizeLong() const final;
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] int GetCachedSize() const {
+    return _impl_._cached_size_.Get();
+  }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GigeStatsRing* PROTOBUF_NONNULL other);
+ private:
+  static ::absl::string_view FullMessageName() { return "jon.cvdump.GigeStatsRing"; }
+
+  explicit GigeStatsRing(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  GigeStatsRing(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GigeStatsRing& from);
+  GigeStatsRing(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, GigeStatsRing&& from) noexcept
+      : GigeStatsRing(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_(
+      const MessageLite& prototype,
+      const ::google::protobuf::internal::TcParseTableBase* PROTOBUF_NULLABLE tc_table = nullptr);
+
+  [[nodiscard]] ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kChannelFieldNumber = 1,
+    kPathFieldNumber = 2,
+    kSha256FieldNumber = 4,
+    kAbsentReasonFieldNumber = 9,
+    kBytesFieldNumber = 3,
+    kRecordCountFieldNumber = 5,
+    kOverwrittenDuringCopyFieldNumber = 6,
+    kOutsideWindowFieldNumber = 7,
+    kWriterRefusedFieldNumber = 10,
+    kWindowStartLostFieldNumber = 8,
+    kRecordLenFieldNumber = 12,
+    kOverwrittenBeforeCopyFieldNumber = 11,
+  };
+  // string channel = 1 [(.buf.validate.field) = {
+  void clear_channel() ;
+  [[nodiscard]] const ::std::string& channel() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_channel(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_channel();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_channel();
+  void set_allocated_channel(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_channel() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_channel(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_channel();
+
+  public:
+  // string path = 2;
+  void clear_path() ;
+  [[nodiscard]] const ::std::string& path() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_path(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_path();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_path();
+  void set_allocated_path(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_path() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_path(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_path();
+
+  public:
+  // string sha256 = 4 [(.buf.validate.field) = {
+  void clear_sha256() ;
+  [[nodiscard]] const ::std::string& sha256() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_sha256(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_sha256();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_sha256();
+  void set_allocated_sha256(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_sha256() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_sha256(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_sha256();
+
+  public:
+  // string absent_reason = 9;
+  void clear_absent_reason() ;
+  [[nodiscard]] const ::std::string& absent_reason() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_absent_reason(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_absent_reason();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_absent_reason();
+  void set_allocated_absent_reason(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_absent_reason() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_absent_reason(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_absent_reason();
+
+  public:
+  // uint64 bytes = 3;
+  void clear_bytes() ;
+  [[nodiscard]] ::uint64_t bytes() const;
+  void set_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_bytes() const;
+  void _internal_set_bytes(::uint64_t value);
+
+  public:
+  // uint64 record_count = 5;
+  void clear_record_count() ;
+  [[nodiscard]] ::uint64_t record_count() const;
+  void set_record_count(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_record_count() const;
+  void _internal_set_record_count(::uint64_t value);
+
+  public:
+  // uint64 overwritten_during_copy = 6;
+  void clear_overwritten_during_copy() ;
+  [[nodiscard]] ::uint64_t overwritten_during_copy() const;
+  void set_overwritten_during_copy(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_overwritten_during_copy() const;
+  void _internal_set_overwritten_during_copy(::uint64_t value);
+
+  public:
+  // uint64 outside_window = 7;
+  void clear_outside_window() ;
+  [[nodiscard]] ::uint64_t outside_window() const;
+  void set_outside_window(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_outside_window() const;
+  void _internal_set_outside_window(::uint64_t value);
+
+  public:
+  // uint64 writer_refused = 10;
+  void clear_writer_refused() ;
+  [[nodiscard]] ::uint64_t writer_refused() const;
+  void set_writer_refused(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_writer_refused() const;
+  void _internal_set_writer_refused(::uint64_t value);
+
+  public:
+  // bool window_start_lost = 8;
+  void clear_window_start_lost() ;
+  [[nodiscard]] bool window_start_lost() const;
+  void set_window_start_lost(bool value);
+
+  private:
+  bool _internal_window_start_lost() const;
+  void _internal_set_window_start_lost(bool value);
+
+  public:
+  // uint32 record_len = 12;
+  void clear_record_len() ;
+  [[nodiscard]] ::uint32_t record_len() const;
+  void set_record_len(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_record_len() const;
+  void _internal_set_record_len(::uint32_t value);
+
+  public:
+  // uint64 overwritten_before_copy = 11;
+  void clear_overwritten_before_copy() ;
+  [[nodiscard]] ::uint64_t overwritten_before_copy() const;
+  void set_overwritten_before_copy(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_overwritten_before_copy() const;
+  void _internal_set_overwritten_before_copy(::uint64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:jon.cvdump.GigeStatsRing)
+ private:
+  class _Internal;
+  using ParseTableT_ =
+      ::google::protobuf::internal::TcParseTable<4, 12,
+                          0, 71,
+                          2>;
+  static constexpr ParseTableT_ InternalGenerateParseTable_(
+      const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
+  friend class ::google::protobuf::internal::TcParser;
+  #ifndef PROTOBUF_MESSAGE_GLOBALS
+  static const ParseTableT_ _table_;
+  #endif
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  friend ::google::protobuf::internal::PrivateAccess;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                                    ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const GigeStatsRing& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr channel_;
+    ::google::protobuf::internal::ArenaStringPtr path_;
+    ::google::protobuf::internal::ArenaStringPtr sha256_;
+    ::google::protobuf::internal::ArenaStringPtr absent_reason_;
+    ::uint64_t bytes_;
+    ::uint64_t record_count_;
+    ::uint64_t overwritten_during_copy_;
+    ::uint64_t outside_window_;
+    ::uint64_t writer_refused_;
+    bool window_start_lost_;
+    ::uint32_t record_len_;
+    ::uint64_t overwritten_before_copy_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_jon_5fcv_5fdump_5farchive_2eproto;
+};
+// -------------------------------------------------------------------
+
+class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED GigePacketRing final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:jon.cvdump.GigePacketRing) */ {
+  using Super_ = ::google::protobuf::Message;
+
+ public:
+  inline GigePacketRing() : GigePacketRing(nullptr) {}
+  ~GigePacketRing() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GigePacketRing* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GigePacketRing));
+  }
+#endif
+
+  template <typename = void>
+  explicit constexpr GigePacketRing(::google::protobuf::internal::ConstantInitialized,
+                           const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+                               class_data);
+
+  inline GigePacketRing(const GigePacketRing& from) : GigePacketRing(nullptr, from) {}
+  inline GigePacketRing(GigePacketRing&& from) noexcept : GigePacketRing(nullptr, ::std::move(from)) {}
+  inline GigePacketRing& operator=(const GigePacketRing& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GigePacketRing& operator=(GigePacketRing&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  [[nodiscard]] inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  [[nodiscard]] inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL
+  mutable_unknown_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL
+  GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  [[nodiscard]] static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  [[nodiscard]] static const GigePacketRing& default_instance() {
+    return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<GigePacketRing>(&GigePacketRing_globals_);
+  }
+  static constexpr int kIndexInFileMessages = 10;
+  friend void swap(GigePacketRing& a, GigePacketRing& b) { a.Swap(&b); }
+  inline void Swap(GigePacketRing* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GigePacketRing* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  [[nodiscard]] GigePacketRing* PROTOBUF_NONNULL
+  New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return Super_::DefaultConstruct<GigePacketRing>(arena);
+  }
+  using Super_::CopyFrom;
+  void CopyFrom(const GigePacketRing& from);
+  using Super_::MergeFrom;
+  void MergeFrom(const GigePacketRing& from) { GigePacketRing::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  [[nodiscard]] bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  [[nodiscard]] static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  [[nodiscard]] static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  [[nodiscard]] ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] ::size_t ByteSizeLong() const final;
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] int GetCachedSize() const {
+    return _impl_._cached_size_.Get();
+  }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GigePacketRing* PROTOBUF_NONNULL other);
+ private:
+  static ::absl::string_view FullMessageName() { return "jon.cvdump.GigePacketRing"; }
+
+  explicit GigePacketRing(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  GigePacketRing(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GigePacketRing& from);
+  GigePacketRing(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, GigePacketRing&& from) noexcept
+      : GigePacketRing(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_(
+      const MessageLite& prototype,
+      const ::google::protobuf::internal::TcParseTableBase* PROTOBUF_NULLABLE tc_table = nullptr);
+
+  [[nodiscard]] ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kChannelFieldNumber = 1,
+    kPathFieldNumber = 2,
+    kSha256FieldNumber = 4,
+    kAbsentReasonFieldNumber = 9,
+    kBytesFieldNumber = 3,
+    kRecordCountFieldNumber = 5,
+    kOverwrittenDuringCopyFieldNumber = 6,
+    kOutsideWindowFieldNumber = 7,
+    kWriterRefusedFieldNumber = 10,
+    kOverwrittenBeforeCopyFieldNumber = 11,
+    kWindowStartLostFieldNumber = 8,
+  };
+  // string channel = 1 [(.buf.validate.field) = {
+  void clear_channel() ;
+  [[nodiscard]] const ::std::string& channel() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_channel(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_channel();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_channel();
+  void set_allocated_channel(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_channel() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_channel(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_channel();
+
+  public:
+  // string path = 2;
+  void clear_path() ;
+  [[nodiscard]] const ::std::string& path() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_path(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_path();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_path();
+  void set_allocated_path(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_path() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_path(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_path();
+
+  public:
+  // string sha256 = 4 [(.buf.validate.field) = {
+  void clear_sha256() ;
+  [[nodiscard]] const ::std::string& sha256() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_sha256(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_sha256();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_sha256();
+  void set_allocated_sha256(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_sha256() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_sha256(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_sha256();
+
+  public:
+  // string absent_reason = 9;
+  void clear_absent_reason() ;
+  [[nodiscard]] const ::std::string& absent_reason() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_absent_reason(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_absent_reason();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_absent_reason();
+  void set_allocated_absent_reason(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_absent_reason() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_absent_reason(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_absent_reason();
+
+  public:
+  // uint64 bytes = 3;
+  void clear_bytes() ;
+  [[nodiscard]] ::uint64_t bytes() const;
+  void set_bytes(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_bytes() const;
+  void _internal_set_bytes(::uint64_t value);
+
+  public:
+  // uint64 record_count = 5;
+  void clear_record_count() ;
+  [[nodiscard]] ::uint64_t record_count() const;
+  void set_record_count(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_record_count() const;
+  void _internal_set_record_count(::uint64_t value);
+
+  public:
+  // uint64 overwritten_during_copy = 6;
+  void clear_overwritten_during_copy() ;
+  [[nodiscard]] ::uint64_t overwritten_during_copy() const;
+  void set_overwritten_during_copy(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_overwritten_during_copy() const;
+  void _internal_set_overwritten_during_copy(::uint64_t value);
+
+  public:
+  // uint64 outside_window = 7;
+  void clear_outside_window() ;
+  [[nodiscard]] ::uint64_t outside_window() const;
+  void set_outside_window(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_outside_window() const;
+  void _internal_set_outside_window(::uint64_t value);
+
+  public:
+  // uint64 writer_refused = 10;
+  void clear_writer_refused() ;
+  [[nodiscard]] ::uint64_t writer_refused() const;
+  void set_writer_refused(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_writer_refused() const;
+  void _internal_set_writer_refused(::uint64_t value);
+
+  public:
+  // uint64 overwritten_before_copy = 11;
+  void clear_overwritten_before_copy() ;
+  [[nodiscard]] ::uint64_t overwritten_before_copy() const;
+  void set_overwritten_before_copy(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_overwritten_before_copy() const;
+  void _internal_set_overwritten_before_copy(::uint64_t value);
+
+  public:
+  // bool window_start_lost = 8;
+  void clear_window_start_lost() ;
+  [[nodiscard]] bool window_start_lost() const;
+  void set_window_start_lost(bool value);
+
+  private:
+  bool _internal_window_start_lost() const;
+  void _internal_set_window_start_lost(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:jon.cvdump.GigePacketRing)
+ private:
+  class _Internal;
+  using ParseTableT_ =
+      ::google::protobuf::internal::TcParseTable<4, 11,
+                          0, 72,
+                          2>;
+  static constexpr ParseTableT_ InternalGenerateParseTable_(
+      const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
+  friend class ::google::protobuf::internal::TcParser;
+  #ifndef PROTOBUF_MESSAGE_GLOBALS
+  static const ParseTableT_ _table_;
+  #endif
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  friend ::google::protobuf::internal::PrivateAccess;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                                    ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const GigePacketRing& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr channel_;
+    ::google::protobuf::internal::ArenaStringPtr path_;
+    ::google::protobuf::internal::ArenaStringPtr sha256_;
+    ::google::protobuf::internal::ArenaStringPtr absent_reason_;
+    ::uint64_t bytes_;
+    ::uint64_t record_count_;
+    ::uint64_t overwritten_during_copy_;
+    ::uint64_t outside_window_;
+    ::uint64_t writer_refused_;
+    ::uint64_t overwritten_before_copy_;
+    bool window_start_lost_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -2140,7 +2875,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED ColumnDef final : public ::google::
   [[nodiscard]] static const ColumnDef& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<ColumnDef>(&ColumnDef_globals_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(ColumnDef& a, ColumnDef& b) { a.Swap(&b); }
   inline void Swap(ColumnDef* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -3104,7 +3839,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED StreamGroup final : public ::google
   [[nodiscard]] static const StreamGroup& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<StreamGroup>(&StreamGroup_globals_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(StreamGroup& a, StreamGroup& b) { a.Swap(&b); }
   inline void Swap(StreamGroup* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -3724,7 +4459,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RedisStreamRecord final : public ::
   [[nodiscard]] static const RedisStreamRecord& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<RedisStreamRecord>(&RedisStreamRecord_globals_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(RedisStreamRecord& a, RedisStreamRecord& b) { a.Swap(&b); }
   inline void Swap(RedisStreamRecord* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4264,7 +4999,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED RedisStreamRecords final : public :
   [[nodiscard]] static const RedisStreamRecords& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<RedisStreamRecords>(&RedisStreamRecords_globals_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(RedisStreamRecords& a, RedisStreamRecords& b) { a.Swap(&b); }
   inline void Swap(RedisStreamRecords* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4568,6 +5303,8 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED CvDumpArchive final : public ::goog
     kVideoFieldNumber = 9,
     kStreamsFieldNumber = 10,
     kShotsFieldNumber = 11,
+    kGigePacketRingsFieldNumber = 12,
+    kGigeStatsRingsFieldNumber = 13,
     kIdFieldNumber = 2,
     kGeneratedAtFieldNumber = 3,
     kNoteFieldNumber = 6,
@@ -4635,6 +5372,46 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED CvDumpArchive final : public ::goog
   private:
   const ::google::protobuf::RepeatedPtrField<::jon::cvdump::ShotCapture>& _internal_shots() const;
   ::google::protobuf::RepeatedPtrField<::jon::cvdump::ShotCapture>* PROTOBUF_NONNULL _internal_mutable_shots();
+
+  public:
+  // repeated .jon.cvdump.GigePacketRing gige_packet_rings = 12;
+  [[nodiscard]] int gige_packet_rings_size() const;
+  private:
+  int _internal_gige_packet_rings_size() const;
+
+  public:
+  void clear_gige_packet_rings() ;
+  [[nodiscard]] const ::jon::cvdump::GigePacketRing& gige_packet_rings(int index) const;
+  [[nodiscard]] ::jon::cvdump::GigePacketRing* PROTOBUF_NONNULL mutable_gige_packet_rings(int index);
+  ::jon::cvdump::GigePacketRing* PROTOBUF_NONNULL add_gige_packet_rings();
+  [[nodiscard]] const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>&
+  gige_packet_rings() const;
+  [[nodiscard]] ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>* PROTOBUF_NONNULL
+  mutable_gige_packet_rings();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>& _internal_gige_packet_rings() const;
+  ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>* PROTOBUF_NONNULL _internal_mutable_gige_packet_rings();
+
+  public:
+  // repeated .jon.cvdump.GigeStatsRing gige_stats_rings = 13;
+  [[nodiscard]] int gige_stats_rings_size() const;
+  private:
+  int _internal_gige_stats_rings_size() const;
+
+  public:
+  void clear_gige_stats_rings() ;
+  [[nodiscard]] const ::jon::cvdump::GigeStatsRing& gige_stats_rings(int index) const;
+  [[nodiscard]] ::jon::cvdump::GigeStatsRing* PROTOBUF_NONNULL mutable_gige_stats_rings(int index);
+  ::jon::cvdump::GigeStatsRing* PROTOBUF_NONNULL add_gige_stats_rings();
+  [[nodiscard]] const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>&
+  gige_stats_rings() const;
+  [[nodiscard]] ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>* PROTOBUF_NONNULL
+  mutable_gige_stats_rings();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>& _internal_gige_stats_rings() const;
+  ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>* PROTOBUF_NONNULL _internal_mutable_gige_stats_rings();
 
   public:
   // string id = 2 [(.buf.validate.field) = {
@@ -4751,8 +5528,8 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED CvDumpArchive final : public ::goog
  private:
   class _Internal;
   using ParseTableT_ =
-      ::google::protobuf::internal::TcParseTable<4, 11,
-                          6, 59,
+      ::google::protobuf::internal::TcParseTable<4, 13,
+                          8, 59,
                           2>;
   static constexpr ParseTableT_ InternalGenerateParseTable_(
       const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
@@ -4783,6 +5560,8 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED CvDumpArchive final : public ::goog
     ::google::protobuf::RepeatedPtrField< ::jon::cvdump::VideoChannel > video_;
     ::google::protobuf::RepeatedPtrField< ::jon::cvdump::StreamGroup > streams_;
     ::google::protobuf::RepeatedPtrField< ::jon::cvdump::ShotCapture > shots_;
+    ::google::protobuf::RepeatedPtrField< ::jon::cvdump::GigePacketRing > gige_packet_rings_;
+    ::google::protobuf::RepeatedPtrField< ::jon::cvdump::GigeStatsRing > gige_stats_rings_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr generated_at_;
     ::google::protobuf::internal::ArenaStringPtr note_;
@@ -4817,7 +5596,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED CvDumpArchive final : public ::goog
 inline void CvDumpArchive::clear_version() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.version_ = 0;
-  ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000800U);
 }
 inline ::jon::cvdump::ArchiveFormatVersion CvDumpArchive::version() const {
   // @@protoc_insertion_point(field_get:jon.cvdump.CvDumpArchive.version)
@@ -4825,7 +5604,7 @@ inline ::jon::cvdump::ArchiveFormatVersion CvDumpArchive::version() const {
 }
 inline void CvDumpArchive::set_version(::jon::cvdump::ArchiveFormatVersion value) {
   _internal_set_version(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000200U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000800U);
   // @@protoc_insertion_point(field_set:jon.cvdump.CvDumpArchive.version)
 }
 inline ::jon::cvdump::ArchiveFormatVersion CvDumpArchive::_internal_version() const {
@@ -4841,7 +5620,7 @@ inline void CvDumpArchive::_internal_set_version(::jon::cvdump::ArchiveFormatVer
 inline void CvDumpArchive::clear_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.id_.ClearToEmpty();
-  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
 }
 inline const ::std::string& CvDumpArchive::id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
@@ -4851,13 +5630,13 @@ inline const ::std::string& CvDumpArchive::id() const
 template <typename Arg_, typename... Args_>
 PROTOBUF_ALWAYS_INLINE void CvDumpArchive::set_id(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   _impl_.id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
   // @@protoc_insertion_point(field_set:jon.cvdump.CvDumpArchive.id)
 }
 inline ::std::string* PROTOBUF_NONNULL CvDumpArchive::mutable_id()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   ::std::string* _s = _internal_mutable_id();
   // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.id)
   return _s;
@@ -4877,10 +5656,10 @@ inline ::std::string* PROTOBUF_NONNULL CvDumpArchive::_internal_mutable_id() {
 inline ::std::string* PROTOBUF_NULLABLE CvDumpArchive::release_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:jon.cvdump.CvDumpArchive.id)
-  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000020U)) {
     return nullptr;
   }
-  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   auto* released = _impl_.id_.Release();
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
     _impl_.id_.Set("", GetArena());
@@ -4890,9 +5669,9 @@ inline ::std::string* PROTOBUF_NULLABLE CvDumpArchive::release_id() {
 inline void CvDumpArchive::set_allocated_id(::std::string* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   }
   _impl_.id_.SetAllocated(value, GetArena());
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.id_.IsDefault()) {
@@ -4905,7 +5684,7 @@ inline void CvDumpArchive::set_allocated_id(::std::string* PROTOBUF_NULLABLE val
 inline void CvDumpArchive::clear_generated_at() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.generated_at_.ClearToEmpty();
-  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
 }
 inline const ::std::string& CvDumpArchive::generated_at() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
@@ -4915,13 +5694,13 @@ inline const ::std::string& CvDumpArchive::generated_at() const
 template <typename Arg_, typename... Args_>
 PROTOBUF_ALWAYS_INLINE void CvDumpArchive::set_generated_at(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
   _impl_.generated_at_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
   // @@protoc_insertion_point(field_set:jon.cvdump.CvDumpArchive.generated_at)
 }
 inline ::std::string* PROTOBUF_NONNULL CvDumpArchive::mutable_generated_at()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
   ::std::string* _s = _internal_mutable_generated_at();
   // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.generated_at)
   return _s;
@@ -4941,10 +5720,10 @@ inline ::std::string* PROTOBUF_NONNULL CvDumpArchive::_internal_mutable_generate
 inline ::std::string* PROTOBUF_NULLABLE CvDumpArchive::release_generated_at() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:jon.cvdump.CvDumpArchive.generated_at)
-  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000010U)) {
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000040U)) {
     return nullptr;
   }
-  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   auto* released = _impl_.generated_at_.Release();
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
     _impl_.generated_at_.Set("", GetArena());
@@ -4954,9 +5733,9 @@ inline ::std::string* PROTOBUF_NULLABLE CvDumpArchive::release_generated_at() {
 inline void CvDumpArchive::set_allocated_generated_at(::std::string* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000040U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   }
   _impl_.generated_at_.SetAllocated(value, GetArena());
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.generated_at_.IsDefault()) {
@@ -4967,14 +5746,14 @@ inline void CvDumpArchive::set_allocated_generated_at(::std::string* PROTOBUF_NU
 
 // .jon.cvdump.CaptureWindow window = 4;
 inline bool CvDumpArchive::has_window() const {
-  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000040U);
+  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000100U);
   PROTOBUF_ASSUME(!value || _impl_.window_ != nullptr);
   return value;
 }
 inline void CvDumpArchive::clear_window() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.window_ != nullptr) _impl_.window_->Clear();
-  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
 }
 inline const ::jon::cvdump::CaptureWindow& CvDumpArchive::_internal_window() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -4993,16 +5772,16 @@ inline void CvDumpArchive::unsafe_arena_set_allocated_window(
   }
   _impl_.window_ = reinterpret_cast<::jon::cvdump::CaptureWindow*>(value);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000100U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:jon.cvdump.CvDumpArchive.window)
 }
 inline ::jon::cvdump::CaptureWindow* PROTOBUF_NULLABLE CvDumpArchive::release_window() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
   ::jon::cvdump::CaptureWindow* released = _impl_.window_;
   _impl_.window_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
@@ -5022,7 +5801,7 @@ inline ::jon::cvdump::CaptureWindow* PROTOBUF_NULLABLE CvDumpArchive::unsafe_are
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:jon.cvdump.CvDumpArchive.window)
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
   ::jon::cvdump::CaptureWindow* temp = _impl_.window_;
   _impl_.window_ = nullptr;
   return temp;
@@ -5037,7 +5816,7 @@ inline ::jon::cvdump::CaptureWindow* PROTOBUF_NONNULL CvDumpArchive::_internal_m
 }
 inline ::jon::cvdump::CaptureWindow* PROTOBUF_NONNULL CvDumpArchive::mutable_window()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000100U);
   ::jon::cvdump::CaptureWindow* _msg = _internal_mutable_window();
   // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.window)
   return _msg;
@@ -5054,9 +5833,9 @@ inline void CvDumpArchive::set_allocated_window(::jon::cvdump::CaptureWindow* PR
     if (message_arena != submessage_arena) {
       value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
     }
-    SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000100U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
   }
 
   _impl_.window_ = reinterpret_cast<::jon::cvdump::CaptureWindow*>(value);
@@ -5067,7 +5846,7 @@ inline void CvDumpArchive::set_allocated_window(::jon::cvdump::CaptureWindow* PR
 inline void CvDumpArchive::clear_provenance() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.provenance_ = 0;
-  ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00001000U);
 }
 inline ::jon::cvdump::SessionProvenance CvDumpArchive::provenance() const {
   // @@protoc_insertion_point(field_get:jon.cvdump.CvDumpArchive.provenance)
@@ -5075,7 +5854,7 @@ inline ::jon::cvdump::SessionProvenance CvDumpArchive::provenance() const {
 }
 inline void CvDumpArchive::set_provenance(::jon::cvdump::SessionProvenance value) {
   _internal_set_provenance(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000400U);
+  SetHasBit(_impl_._has_bits_[0], 0x00001000U);
   // @@protoc_insertion_point(field_set:jon.cvdump.CvDumpArchive.provenance)
 }
 inline ::jon::cvdump::SessionProvenance CvDumpArchive::_internal_provenance() const {
@@ -5091,7 +5870,7 @@ inline void CvDumpArchive::_internal_set_provenance(::jon::cvdump::SessionProven
 inline void CvDumpArchive::clear_note() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.note_.ClearToEmpty();
-  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
 }
 inline const ::std::string& CvDumpArchive::note() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
@@ -5101,13 +5880,13 @@ inline const ::std::string& CvDumpArchive::note() const
 template <typename Arg_, typename... Args_>
 PROTOBUF_ALWAYS_INLINE void CvDumpArchive::set_note(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
   _impl_.note_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
   // @@protoc_insertion_point(field_set:jon.cvdump.CvDumpArchive.note)
 }
 inline ::std::string* PROTOBUF_NONNULL CvDumpArchive::mutable_note()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
   ::std::string* _s = _internal_mutable_note();
   // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.note)
   return _s;
@@ -5127,10 +5906,10 @@ inline ::std::string* PROTOBUF_NONNULL CvDumpArchive::_internal_mutable_note() {
 inline ::std::string* PROTOBUF_NULLABLE CvDumpArchive::release_note() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:jon.cvdump.CvDumpArchive.note)
-  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000020U)) {
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000080U)) {
     return nullptr;
   }
-  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
   auto* released = _impl_.note_.Release();
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
     _impl_.note_.Set("", GetArena());
@@ -5140,9 +5919,9 @@ inline ::std::string* PROTOBUF_NULLABLE CvDumpArchive::release_note() {
 inline void CvDumpArchive::set_allocated_note(::std::string* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000080U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
   }
   _impl_.note_.SetAllocated(value, GetArena());
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.note_.IsDefault()) {
@@ -5153,14 +5932,14 @@ inline void CvDumpArchive::set_allocated_note(::std::string* PROTOBUF_NULLABLE v
 
 // .jon.cvdump.MachineIdentity machine = 7;
 inline bool CvDumpArchive::has_machine() const {
-  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000080U);
+  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000200U);
   PROTOBUF_ASSUME(!value || _impl_.machine_ != nullptr);
   return value;
 }
 inline void CvDumpArchive::clear_machine() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.machine_ != nullptr) _impl_.machine_->Clear();
-  ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
 }
 inline const ::jon::cvdump::MachineIdentity& CvDumpArchive::_internal_machine() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -5179,16 +5958,16 @@ inline void CvDumpArchive::unsafe_arena_set_allocated_machine(
   }
   _impl_.machine_ = reinterpret_cast<::jon::cvdump::MachineIdentity*>(value);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000200U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:jon.cvdump.CvDumpArchive.machine)
 }
 inline ::jon::cvdump::MachineIdentity* PROTOBUF_NULLABLE CvDumpArchive::release_machine() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
   ::jon::cvdump::MachineIdentity* released = _impl_.machine_;
   _impl_.machine_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
@@ -5208,7 +5987,7 @@ inline ::jon::cvdump::MachineIdentity* PROTOBUF_NULLABLE CvDumpArchive::unsafe_a
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:jon.cvdump.CvDumpArchive.machine)
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
   ::jon::cvdump::MachineIdentity* temp = _impl_.machine_;
   _impl_.machine_ = nullptr;
   return temp;
@@ -5223,7 +6002,7 @@ inline ::jon::cvdump::MachineIdentity* PROTOBUF_NONNULL CvDumpArchive::_internal
 }
 inline ::jon::cvdump::MachineIdentity* PROTOBUF_NONNULL CvDumpArchive::mutable_machine()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000200U);
   ::jon::cvdump::MachineIdentity* _msg = _internal_mutable_machine();
   // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.machine)
   return _msg;
@@ -5240,9 +6019,9 @@ inline void CvDumpArchive::set_allocated_machine(::jon::cvdump::MachineIdentity*
     if (message_arena != submessage_arena) {
       value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
     }
-    SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000200U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
   }
 
   _impl_.machine_ = reinterpret_cast<::jon::cvdump::MachineIdentity*>(value);
@@ -5251,14 +6030,14 @@ inline void CvDumpArchive::set_allocated_machine(::jon::cvdump::MachineIdentity*
 
 // .jon.cvdump.IntegrityReport integrity = 8;
 inline bool CvDumpArchive::has_integrity() const {
-  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000100U);
+  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000400U);
   PROTOBUF_ASSUME(!value || _impl_.integrity_ != nullptr);
   return value;
 }
 inline void CvDumpArchive::clear_integrity() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.integrity_ != nullptr) _impl_.integrity_->Clear();
-  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
 }
 inline const ::jon::cvdump::IntegrityReport& CvDumpArchive::_internal_integrity() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -5277,16 +6056,16 @@ inline void CvDumpArchive::unsafe_arena_set_allocated_integrity(
   }
   _impl_.integrity_ = reinterpret_cast<::jon::cvdump::IntegrityReport*>(value);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000100U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000400U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:jon.cvdump.CvDumpArchive.integrity)
 }
 inline ::jon::cvdump::IntegrityReport* PROTOBUF_NULLABLE CvDumpArchive::release_integrity() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
   ::jon::cvdump::IntegrityReport* released = _impl_.integrity_;
   _impl_.integrity_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
@@ -5306,7 +6085,7 @@ inline ::jon::cvdump::IntegrityReport* PROTOBUF_NULLABLE CvDumpArchive::unsafe_a
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:jon.cvdump.CvDumpArchive.integrity)
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
   ::jon::cvdump::IntegrityReport* temp = _impl_.integrity_;
   _impl_.integrity_ = nullptr;
   return temp;
@@ -5321,7 +6100,7 @@ inline ::jon::cvdump::IntegrityReport* PROTOBUF_NONNULL CvDumpArchive::_internal
 }
 inline ::jon::cvdump::IntegrityReport* PROTOBUF_NONNULL CvDumpArchive::mutable_integrity()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000100U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000400U);
   ::jon::cvdump::IntegrityReport* _msg = _internal_mutable_integrity();
   // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.integrity)
   return _msg;
@@ -5338,9 +6117,9 @@ inline void CvDumpArchive::set_allocated_integrity(::jon::cvdump::IntegrityRepor
     if (message_arena != submessage_arena) {
       value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
     }
-    SetHasBit(_impl_._has_bits_[0], 0x00000100U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000400U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
   }
 
   _impl_.integrity_ = reinterpret_cast<::jon::cvdump::IntegrityReport*>(value);
@@ -5510,6 +6289,116 @@ inline ::google::protobuf::RepeatedPtrField<::jon::cvdump::ShotCapture>* PROTOBU
 CvDumpArchive::_internal_mutable_shots() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.shots_;
+}
+
+// repeated .jon.cvdump.GigePacketRing gige_packet_rings = 12;
+inline int CvDumpArchive::_internal_gige_packet_rings_size() const {
+  return _internal_gige_packet_rings().size();
+}
+inline int CvDumpArchive::gige_packet_rings_size() const {
+  return _internal_gige_packet_rings_size();
+}
+inline void CvDumpArchive::clear_gige_packet_rings() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gige_packet_rings_.Clear();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+}
+inline const ::jon::cvdump::GigePacketRing& CvDumpArchive::gige_packet_rings(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.CvDumpArchive.gige_packet_rings)
+  return _internal_gige_packet_rings().Get(index);
+}
+inline ::jon::cvdump::GigePacketRing* PROTOBUF_NONNULL CvDumpArchive::mutable_gige_packet_rings(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.gige_packet_rings)
+  return _internal_mutable_gige_packet_rings()->Mutable(index);
+}
+inline ::jon::cvdump::GigePacketRing* PROTOBUF_NONNULL CvDumpArchive::add_gige_packet_rings()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::jon::cvdump::GigePacketRing* _add =
+      _internal_mutable_gige_packet_rings()->InternalAddWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), GetArena());
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_add:jon.cvdump.CvDumpArchive.gige_packet_rings)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>& CvDumpArchive::gige_packet_rings() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:jon.cvdump.CvDumpArchive.gige_packet_rings)
+  return _internal_gige_packet_rings();
+}
+inline ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>* PROTOBUF_NONNULL
+CvDumpArchive::mutable_gige_packet_rings() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_mutable_list:jon.cvdump.CvDumpArchive.gige_packet_rings)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_gige_packet_rings();
+}
+inline const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>&
+CvDumpArchive::_internal_gige_packet_rings() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.gige_packet_rings_;
+}
+inline ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigePacketRing>* PROTOBUF_NONNULL
+CvDumpArchive::_internal_mutable_gige_packet_rings() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.gige_packet_rings_;
+}
+
+// repeated .jon.cvdump.GigeStatsRing gige_stats_rings = 13;
+inline int CvDumpArchive::_internal_gige_stats_rings_size() const {
+  return _internal_gige_stats_rings().size();
+}
+inline int CvDumpArchive::gige_stats_rings_size() const {
+  return _internal_gige_stats_rings_size();
+}
+inline void CvDumpArchive::clear_gige_stats_rings() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gige_stats_rings_.Clear();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+}
+inline const ::jon::cvdump::GigeStatsRing& CvDumpArchive::gige_stats_rings(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.CvDumpArchive.gige_stats_rings)
+  return _internal_gige_stats_rings().Get(index);
+}
+inline ::jon::cvdump::GigeStatsRing* PROTOBUF_NONNULL CvDumpArchive::mutable_gige_stats_rings(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.CvDumpArchive.gige_stats_rings)
+  return _internal_mutable_gige_stats_rings()->Mutable(index);
+}
+inline ::jon::cvdump::GigeStatsRing* PROTOBUF_NONNULL CvDumpArchive::add_gige_stats_rings()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::jon::cvdump::GigeStatsRing* _add =
+      _internal_mutable_gige_stats_rings()->InternalAddWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), GetArena());
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_add:jon.cvdump.CvDumpArchive.gige_stats_rings)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>& CvDumpArchive::gige_stats_rings() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:jon.cvdump.CvDumpArchive.gige_stats_rings)
+  return _internal_gige_stats_rings();
+}
+inline ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>* PROTOBUF_NONNULL
+CvDumpArchive::mutable_gige_stats_rings() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_mutable_list:jon.cvdump.CvDumpArchive.gige_stats_rings)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_gige_stats_rings();
+}
+inline const ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>&
+CvDumpArchive::_internal_gige_stats_rings() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.gige_stats_rings_;
+}
+inline ::google::protobuf::RepeatedPtrField<::jon::cvdump::GigeStatsRing>* PROTOBUF_NONNULL
+CvDumpArchive::_internal_mutable_gige_stats_rings() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.gige_stats_rings_;
 }
 
 // -------------------------------------------------------------------
@@ -7644,6 +8533,54 @@ inline void IntegrityReport::_internal_set_io_records_incomplete(bool value) {
   _impl_.io_records_incomplete_ = value;
 }
 
+// bool gige_packet_rings_incomplete = 11;
+inline void IntegrityReport::clear_gige_packet_rings_incomplete() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gige_packet_rings_incomplete_ = false;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
+}
+inline bool IntegrityReport::gige_packet_rings_incomplete() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.IntegrityReport.gige_packet_rings_incomplete)
+  return _internal_gige_packet_rings_incomplete();
+}
+inline void IntegrityReport::set_gige_packet_rings_incomplete(bool value) {
+  _internal_set_gige_packet_rings_incomplete(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000400U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.IntegrityReport.gige_packet_rings_incomplete)
+}
+inline bool IntegrityReport::_internal_gige_packet_rings_incomplete() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.gige_packet_rings_incomplete_;
+}
+inline void IntegrityReport::_internal_set_gige_packet_rings_incomplete(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gige_packet_rings_incomplete_ = value;
+}
+
+// bool gige_stats_rings_incomplete = 12;
+inline void IntegrityReport::clear_gige_stats_rings_incomplete() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gige_stats_rings_incomplete_ = false;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000800U);
+}
+inline bool IntegrityReport::gige_stats_rings_incomplete() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.IntegrityReport.gige_stats_rings_incomplete)
+  return _internal_gige_stats_rings_incomplete();
+}
+inline void IntegrityReport::set_gige_stats_rings_incomplete(bool value) {
+  _internal_set_gige_stats_rings_incomplete(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000800U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.IntegrityReport.gige_stats_rings_incomplete)
+}
+inline bool IntegrityReport::_internal_gige_stats_rings_incomplete() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.gige_stats_rings_incomplete_;
+}
+inline void IntegrityReport::_internal_set_gige_stats_rings_incomplete(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.gige_stats_rings_incomplete_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // VideoChannel
@@ -8017,6 +8954,886 @@ inline bool VideoSegment::_internal_open_end() const {
 inline void VideoSegment::_internal_set_open_end(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.open_end_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// GigePacketRing
+
+// string channel = 1 [(.buf.validate.field) = {
+inline void GigePacketRing::clear_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channel_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+}
+inline const ::std::string& GigePacketRing::channel() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.channel)
+  return _internal_channel();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigePacketRing::set_channel(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.channel_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.channel)
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::mutable_channel()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_channel();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigePacketRing.channel)
+  return _s;
+}
+inline const ::std::string& GigePacketRing::_internal_channel() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channel_.Get();
+}
+inline void GigePacketRing::_internal_set_channel(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channel_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::_internal_mutable_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.channel_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigePacketRing::release_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigePacketRing.channel)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.channel_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.channel_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigePacketRing::set_allocated_channel(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.channel_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.channel_.IsDefault()) {
+    _impl_.channel_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigePacketRing.channel)
+}
+
+// string path = 2;
+inline void GigePacketRing::clear_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+}
+inline const ::std::string& GigePacketRing::path() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.path)
+  return _internal_path();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigePacketRing::set_path(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  _impl_.path_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.path)
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::mutable_path()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  ::std::string* _s = _internal_mutable_path();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigePacketRing.path)
+  return _s;
+}
+inline const ::std::string& GigePacketRing::_internal_path() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.path_.Get();
+}
+inline void GigePacketRing::_internal_set_path(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::_internal_mutable_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.path_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigePacketRing::release_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigePacketRing.path)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  auto* released = _impl_.path_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.path_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigePacketRing::set_allocated_path(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  }
+  _impl_.path_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.path_.IsDefault()) {
+    _impl_.path_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigePacketRing.path)
+}
+
+// uint64 bytes = 3;
+inline void GigePacketRing::clear_bytes() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bytes_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+}
+inline ::uint64_t GigePacketRing::bytes() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.bytes)
+  return _internal_bytes();
+}
+inline void GigePacketRing::set_bytes(::uint64_t value) {
+  _internal_set_bytes(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.bytes)
+}
+inline ::uint64_t GigePacketRing::_internal_bytes() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.bytes_;
+}
+inline void GigePacketRing::_internal_set_bytes(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bytes_ = value;
+}
+
+// string sha256 = 4 [(.buf.validate.field) = {
+inline void GigePacketRing::clear_sha256() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.sha256_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+}
+inline const ::std::string& GigePacketRing::sha256() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.sha256)
+  return _internal_sha256();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigePacketRing::set_sha256(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  _impl_.sha256_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.sha256)
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::mutable_sha256()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  ::std::string* _s = _internal_mutable_sha256();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigePacketRing.sha256)
+  return _s;
+}
+inline const ::std::string& GigePacketRing::_internal_sha256() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.sha256_.Get();
+}
+inline void GigePacketRing::_internal_set_sha256(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.sha256_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::_internal_mutable_sha256() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.sha256_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigePacketRing::release_sha256() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigePacketRing.sha256)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  auto* released = _impl_.sha256_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.sha256_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigePacketRing::set_allocated_sha256(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  }
+  _impl_.sha256_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.sha256_.IsDefault()) {
+    _impl_.sha256_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigePacketRing.sha256)
+}
+
+// uint64 record_count = 5;
+inline void GigePacketRing::clear_record_count() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.record_count_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+}
+inline ::uint64_t GigePacketRing::record_count() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.record_count)
+  return _internal_record_count();
+}
+inline void GigePacketRing::set_record_count(::uint64_t value) {
+  _internal_set_record_count(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.record_count)
+}
+inline ::uint64_t GigePacketRing::_internal_record_count() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.record_count_;
+}
+inline void GigePacketRing::_internal_set_record_count(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.record_count_ = value;
+}
+
+// uint64 overwritten_during_copy = 6;
+inline void GigePacketRing::clear_overwritten_during_copy() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_during_copy_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
+}
+inline ::uint64_t GigePacketRing::overwritten_during_copy() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.overwritten_during_copy)
+  return _internal_overwritten_during_copy();
+}
+inline void GigePacketRing::set_overwritten_during_copy(::uint64_t value) {
+  _internal_set_overwritten_during_copy(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.overwritten_during_copy)
+}
+inline ::uint64_t GigePacketRing::_internal_overwritten_during_copy() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.overwritten_during_copy_;
+}
+inline void GigePacketRing::_internal_set_overwritten_during_copy(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_during_copy_ = value;
+}
+
+// uint64 outside_window = 7;
+inline void GigePacketRing::clear_outside_window() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.outside_window_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
+}
+inline ::uint64_t GigePacketRing::outside_window() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.outside_window)
+  return _internal_outside_window();
+}
+inline void GigePacketRing::set_outside_window(::uint64_t value) {
+  _internal_set_outside_window(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.outside_window)
+}
+inline ::uint64_t GigePacketRing::_internal_outside_window() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.outside_window_;
+}
+inline void GigePacketRing::_internal_set_outside_window(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.outside_window_ = value;
+}
+
+// bool window_start_lost = 8;
+inline void GigePacketRing::clear_window_start_lost() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.window_start_lost_ = false;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
+}
+inline bool GigePacketRing::window_start_lost() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.window_start_lost)
+  return _internal_window_start_lost();
+}
+inline void GigePacketRing::set_window_start_lost(bool value) {
+  _internal_set_window_start_lost(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000400U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.window_start_lost)
+}
+inline bool GigePacketRing::_internal_window_start_lost() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.window_start_lost_;
+}
+inline void GigePacketRing::_internal_set_window_start_lost(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.window_start_lost_ = value;
+}
+
+// string absent_reason = 9;
+inline void GigePacketRing::clear_absent_reason() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.absent_reason_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+}
+inline const ::std::string& GigePacketRing::absent_reason() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.absent_reason)
+  return _internal_absent_reason();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigePacketRing::set_absent_reason(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  _impl_.absent_reason_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.absent_reason)
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::mutable_absent_reason()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::std::string* _s = _internal_mutable_absent_reason();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigePacketRing.absent_reason)
+  return _s;
+}
+inline const ::std::string& GigePacketRing::_internal_absent_reason() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.absent_reason_.Get();
+}
+inline void GigePacketRing::_internal_set_absent_reason(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.absent_reason_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigePacketRing::_internal_mutable_absent_reason() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.absent_reason_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigePacketRing::release_absent_reason() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigePacketRing.absent_reason)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  auto* released = _impl_.absent_reason_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.absent_reason_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigePacketRing::set_allocated_absent_reason(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  }
+  _impl_.absent_reason_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.absent_reason_.IsDefault()) {
+    _impl_.absent_reason_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigePacketRing.absent_reason)
+}
+
+// uint64 writer_refused = 10;
+inline void GigePacketRing::clear_writer_refused() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.writer_refused_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
+}
+inline ::uint64_t GigePacketRing::writer_refused() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.writer_refused)
+  return _internal_writer_refused();
+}
+inline void GigePacketRing::set_writer_refused(::uint64_t value) {
+  _internal_set_writer_refused(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000100U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.writer_refused)
+}
+inline ::uint64_t GigePacketRing::_internal_writer_refused() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.writer_refused_;
+}
+inline void GigePacketRing::_internal_set_writer_refused(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.writer_refused_ = value;
+}
+
+// uint64 overwritten_before_copy = 11;
+inline void GigePacketRing::clear_overwritten_before_copy() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_before_copy_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
+}
+inline ::uint64_t GigePacketRing::overwritten_before_copy() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigePacketRing.overwritten_before_copy)
+  return _internal_overwritten_before_copy();
+}
+inline void GigePacketRing::set_overwritten_before_copy(::uint64_t value) {
+  _internal_set_overwritten_before_copy(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000200U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigePacketRing.overwritten_before_copy)
+}
+inline ::uint64_t GigePacketRing::_internal_overwritten_before_copy() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.overwritten_before_copy_;
+}
+inline void GigePacketRing::_internal_set_overwritten_before_copy(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_before_copy_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// GigeStatsRing
+
+// string channel = 1 [(.buf.validate.field) = {
+inline void GigeStatsRing::clear_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channel_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+}
+inline const ::std::string& GigeStatsRing::channel() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.channel)
+  return _internal_channel();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigeStatsRing::set_channel(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.channel_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.channel)
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::mutable_channel()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_channel();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigeStatsRing.channel)
+  return _s;
+}
+inline const ::std::string& GigeStatsRing::_internal_channel() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channel_.Get();
+}
+inline void GigeStatsRing::_internal_set_channel(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channel_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::_internal_mutable_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.channel_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigeStatsRing::release_channel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigeStatsRing.channel)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.channel_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.channel_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigeStatsRing::set_allocated_channel(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.channel_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.channel_.IsDefault()) {
+    _impl_.channel_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigeStatsRing.channel)
+}
+
+// string path = 2;
+inline void GigeStatsRing::clear_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+}
+inline const ::std::string& GigeStatsRing::path() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.path)
+  return _internal_path();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigeStatsRing::set_path(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  _impl_.path_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.path)
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::mutable_path()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  ::std::string* _s = _internal_mutable_path();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigeStatsRing.path)
+  return _s;
+}
+inline const ::std::string& GigeStatsRing::_internal_path() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.path_.Get();
+}
+inline void GigeStatsRing::_internal_set_path(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::_internal_mutable_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.path_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigeStatsRing::release_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigeStatsRing.path)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  auto* released = _impl_.path_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.path_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigeStatsRing::set_allocated_path(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  }
+  _impl_.path_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.path_.IsDefault()) {
+    _impl_.path_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigeStatsRing.path)
+}
+
+// uint64 bytes = 3;
+inline void GigeStatsRing::clear_bytes() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bytes_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+}
+inline ::uint64_t GigeStatsRing::bytes() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.bytes)
+  return _internal_bytes();
+}
+inline void GigeStatsRing::set_bytes(::uint64_t value) {
+  _internal_set_bytes(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.bytes)
+}
+inline ::uint64_t GigeStatsRing::_internal_bytes() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.bytes_;
+}
+inline void GigeStatsRing::_internal_set_bytes(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bytes_ = value;
+}
+
+// string sha256 = 4 [(.buf.validate.field) = {
+inline void GigeStatsRing::clear_sha256() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.sha256_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+}
+inline const ::std::string& GigeStatsRing::sha256() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.sha256)
+  return _internal_sha256();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigeStatsRing::set_sha256(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  _impl_.sha256_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.sha256)
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::mutable_sha256()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  ::std::string* _s = _internal_mutable_sha256();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigeStatsRing.sha256)
+  return _s;
+}
+inline const ::std::string& GigeStatsRing::_internal_sha256() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.sha256_.Get();
+}
+inline void GigeStatsRing::_internal_set_sha256(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.sha256_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::_internal_mutable_sha256() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.sha256_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigeStatsRing::release_sha256() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigeStatsRing.sha256)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  auto* released = _impl_.sha256_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.sha256_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigeStatsRing::set_allocated_sha256(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  }
+  _impl_.sha256_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.sha256_.IsDefault()) {
+    _impl_.sha256_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigeStatsRing.sha256)
+}
+
+// uint64 record_count = 5;
+inline void GigeStatsRing::clear_record_count() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.record_count_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+}
+inline ::uint64_t GigeStatsRing::record_count() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.record_count)
+  return _internal_record_count();
+}
+inline void GigeStatsRing::set_record_count(::uint64_t value) {
+  _internal_set_record_count(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.record_count)
+}
+inline ::uint64_t GigeStatsRing::_internal_record_count() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.record_count_;
+}
+inline void GigeStatsRing::_internal_set_record_count(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.record_count_ = value;
+}
+
+// uint64 overwritten_during_copy = 6;
+inline void GigeStatsRing::clear_overwritten_during_copy() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_during_copy_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
+}
+inline ::uint64_t GigeStatsRing::overwritten_during_copy() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.overwritten_during_copy)
+  return _internal_overwritten_during_copy();
+}
+inline void GigeStatsRing::set_overwritten_during_copy(::uint64_t value) {
+  _internal_set_overwritten_during_copy(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.overwritten_during_copy)
+}
+inline ::uint64_t GigeStatsRing::_internal_overwritten_during_copy() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.overwritten_during_copy_;
+}
+inline void GigeStatsRing::_internal_set_overwritten_during_copy(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_during_copy_ = value;
+}
+
+// uint64 outside_window = 7;
+inline void GigeStatsRing::clear_outside_window() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.outside_window_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000080U);
+}
+inline ::uint64_t GigeStatsRing::outside_window() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.outside_window)
+  return _internal_outside_window();
+}
+inline void GigeStatsRing::set_outside_window(::uint64_t value) {
+  _internal_set_outside_window(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.outside_window)
+}
+inline ::uint64_t GigeStatsRing::_internal_outside_window() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.outside_window_;
+}
+inline void GigeStatsRing::_internal_set_outside_window(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.outside_window_ = value;
+}
+
+// bool window_start_lost = 8;
+inline void GigeStatsRing::clear_window_start_lost() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.window_start_lost_ = false;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000200U);
+}
+inline bool GigeStatsRing::window_start_lost() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.window_start_lost)
+  return _internal_window_start_lost();
+}
+inline void GigeStatsRing::set_window_start_lost(bool value) {
+  _internal_set_window_start_lost(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000200U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.window_start_lost)
+}
+inline bool GigeStatsRing::_internal_window_start_lost() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.window_start_lost_;
+}
+inline void GigeStatsRing::_internal_set_window_start_lost(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.window_start_lost_ = value;
+}
+
+// string absent_reason = 9;
+inline void GigeStatsRing::clear_absent_reason() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.absent_reason_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+}
+inline const ::std::string& GigeStatsRing::absent_reason() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.absent_reason)
+  return _internal_absent_reason();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GigeStatsRing::set_absent_reason(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  _impl_.absent_reason_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.absent_reason)
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::mutable_absent_reason()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::std::string* _s = _internal_mutable_absent_reason();
+  // @@protoc_insertion_point(field_mutable:jon.cvdump.GigeStatsRing.absent_reason)
+  return _s;
+}
+inline const ::std::string& GigeStatsRing::_internal_absent_reason() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.absent_reason_.Get();
+}
+inline void GigeStatsRing::_internal_set_absent_reason(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.absent_reason_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GigeStatsRing::_internal_mutable_absent_reason() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.absent_reason_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GigeStatsRing::release_absent_reason() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:jon.cvdump.GigeStatsRing.absent_reason)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  auto* released = _impl_.absent_reason_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.absent_reason_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GigeStatsRing::set_allocated_absent_reason(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  }
+  _impl_.absent_reason_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.absent_reason_.IsDefault()) {
+    _impl_.absent_reason_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:jon.cvdump.GigeStatsRing.absent_reason)
+}
+
+// uint64 writer_refused = 10;
+inline void GigeStatsRing::clear_writer_refused() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.writer_refused_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000100U);
+}
+inline ::uint64_t GigeStatsRing::writer_refused() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.writer_refused)
+  return _internal_writer_refused();
+}
+inline void GigeStatsRing::set_writer_refused(::uint64_t value) {
+  _internal_set_writer_refused(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000100U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.writer_refused)
+}
+inline ::uint64_t GigeStatsRing::_internal_writer_refused() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.writer_refused_;
+}
+inline void GigeStatsRing::_internal_set_writer_refused(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.writer_refused_ = value;
+}
+
+// uint64 overwritten_before_copy = 11;
+inline void GigeStatsRing::clear_overwritten_before_copy() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_before_copy_ = ::uint64_t{0u};
+  ClearHasBit(_impl_._has_bits_[0], 0x00000800U);
+}
+inline ::uint64_t GigeStatsRing::overwritten_before_copy() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.overwritten_before_copy)
+  return _internal_overwritten_before_copy();
+}
+inline void GigeStatsRing::set_overwritten_before_copy(::uint64_t value) {
+  _internal_set_overwritten_before_copy(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000800U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.overwritten_before_copy)
+}
+inline ::uint64_t GigeStatsRing::_internal_overwritten_before_copy() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.overwritten_before_copy_;
+}
+inline void GigeStatsRing::_internal_set_overwritten_before_copy(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.overwritten_before_copy_ = value;
+}
+
+// uint32 record_len = 12;
+inline void GigeStatsRing::clear_record_len() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.record_len_ = 0u;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000400U);
+}
+inline ::uint32_t GigeStatsRing::record_len() const {
+  // @@protoc_insertion_point(field_get:jon.cvdump.GigeStatsRing.record_len)
+  return _internal_record_len();
+}
+inline void GigeStatsRing::set_record_len(::uint32_t value) {
+  _internal_set_record_len(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000400U);
+  // @@protoc_insertion_point(field_set:jon.cvdump.GigeStatsRing.record_len)
+}
+inline ::uint32_t GigeStatsRing::_internal_record_len() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.record_len_;
+}
+inline void GigeStatsRing::_internal_set_record_len(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.record_len_ = value;
 }
 
 // -------------------------------------------------------------------

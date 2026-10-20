@@ -49,6 +49,10 @@ PROTOBUF_CONSTINIT ::google::protobuf::internal::ReflectionData
         {&::_pbi::kDescriptorMethods, &::descriptor_table_jon_5fcv_5fdump_5farchive_2eproto, /* tracker*/ nullptr,},
         // ::jon::cvdump::VideoSegment
         {&::_pbi::kDescriptorMethods, &::descriptor_table_jon_5fcv_5fdump_5farchive_2eproto, /* tracker*/ nullptr,},
+        // ::jon::cvdump::GigePacketRing
+        {&::_pbi::kDescriptorMethods, &::descriptor_table_jon_5fcv_5fdump_5farchive_2eproto, /* tracker*/ nullptr,},
+        // ::jon::cvdump::GigeStatsRing
+        {&::_pbi::kDescriptorMethods, &::descriptor_table_jon_5fcv_5fdump_5farchive_2eproto, /* tracker*/ nullptr,},
         // ::jon::cvdump::StreamGroup
         {&::_pbi::kDescriptorMethods, &::descriptor_table_jon_5fcv_5fdump_5farchive_2eproto, /* tracker*/ nullptr,},
         // ::jon::cvdump::ColumnDef
@@ -350,7 +354,7 @@ constexpr auto TableRows::InternalGenerateClassData_(
           false,
       },
 #ifdef PROTOBUF_MESSAGE_GLOBALS
-      &file_reflection_data[15],
+      &file_reflection_data[17],
 #else   // !PROTOBUF_MESSAGE_GLOBALS
       &::_pbi::kDescriptorMethods,
       &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
@@ -730,7 +734,7 @@ constexpr auto RedisStreamField::InternalGenerateClassData_(
           false,
       },
 #ifdef PROTOBUF_MESSAGE_GLOBALS
-      &file_reflection_data[14],
+      &file_reflection_data[16],
 #else   // !PROTOBUF_MESSAGE_GLOBALS
       &::_pbi::kDescriptorMethods,
       &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
@@ -793,11 +797,11 @@ constexpr IntegrityReport::ParseTableT_ IntegrityReport::InternalGenerateParseTa
     {
       PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_._has_bits_),
       0, // no _extensions_
-      10, 120,  // max_field_number, fast_idx_mask
+      12, 120,  // max_field_number, fast_idx_mask
       offsetof(ParseTableT_, field_lookup_table),
-      4294966272,  // skipmap
+      4294963200,  // skipmap
       offsetof(ParseTableT_, field_entries),
-      10,  // num_field_entries
+      12,  // num_field_entries
       0,  // num_aux_entries
       offsetof(ParseTableT_, field_names),  // no aux_entries
       class_data,
@@ -848,8 +852,14 @@ constexpr IntegrityReport::ParseTableT_ IntegrityReport::InternalGenerateParseTa
       {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(IntegrityReport, _impl_.io_records_incomplete_), 9>(),
        {80, 9, 0,
         PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.io_records_incomplete_)}},
-      {::_pbi::TcParser::MiniParse, {}},
-      {::_pbi::TcParser::MiniParse, {}},
+      // bool gige_packet_rings_incomplete = 11;
+      {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(IntegrityReport, _impl_.gige_packet_rings_incomplete_), 10>(),
+       {88, 10, 0,
+        PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.gige_packet_rings_incomplete_)}},
+      // bool gige_stats_rings_incomplete = 12;
+      {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(IntegrityReport, _impl_.gige_stats_rings_incomplete_), 11>(),
+       {96, 11, 0,
+        PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.gige_stats_rings_incomplete_)}},
       {::_pbi::TcParser::MiniParse, {}},
       {::_pbi::TcParser::MiniParse, {}},
       {::_pbi::TcParser::MiniParse, {}},
@@ -876,6 +886,10 @@ constexpr IntegrityReport::ParseTableT_ IntegrityReport::InternalGenerateParseTa
       {PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.telemetry_incomplete_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
       // bool io_records_incomplete = 10;
       {PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.io_records_incomplete_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+      // bool gige_packet_rings_incomplete = 11;
+      {PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.gige_packet_rings_incomplete_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+      // bool gige_stats_rings_incomplete = 12;
+      {PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.gige_stats_rings_incomplete_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     }},
     // no aux_entries
     {{
@@ -908,7 +922,9 @@ inline constexpr IntegrityReport::Impl_::Impl_(
         rec_control_unknown_{false},
         rec_enable_failed_{false},
         telemetry_incomplete_{false},
-        io_records_incomplete_{false} {}
+        io_records_incomplete_{false},
+        gige_packet_rings_incomplete_{false},
+        gige_stats_rings_incomplete_{false} {}
 
 template <typename>
 constexpr IntegrityReport::IntegrityReport(::_pbi::ConstantInitialized,
@@ -998,6 +1014,470 @@ const ::_pbi::ClassData* IntegrityReport_get_class_data() {
   return IntegrityReport_globals_.GetClassData();
 #else
   return IntegrityReport_class_data_.base();
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+}
+}  // namespace
+#endif  // PROTOBUF_CUSTOM_VTABLE
+class GigeStatsRing::_Internal {
+ public:
+  using HasBits = decltype(::std::declval<GigeStatsRing>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_._has_bits_);
+};
+
+constexpr GigeStatsRing::ParseTableT_ GigeStatsRing::InternalGenerateParseTable_(const ::_pbi::ClassData* class_data) {
+  return ParseTableT_{
+    {
+      PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_._has_bits_),
+      0, // no _extensions_
+      12, 120,  // max_field_number, fast_idx_mask
+      offsetof(ParseTableT_, field_lookup_table),
+      4294963200,  // skipmap
+      offsetof(ParseTableT_, field_entries),
+      12,  // num_field_entries
+      0,  // num_aux_entries
+      offsetof(ParseTableT_, field_names),  // no aux_entries
+      class_data,
+      nullptr,  // post_loop_handler
+      ::_pbi::TcParser::MpUnknownFields,  // fallback
+      #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+      ::_pbi::TcParser::GetTable<::jon::cvdump::GigeStatsRing>(),  // to_prefetch
+      #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+    }, {{
+      {::_pbi::TcParser::MiniParse, {}},
+      // string channel = 1 [(.buf.validate.field) = {
+      {::_pbi::TcParser::FastUS1,
+       {10, 0, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.channel_)}},
+      // string path = 2;
+      {::_pbi::TcParser::FastUS1,
+       {18, 1, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.path_)}},
+      // uint64 bytes = 3;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigeStatsRing, _impl_.bytes_), 4>(),
+       {24, 4, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.bytes_)}},
+      // string sha256 = 4 [(.buf.validate.field) = {
+      {::_pbi::TcParser::FastUS1,
+       {34, 2, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.sha256_)}},
+      // uint64 record_count = 5;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigeStatsRing, _impl_.record_count_), 5>(),
+       {40, 5, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.record_count_)}},
+      // uint64 overwritten_during_copy = 6;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigeStatsRing, _impl_.overwritten_during_copy_), 6>(),
+       {48, 6, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.overwritten_during_copy_)}},
+      // uint64 outside_window = 7;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigeStatsRing, _impl_.outside_window_), 7>(),
+       {56, 7, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.outside_window_)}},
+      // bool window_start_lost = 8;
+      {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(GigeStatsRing, _impl_.window_start_lost_), 9>(),
+       {64, 9, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.window_start_lost_)}},
+      // string absent_reason = 9;
+      {::_pbi::TcParser::FastUS1,
+       {74, 3, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.absent_reason_)}},
+      // uint64 writer_refused = 10;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigeStatsRing, _impl_.writer_refused_), 8>(),
+       {80, 8, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.writer_refused_)}},
+      // uint64 overwritten_before_copy = 11;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigeStatsRing, _impl_.overwritten_before_copy_), 11>(),
+       {88, 11, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.overwritten_before_copy_)}},
+      // uint32 record_len = 12;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GigeStatsRing, _impl_.record_len_), 10>(),
+       {96, 10, 0,
+        PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.record_len_)}},
+      {::_pbi::TcParser::MiniParse, {}},
+      {::_pbi::TcParser::MiniParse, {}},
+      {::_pbi::TcParser::MiniParse, {}},
+    }}, {{
+      65535, 65535
+    }}, {{
+      // string channel = 1 [(.buf.validate.field) = {
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.channel_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // string path = 2;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.path_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // uint64 bytes = 3;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.bytes_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // string sha256 = 4 [(.buf.validate.field) = {
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.sha256_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // uint64 record_count = 5;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.record_count_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // uint64 overwritten_during_copy = 6;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.overwritten_during_copy_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // uint64 outside_window = 7;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.outside_window_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // bool window_start_lost = 8;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.window_start_lost_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+      // string absent_reason = 9;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.absent_reason_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // uint64 writer_refused = 10;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.writer_refused_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // uint64 overwritten_before_copy = 11;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.overwritten_before_copy_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // uint32 record_len = 12;
+      {PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.record_len_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    }},
+    // no aux_entries
+    {{
+      "\30\7\4\0\6\0\0\0\0\15\0\0\0\0\0\0"
+      "jon.cvdump.GigeStatsRing"
+      "channel"
+      "path"
+      "sha256"
+      "absent_reason"
+    }},
+  };
+}
+
+
+inline constexpr GigeStatsRing::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : channel_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        path_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        sha256_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        absent_reason_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        bytes_{::uint64_t{0u}},
+        record_count_{::uint64_t{0u}},
+        overwritten_during_copy_{::uint64_t{0u}},
+        outside_window_{::uint64_t{0u}},
+        writer_refused_{::uint64_t{0u}},
+        window_start_lost_{false},
+        record_len_{0u},
+        overwritten_before_copy_{::uint64_t{0u}} {}
+
+template <typename>
+constexpr GigeStatsRing::GigeStatsRing(::_pbi::ConstantInitialized,
+                       const ::_pbi::ClassData* PROTOBUF_NONNULL class_data)
+    : Super_(
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          class_data
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          ),
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+inline void* PROTOBUF_NONNULL GigeStatsRing::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) GigeStatsRing(arena);
+}
+constexpr auto GigeStatsRing::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GigeStatsRing), alignof(GigeStatsRing));
+}
+constexpr auto GigeStatsRing::InternalGenerateClassData_(
+    const MessageLite& prototype,
+    const ::google::protobuf::internal::TcParseTableBase* tc_table) {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &prototype,
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+          &_table_.header,
+#else
+          tc_table,
+#endif
+          nullptr,  // IsInitialized
+          &GigeStatsRing::MergeImpl,
+          Super_::GetNewImpl<GigeStatsRing>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &GigeStatsRing::SharedDtor,
+          Super_::GetClearImpl<GigeStatsRing>(), &GigeStatsRing::ByteSizeLong,
+              &GigeStatsRing::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_._cached_size_),
+          false,
+      },
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+      &file_reflection_data[11],
+#else   // !PROTOBUF_MESSAGE_GLOBALS
+      &::_pbi::kDescriptorMethods,
+      &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
+      nullptr,  // tracker
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+  };
+}
+struct GigeStatsRingGlobalsTypeInternal : ::_pbi::MessageGlobalsBase {
+  constexpr GigeStatsRingGlobalsTypeInternal()
+      :
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+        _default(::_pbi::ConstantInitialized{},
+                 GigeStatsRing_class_data_.base())
+#else   // !PROTOBUF_MESSAGE_GLOBALS
+        MessageGlobalsBase(GigeStatsRing::InternalGenerateClassData_(
+            _default, &GigeStatsRing_globals_._table.header)),
+        _default(::_pbi::ConstantInitialized{}, GetClassData()),
+        _table(::_pbi::PrivateAccess::GenerateParseTable<GigeStatsRing>(
+            GetClassData()))
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+  {
+  }
+  ~GigeStatsRingGlobalsTypeInternal() {}
+  union {
+    alignas(::_pbi::kMaxMessageAlignment) GigeStatsRing _default;
+  };
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+  decltype(::_pbi::PrivateAccess::GenerateParseTable<GigeStatsRing>(
+      ::std::declval<const ::_pbi::ClassData*>())) _table;
+#endif
+};
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+static_assert(PROTOBUF_FIELD_OFFSET(GigeStatsRingGlobalsTypeInternal, _default) ==
+              ::_pbi::MessageGlobalsBase::OffsetToDefault());
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PROTOBUF_MESSAGE_GLOBALS_CONST GigeStatsRingGlobalsTypeInternal GigeStatsRing_globals_
+        PROTOBUF_MESSAGE_GLOBALS_SECTION(.data.rel.ro);
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+namespace {
+const ::_pbi::ClassData* GigeStatsRing_get_class_data() {
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+  return GigeStatsRing_globals_.GetClassData();
+#else
+  return GigeStatsRing_class_data_.base();
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+}
+}  // namespace
+#endif  // PROTOBUF_CUSTOM_VTABLE
+class GigePacketRing::_Internal {
+ public:
+  using HasBits = decltype(::std::declval<GigePacketRing>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_._has_bits_);
+};
+
+constexpr GigePacketRing::ParseTableT_ GigePacketRing::InternalGenerateParseTable_(const ::_pbi::ClassData* class_data) {
+  return ParseTableT_{
+    {
+      PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_._has_bits_),
+      0, // no _extensions_
+      11, 120,  // max_field_number, fast_idx_mask
+      offsetof(ParseTableT_, field_lookup_table),
+      4294965248,  // skipmap
+      offsetof(ParseTableT_, field_entries),
+      11,  // num_field_entries
+      0,  // num_aux_entries
+      offsetof(ParseTableT_, field_names),  // no aux_entries
+      class_data,
+      nullptr,  // post_loop_handler
+      ::_pbi::TcParser::MpUnknownFields,  // fallback
+      #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+      ::_pbi::TcParser::GetTable<::jon::cvdump::GigePacketRing>(),  // to_prefetch
+      #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+    }, {{
+      {::_pbi::TcParser::MiniParse, {}},
+      // string channel = 1 [(.buf.validate.field) = {
+      {::_pbi::TcParser::FastUS1,
+       {10, 0, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.channel_)}},
+      // string path = 2;
+      {::_pbi::TcParser::FastUS1,
+       {18, 1, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.path_)}},
+      // uint64 bytes = 3;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigePacketRing, _impl_.bytes_), 4>(),
+       {24, 4, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.bytes_)}},
+      // string sha256 = 4 [(.buf.validate.field) = {
+      {::_pbi::TcParser::FastUS1,
+       {34, 2, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.sha256_)}},
+      // uint64 record_count = 5;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigePacketRing, _impl_.record_count_), 5>(),
+       {40, 5, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.record_count_)}},
+      // uint64 overwritten_during_copy = 6;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigePacketRing, _impl_.overwritten_during_copy_), 6>(),
+       {48, 6, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.overwritten_during_copy_)}},
+      // uint64 outside_window = 7;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigePacketRing, _impl_.outside_window_), 7>(),
+       {56, 7, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.outside_window_)}},
+      // bool window_start_lost = 8;
+      {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(GigePacketRing, _impl_.window_start_lost_), 10>(),
+       {64, 10, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.window_start_lost_)}},
+      // string absent_reason = 9;
+      {::_pbi::TcParser::FastUS1,
+       {74, 3, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.absent_reason_)}},
+      // uint64 writer_refused = 10;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigePacketRing, _impl_.writer_refused_), 8>(),
+       {80, 8, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.writer_refused_)}},
+      // uint64 overwritten_before_copy = 11;
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GigePacketRing, _impl_.overwritten_before_copy_), 9>(),
+       {88, 9, 0,
+        PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.overwritten_before_copy_)}},
+      {::_pbi::TcParser::MiniParse, {}},
+      {::_pbi::TcParser::MiniParse, {}},
+      {::_pbi::TcParser::MiniParse, {}},
+      {::_pbi::TcParser::MiniParse, {}},
+    }}, {{
+      65535, 65535
+    }}, {{
+      // string channel = 1 [(.buf.validate.field) = {
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.channel_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // string path = 2;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.path_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // uint64 bytes = 3;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.bytes_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // string sha256 = 4 [(.buf.validate.field) = {
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.sha256_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // uint64 record_count = 5;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.record_count_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // uint64 overwritten_during_copy = 6;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.overwritten_during_copy_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // uint64 outside_window = 7;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.outside_window_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // bool window_start_lost = 8;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.window_start_lost_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+      // string absent_reason = 9;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.absent_reason_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      // uint64 writer_refused = 10;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.writer_refused_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+      // uint64 overwritten_before_copy = 11;
+      {PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.overwritten_before_copy_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt64)},
+    }},
+    // no aux_entries
+    {{
+      "\31\7\4\0\6\0\0\0\0\15\0\0\0\0\0\0"
+      "jon.cvdump.GigePacketRing"
+      "channel"
+      "path"
+      "sha256"
+      "absent_reason"
+    }},
+  };
+}
+
+
+inline constexpr GigePacketRing::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    ::_pbi::ConstantInitialized) noexcept
+      : channel_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        path_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        sha256_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        absent_reason_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        bytes_{::uint64_t{0u}},
+        record_count_{::uint64_t{0u}},
+        overwritten_during_copy_{::uint64_t{0u}},
+        outside_window_{::uint64_t{0u}},
+        writer_refused_{::uint64_t{0u}},
+        overwritten_before_copy_{::uint64_t{0u}},
+        window_start_lost_{false} {}
+
+template <typename>
+constexpr GigePacketRing::GigePacketRing(::_pbi::ConstantInitialized,
+                       const ::_pbi::ClassData* PROTOBUF_NONNULL class_data)
+    : Super_(
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          class_data
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          ),
+      _impl_(internal_visibility(), ::_pbi::ConstantInitialized()) {
+}
+inline void* PROTOBUF_NONNULL GigePacketRing::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) GigePacketRing(arena);
+}
+constexpr auto GigePacketRing::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GigePacketRing), alignof(GigePacketRing));
+}
+constexpr auto GigePacketRing::InternalGenerateClassData_(
+    const MessageLite& prototype,
+    const ::google::protobuf::internal::TcParseTableBase* tc_table) {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &prototype,
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+          &_table_.header,
+#else
+          tc_table,
+#endif
+          nullptr,  // IsInitialized
+          &GigePacketRing::MergeImpl,
+          Super_::GetNewImpl<GigePacketRing>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &GigePacketRing::SharedDtor,
+          Super_::GetClearImpl<GigePacketRing>(), &GigePacketRing::ByteSizeLong,
+              &GigePacketRing::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_._cached_size_),
+          false,
+      },
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+      &file_reflection_data[10],
+#else   // !PROTOBUF_MESSAGE_GLOBALS
+      &::_pbi::kDescriptorMethods,
+      &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
+      nullptr,  // tracker
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+  };
+}
+struct GigePacketRingGlobalsTypeInternal : ::_pbi::MessageGlobalsBase {
+  constexpr GigePacketRingGlobalsTypeInternal()
+      :
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+        _default(::_pbi::ConstantInitialized{},
+                 GigePacketRing_class_data_.base())
+#else   // !PROTOBUF_MESSAGE_GLOBALS
+        MessageGlobalsBase(GigePacketRing::InternalGenerateClassData_(
+            _default, &GigePacketRing_globals_._table.header)),
+        _default(::_pbi::ConstantInitialized{}, GetClassData()),
+        _table(::_pbi::PrivateAccess::GenerateParseTable<GigePacketRing>(
+            GetClassData()))
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+  {
+  }
+  ~GigePacketRingGlobalsTypeInternal() {}
+  union {
+    alignas(::_pbi::kMaxMessageAlignment) GigePacketRing _default;
+  };
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+  decltype(::_pbi::PrivateAccess::GenerateParseTable<GigePacketRing>(
+      ::std::declval<const ::_pbi::ClassData*>())) _table;
+#endif
+};
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+static_assert(PROTOBUF_FIELD_OFFSET(GigePacketRingGlobalsTypeInternal, _default) ==
+              ::_pbi::MessageGlobalsBase::OffsetToDefault());
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PROTOBUF_MESSAGE_GLOBALS_CONST GigePacketRingGlobalsTypeInternal GigePacketRing_globals_
+        PROTOBUF_MESSAGE_GLOBALS_SECTION(.data.rel.ro);
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+namespace {
+const ::_pbi::ClassData* GigePacketRing_get_class_data() {
+#ifdef PROTOBUF_MESSAGE_GLOBALS
+  return GigePacketRing_globals_.GetClassData();
+#else
+  return GigePacketRing_class_data_.base();
 #endif  // PROTOBUF_MESSAGE_GLOBALS
 }
 }  // namespace
@@ -1281,7 +1761,7 @@ constexpr auto ColumnDef::InternalGenerateClassData_(
           false,
       },
 #ifdef PROTOBUF_MESSAGE_GLOBALS
-      &file_reflection_data[11],
+      &file_reflection_data[13],
 #else   // !PROTOBUF_MESSAGE_GLOBALS
       &::_pbi::kDescriptorMethods,
       &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
@@ -2017,7 +2497,7 @@ constexpr auto StreamGroup::InternalGenerateClassData_(
           false,
       },
 #ifdef PROTOBUF_MESSAGE_GLOBALS
-      &file_reflection_data[10],
+      &file_reflection_data[12],
 #else   // !PROTOBUF_MESSAGE_GLOBALS
       &::_pbi::kDescriptorMethods,
       &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
@@ -2382,7 +2862,7 @@ constexpr auto RedisStreamRecord::InternalGenerateClassData_(
           false,
       },
 #ifdef PROTOBUF_MESSAGE_GLOBALS
-      &file_reflection_data[13],
+      &file_reflection_data[15],
 #else   // !PROTOBUF_MESSAGE_GLOBALS
       &::_pbi::kDescriptorMethods,
       &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
@@ -2744,7 +3224,7 @@ constexpr auto RedisStreamRecords::InternalGenerateClassData_(
           false,
       },
 #ifdef PROTOBUF_MESSAGE_GLOBALS
-      &file_reflection_data[12],
+      &file_reflection_data[14],
 #else   // !PROTOBUF_MESSAGE_GLOBALS
       &::_pbi::kDescriptorMethods,
       &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto,
@@ -2807,12 +3287,12 @@ constexpr CvDumpArchive::ParseTableT_ CvDumpArchive::InternalGenerateParseTable_
     {
       PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_._has_bits_),
       0, // no _extensions_
-      11, 120,  // max_field_number, fast_idx_mask
+      13, 120,  // max_field_number, fast_idx_mask
       offsetof(ParseTableT_, field_lookup_table),
-      4294965248,  // skipmap
+      4294959104,  // skipmap
       offsetof(ParseTableT_, field_entries),
-      11,  // num_field_entries
-      6,  // num_aux_entries
+      13,  // num_field_entries
+      8,  // num_aux_entries
       offsetof(ParseTableT_, aux_entries),
       class_data,
       nullptr,  // post_loop_handler
@@ -2823,36 +3303,36 @@ constexpr CvDumpArchive::ParseTableT_ CvDumpArchive::InternalGenerateParseTable_
     }, {{
       {::_pbi::TcParser::MiniParse, {}},
       // .jon.cvdump.ArchiveFormatVersion version = 1;
-      {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CvDumpArchive, _impl_.version_), 9>(),
-       {8, 9, 0,
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CvDumpArchive, _impl_.version_), 11>(),
+       {8, 11, 0,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.version_)}},
       // string id = 2 [(.buf.validate.field) = {
       {::_pbi::TcParser::FastUS1,
-       {18, 3, 0,
+       {18, 5, 0,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.id_)}},
       // string generated_at = 3;
       {::_pbi::TcParser::FastUS1,
-       {26, 4, 0,
+       {26, 6, 0,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.generated_at_)}},
       // .jon.cvdump.CaptureWindow window = 4;
       {::_pbi::TcParser::FastMtS1,
-       {34, 6, 0,
+       {34, 8, 0,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.window_)}},
       // .jon.cvdump.SessionProvenance provenance = 5;
-      {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CvDumpArchive, _impl_.provenance_), 10>(),
-       {40, 10, 0,
+      {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CvDumpArchive, _impl_.provenance_), 12>(),
+       {40, 12, 0,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.provenance_)}},
       // string note = 6;
       {::_pbi::TcParser::FastUS1,
-       {50, 5, 0,
+       {50, 7, 0,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.note_)}},
       // .jon.cvdump.MachineIdentity machine = 7;
       {::_pbi::TcParser::FastMtS1,
-       {58, 7, 1,
+       {58, 9, 1,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.machine_)}},
       // .jon.cvdump.IntegrityReport integrity = 8;
       {::_pbi::TcParser::FastMtS1,
-       {66, 8, 2,
+       {66, 10, 2,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.integrity_)}},
       // repeated .jon.cvdump.VideoChannel video = 9;
       {::_pbi::TcParser::FastMtR1,
@@ -2866,35 +3346,45 @@ constexpr CvDumpArchive::ParseTableT_ CvDumpArchive::InternalGenerateParseTable_
       {::_pbi::TcParser::FastMtR1,
        {90, 2, 5,
         PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.shots_)}},
-      {::_pbi::TcParser::MiniParse, {}},
-      {::_pbi::TcParser::MiniParse, {}},
+      // repeated .jon.cvdump.GigePacketRing gige_packet_rings = 12;
+      {::_pbi::TcParser::FastMtR1,
+       {98, 3, 6,
+        PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.gige_packet_rings_)}},
+      // repeated .jon.cvdump.GigeStatsRing gige_stats_rings = 13;
+      {::_pbi::TcParser::FastMtR1,
+       {106, 4, 7,
+        PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.gige_stats_rings_)}},
       {::_pbi::TcParser::MiniParse, {}},
       {::_pbi::TcParser::MiniParse, {}},
     }}, {{
       65535, 65535
     }}, {{
       // .jon.cvdump.ArchiveFormatVersion version = 1;
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.version_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.version_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
       // string id = 2 [(.buf.validate.field) = {
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.id_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
       // string generated_at = 3;
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.generated_at_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.generated_at_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
       // .jon.cvdump.CaptureWindow window = 4;
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.window_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.window_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
       // .jon.cvdump.SessionProvenance provenance = 5;
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.provenance_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.provenance_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kOpenEnum)},
       // string note = 6;
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.note_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.note_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
       // .jon.cvdump.MachineIdentity machine = 7;
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.machine_), _Internal::kHasBitsOffset + 7, 1, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.machine_), _Internal::kHasBitsOffset + 9, 1, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
       // .jon.cvdump.IntegrityReport integrity = 8;
-      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.integrity_), _Internal::kHasBitsOffset + 8, 2, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.integrity_), _Internal::kHasBitsOffset + 10, 2, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
       // repeated .jon.cvdump.VideoChannel video = 9;
       {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.video_), _Internal::kHasBitsOffset + 0, 3, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
       // repeated .jon.cvdump.StreamGroup streams = 10;
       {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.streams_), _Internal::kHasBitsOffset + 1, 4, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
       // repeated .jon.cvdump.ShotCapture shots = 11;
       {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.shots_), _Internal::kHasBitsOffset + 2, 5, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+      // repeated .jon.cvdump.GigePacketRing gige_packet_rings = 12;
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.gige_packet_rings_), _Internal::kHasBitsOffset + 3, 6, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+      // repeated .jon.cvdump.GigeStatsRing gige_stats_rings = 13;
+      {PROTOBUF_FIELD_OFFSET(CvDumpArchive, _impl_.gige_stats_rings_), _Internal::kHasBitsOffset + 4, 7, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
     }},
     {{
         #ifndef PROTOBUF_MESSAGE_GLOBALS
@@ -2927,6 +3417,16 @@ constexpr CvDumpArchive::ParseTableT_ CvDumpArchive::InternalGenerateParseTable_
         #else
         {::_pbi::FieldAuxMessageGlobals(), &::jon::cvdump::ShotCapture_globals_},
         #endif
+        #ifndef PROTOBUF_MESSAGE_GLOBALS
+        {::_pbi::TcParser::GetTable<::jon::cvdump::GigePacketRing>()},
+        #else
+        {::_pbi::FieldAuxMessageGlobals(), &::jon::cvdump::GigePacketRing_globals_},
+        #endif
+        #ifndef PROTOBUF_MESSAGE_GLOBALS
+        {::_pbi::TcParser::GetTable<::jon::cvdump::GigeStatsRing>()},
+        #else
+        {::_pbi::FieldAuxMessageGlobals(), &::jon::cvdump::GigeStatsRing_globals_},
+        #endif
     }},
     {{
       "\30\0\2\14\0\0\4\0\0\0\0\0\0\0\0\0"
@@ -2955,6 +3455,16 @@ inline constexpr CvDumpArchive::Impl_::Impl_(
         shots_ { visibility, ::_pbi::InternalMetadataOffset::Build<
             ::jon::cvdump::CvDumpArchive,
             PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.shots_)>()
+         }
+        ,
+        gige_packet_rings_ { visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::jon::cvdump::CvDumpArchive,
+            PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_packet_rings_)>()
+         }
+        ,
+        gige_stats_rings_ { visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::jon::cvdump::CvDumpArchive,
+            PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_stats_rings_)>()
          }
         ,
         id_(
@@ -3075,7 +3585,7 @@ const ::uint32_t
         protodesc_cold) = {
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_._has_bits_),
-        14, // hasbit index offset
+        16, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.version_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.id_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.generated_at_),
@@ -3087,17 +3597,21 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.video_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.streams_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.shots_),
-        9,
-        3,
-        4,
-        6,
-        10,
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_packet_rings_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_stats_rings_),
+        11,
         5,
-        7,
+        6,
         8,
+        12,
+        7,
+        9,
+        10,
         0,
         1,
         2,
+        3,
+        4,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::ShotPlane, _impl_._has_bits_),
         14, // hasbit index offset
@@ -3196,7 +3710,7 @@ const ::uint32_t
         5,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_._has_bits_),
-        13, // hasbit index offset
+        15, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.status_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.lapped_segments_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.window_start_lost_),
@@ -3207,6 +3721,8 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.truncated_sources_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.telemetry_incomplete_),
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.io_records_incomplete_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.gige_packet_rings_incomplete_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::IntegrityReport, _impl_.gige_stats_rings_incomplete_),
         2,
         3,
         4,
@@ -3217,6 +3733,8 @@ const ::uint32_t
         1,
         8,
         9,
+        10,
+        11,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::VideoChannel, _impl_._has_bits_),
         5, // hasbit index offset
@@ -3241,6 +3759,58 @@ const ::uint32_t
         5,
         6,
         4,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_._has_bits_),
+        14, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.channel_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.path_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.bytes_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.sha256_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.record_count_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.overwritten_during_copy_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.outside_window_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.window_start_lost_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.absent_reason_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.writer_refused_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigePacketRing, _impl_.overwritten_before_copy_),
+        0,
+        1,
+        4,
+        2,
+        5,
+        6,
+        7,
+        10,
+        3,
+        8,
+        9,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_._has_bits_),
+        15, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.channel_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.path_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.bytes_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.sha256_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.record_count_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.overwritten_during_copy_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.outside_window_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.window_start_lost_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.absent_reason_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.writer_refused_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.overwritten_before_copy_),
+        PROTOBUF_FIELD_OFFSET(::jon::cvdump::GigeStatsRing, _impl_.record_len_),
+        0,
+        1,
+        4,
+        2,
+        5,
+        6,
+        7,
+        9,
+        3,
+        8,
+        11,
+        10,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::jon::cvdump::StreamGroup, _impl_._has_bits_),
         12, // hasbit index offset
@@ -3298,21 +3868,23 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, sizeof(::jon::cvdump::CvDumpArchive)},
-        {25, sizeof(::jon::cvdump::ShotPlane)},
-        {50, sizeof(::jon::cvdump::ShotCapture)},
-        {67, sizeof(::jon::cvdump::CaptureWindow)},
-        {78, sizeof(::jon::cvdump::MachineIdentity)},
-        {95, sizeof(::jon::cvdump::DeployFingerprint)},
-        {106, sizeof(::jon::cvdump::ChannelConfig)},
-        {121, sizeof(::jon::cvdump::IntegrityReport)},
-        {144, sizeof(::jon::cvdump::VideoChannel)},
-        {151, sizeof(::jon::cvdump::VideoSegment)},
-        {168, sizeof(::jon::cvdump::StreamGroup)},
-        {189, sizeof(::jon::cvdump::ColumnDef)},
-        {196, sizeof(::jon::cvdump::RedisStreamRecords)},
-        {201, sizeof(::jon::cvdump::RedisStreamRecord)},
-        {208, sizeof(::jon::cvdump::RedisStreamField)},
-        {215, sizeof(::jon::cvdump::TableRows)},
+        {29, sizeof(::jon::cvdump::ShotPlane)},
+        {54, sizeof(::jon::cvdump::ShotCapture)},
+        {71, sizeof(::jon::cvdump::CaptureWindow)},
+        {82, sizeof(::jon::cvdump::MachineIdentity)},
+        {99, sizeof(::jon::cvdump::DeployFingerprint)},
+        {110, sizeof(::jon::cvdump::ChannelConfig)},
+        {125, sizeof(::jon::cvdump::IntegrityReport)},
+        {152, sizeof(::jon::cvdump::VideoChannel)},
+        {159, sizeof(::jon::cvdump::VideoSegment)},
+        {176, sizeof(::jon::cvdump::GigePacketRing)},
+        {201, sizeof(::jon::cvdump::GigeStatsRing)},
+        {228, sizeof(::jon::cvdump::StreamGroup)},
+        {249, sizeof(::jon::cvdump::ColumnDef)},
+        {256, sizeof(::jon::cvdump::RedisStreamRecords)},
+        {261, sizeof(::jon::cvdump::RedisStreamRecord)},
+        {268, sizeof(::jon::cvdump::RedisStreamField)},
+        {275, sizeof(::jon::cvdump::TableRows)},
 };
 static const ::_pbi::MessageGlobalsBase* PROTOBUF_NONNULL const
     file_message_globals[] = {
@@ -3326,6 +3898,8 @@ static const ::_pbi::MessageGlobalsBase* PROTOBUF_NONNULL const
         &::jon::cvdump::IntegrityReport_globals_,
         &::jon::cvdump::VideoChannel_globals_,
         &::jon::cvdump::VideoSegment_globals_,
+        &::jon::cvdump::GigePacketRing_globals_,
+        &::jon::cvdump::GigeStatsRing_globals_,
         &::jon::cvdump::StreamGroup_globals_,
         &::jon::cvdump::ColumnDef_globals_,
         &::jon::cvdump::RedisStreamRecords_globals_,
@@ -3336,7 +3910,7 @@ static const ::_pbi::MessageGlobalsBase* PROTOBUF_NONNULL const
 const char descriptor_table_protodef_jon_5fcv_5fdump_5farchive_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\031jon_cv_dump_archive.proto\022\njon.cvdump\032"
-    "\033buf/validate/validate.proto\"\262\003\n\rCvDumpA"
+    "\033buf/validate/validate.proto\"\236\004\n\rCvDumpA"
     "rchive\0221\n\007version\030\001 \001(\0162 .jon.cvdump.Arc"
     "hiveFormatVersion\022\023\n\002id\030\002 \001(\tB\007\272H\004r\002\020$\022\024"
     "\n\014generated_at\030\003 \001(\t\022)\n\006window\030\004 \001(\0132\031.j"
@@ -3347,78 +3921,99 @@ const char descriptor_table_protodef_jon_5fcv_5fdump_5farchive_2eproto[] ABSL_AT
     "cvdump.IntegrityReport\022\'\n\005video\030\t \003(\0132\030."
     "jon.cvdump.VideoChannel\022(\n\007streams\030\n \003(\013"
     "2\027.jon.cvdump.StreamGroup\022&\n\005shots\030\013 \003(\013"
-    "2\027.jon.cvdump.ShotCapture\"\363\001\n\tShotPlane\022"
-    "\026\n\005plane\030\001 \001(\rB\007\272H\004*\002\030\003\022\013\n\003tag\030\002 \001(\r\022\025\n\r"
-    "source_format\030\003 \001(\r\022\025\n\004path\030\004 \001(\tB\007\272H\004r\002"
-    "\020\001\022\031\n\010encoding\030\005 \001(\tB\007\272H\004r\002\020\001\022\r\n\005width\030\006"
-    " \001(\r\022\016\n\006height\030\007 \001(\r\022\r\n\005pitch\030\010 \001(\r\022\021\n\tu"
-    "v_offset\030\t \001(\r\022\r\n\005bytes\030\n \001(\004\022(\n\006sha256\030"
-    "\013 \001(\tB\030\272H\025r\0232\016^[0-9a-f]{64}$\230\001@\"\301\001\n\013Shot"
-    "Capture\022!\n\007channel\030\001 \001(\tB\020\272H\rr\013R\003dayR\004he"
-    "at\022\022\n\ngeneration\030\002 \001(\r\022\016\n\006pts_ns\030\003 \001(\004\022\027"
-    "\n\017capture_time_ns\030\004 \001(\004\022\024\n\014ctl_snapshot\030"
-    "\005 \001(\014\022%\n\006planes\030\006 \003(\0132\025.jon.cvdump.ShotP"
-    "lane\022\025\n\rabsent_reason\030\007 \001(\t\"Y\n\rCaptureWi"
-    "ndow\022\017\n\007t0_wall\030\001 \001(\t\022\017\n\007t1_wall\030\002 \001(\t\022\022"
-    "\n\nt0_boot_ns\030\003 \001(\003\022\022\n\nt1_boot_ns\030\004 \001(\003\"\242"
-    "\002\n\017MachineIdentity\022\027\n\nmachine_id\030\001 \001(\tH\000"
-    "\210\001\001\022\025\n\010hostname\030\002 \001(\tH\001\210\001\001\022\025\n\010hw_model\030\003"
-    " \001(\tH\002\210\001\001\022\024\n\007boot_id\030\004 \001(\tH\003\210\001\001\022-\n\006deplo"
-    "y\030\005 \001(\0132\035.jon.cvdump.DeployFingerprint\0222"
-    "\n\017channels_config\030\006 \003(\0132\031.jon.cvdump.Cha"
-    "nnelConfig\022\032\n\022machine_incomplete\030\007 \001(\010B\r"
-    "\n\013_machine_idB\013\n\t_hostnameB\013\n\t_hw_modelB"
-    "\n\n\010_boot_id\"e\n\021DeployFingerprint\022\023\n\013fing"
-    "erprint\030\001 \001(\t\022\024\n\014jettison_sha\030\002 \001(\t\022\020\n\010d"
-    "escribe\030\003 \001(\t\022\023\n\013deployed_at\030\004 \001(\t\"|\n\rCh"
-    "annelConfig\022\017\n\007channel\030\001 \001(\t\022\r\n\005width\030\002 "
-    "\001(\r\022\016\n\006height\030\003 \001(\r\022\021\n\tfps_limit\030\004 \001(\r\022\022"
-    "\n\nsensor_fps\030\005 \001(\r\022\024\n\014crop_margins\030\006 \001(\r"
-    "\"\276\002\n\017IntegrityReport\022)\n\006status\030\001 \001(\0162\031.j"
-    "on.cvdump.ArchiveStatus\022\027\n\017lapped_segmen"
-    "ts\030\002 \001(\r\022\031\n\021window_start_lost\030\003 \001(\010\022\032\n\022w"
-    "riter_seg_skipped\030\004 \001(\010\022\033\n\023rec_control_u"
-    "nknown\030\005 \001(\010\022\031\n\021rec_enable_failed\030\006 \001(\010\022"
-    " \n\030no_window_video_channels\030\007 \003(\t\022\031\n\021tru"
-    "ncated_sources\030\010 \003(\t\022\034\n\024telemetry_incomp"
-    "lete\030\t \001(\010\022\035\n\025io_records_incomplete\030\n \001("
-    "\010\"K\n\014VideoChannel\022\017\n\007channel\030\001 \001(\t\022*\n\010se"
-    "gments\030\002 \003(\0132\030.jon.cvdump.VideoSegment\"\213"
-    "\001\n\014VideoSegment\022\020\n\010sequence\030\001 \001(\r\022\014\n\004pat"
-    "h\030\002 \001(\t\022\r\n\005bytes\030\003 \001(\004\022\030\n\006sha256\030\004 \001(\tB\010"
-    "\272H\005r\003\230\001@\022\020\n\010start_ns\030\005 \001(\003\022\016\n\006end_ns\030\006 \001"
-    "(\003\022\020\n\010open_end\030\007 \001(\010\"\220\002\n\013StreamGroup\022$\n\004"
-    "kind\030\001 \001(\0162\026.jon.cvdump.StreamKind\022\027\n\006so"
-    "urce\030\002 \001(\tB\007\272H\004r\002\020\001\022\'\n\005codec\030\003 \001(\0162\030.jon"
-    ".cvdump.ArchiveCodec\022\024\n\014record_count\030\004 \001"
-    "(\004\022\025\n\rdecoded_bytes\030\005 \001(\004\022 \n\016decoded_sha"
-    "256\030\006 \001(\tB\010\272H\005r\003\230\001@\022\021\n\ttruncated\030\007 \001(\010\022&"
-    "\n\007columns\030\010 \003(\0132\025.jon.cvdump.ColumnDef\022\017"
-    "\n\007payload\030\t \001(\014\"\'\n\tColumnDef\022\014\n\004name\030\001 \001"
-    "(\t\022\014\n\004type\030\002 \001(\t\"D\n\022RedisStreamRecords\022."
-    "\n\007records\030\001 \003(\0132\035.jon.cvdump.RedisStream"
-    "Record\"M\n\021RedisStreamRecord\022\n\n\002id\030\001 \001(\t\022"
-    ",\n\006fields\030\002 \003(\0132\034.jon.cvdump.RedisStream"
-    "Field\"/\n\020RedisStreamField\022\014\n\004name\030\001 \001(\t\022"
-    "\r\n\005value\030\002 \001(\014\"\031\n\tTableRows\022\014\n\004rows\030\001 \003("
-    "\014*]\n\024ArchiveFormatVersion\022&\n\"ARCHIVE_FOR"
-    "MAT_VERSION_UNSPECIFIED\020\000\022\035\n\031ARCHIVE_FOR"
-    "MAT_VERSION_V3\020\003*E\n\014ArchiveCodec\022\035\n\031ARCH"
-    "IVE_CODEC_UNSPECIFIED\020\000\022\026\n\022ARCHIVE_CODEC"
-    "_NONE\020\001*\262\001\n\nStreamKind\022\033\n\027STREAM_KIND_UN"
-    "SPECIFIED\020\000\022\023\n\017STREAM_KIND_CAN\020\001\022\033\n\027STRE"
-    "AM_KIND_ROTARY_UART\020\002\022\031\n\025STREAM_KIND_FRA"
-    "ME_TAP\020\003\022\032\n\026STREAM_KIND_TSDB_TABLE\020\004\022\036\n\032"
-    "STREAM_KIND_MOTION_HISTORY\020\005*\203\001\n\rArchive"
-    "Status\022\036\n\032ARCHIVE_STATUS_UNSPECIFIED\020\000\022\033"
-    "\n\027ARCHIVE_STATUS_COMPLETE\020\001\022\032\n\026ARCHIVE_S"
-    "TATUS_PARTIAL\020\002\022\031\n\025ARCHIVE_STATUS_FAILED"
-    "\020\003*|\n\021SessionProvenance\022\"\n\036SESSION_PROVE"
-    "NANCE_UNSPECIFIED\020\000\022\037\n\033SESSION_PROVENANC"
-    "E_EUTROPIA\020\001\022\"\n\036SESSION_PROVENANCE_SYNTH"
-    "ESIZED\020\002BIZGgit-codecommit.eu-central-1."
-    "amazonaws.com/v1/repos/jettison/jonp/cvd"
-    "umpb\006proto3"
+    "2\027.jon.cvdump.ShotCapture\0225\n\021gige_packet"
+    "_rings\030\014 \003(\0132\032.jon.cvdump.GigePacketRing"
+    "\0223\n\020gige_stats_rings\030\r \003(\0132\031.jon.cvdump."
+    "GigeStatsRing\"\363\001\n\tShotPlane\022\026\n\005plane\030\001 \001"
+    "(\rB\007\272H\004*\002\030\003\022\013\n\003tag\030\002 \001(\r\022\025\n\rsource_forma"
+    "t\030\003 \001(\r\022\025\n\004path\030\004 \001(\tB\007\272H\004r\002\020\001\022\031\n\010encodi"
+    "ng\030\005 \001(\tB\007\272H\004r\002\020\001\022\r\n\005width\030\006 \001(\r\022\016\n\006heig"
+    "ht\030\007 \001(\r\022\r\n\005pitch\030\010 \001(\r\022\021\n\tuv_offset\030\t \001"
+    "(\r\022\r\n\005bytes\030\n \001(\004\022(\n\006sha256\030\013 \001(\tB\030\272H\025r\023"
+    "2\016^[0-9a-f]{64}$\230\001@\"\301\001\n\013ShotCapture\022!\n\007c"
+    "hannel\030\001 \001(\tB\020\272H\rr\013R\003dayR\004heat\022\022\n\ngenera"
+    "tion\030\002 \001(\r\022\016\n\006pts_ns\030\003 \001(\004\022\027\n\017capture_ti"
+    "me_ns\030\004 \001(\004\022\024\n\014ctl_snapshot\030\005 \001(\014\022%\n\006pla"
+    "nes\030\006 \003(\0132\025.jon.cvdump.ShotPlane\022\025\n\rabse"
+    "nt_reason\030\007 \001(\t\"Y\n\rCaptureWindow\022\017\n\007t0_w"
+    "all\030\001 \001(\t\022\017\n\007t1_wall\030\002 \001(\t\022\022\n\nt0_boot_ns"
+    "\030\003 \001(\003\022\022\n\nt1_boot_ns\030\004 \001(\003\"\242\002\n\017MachineId"
+    "entity\022\027\n\nmachine_id\030\001 \001(\tH\000\210\001\001\022\025\n\010hostn"
+    "ame\030\002 \001(\tH\001\210\001\001\022\025\n\010hw_model\030\003 \001(\tH\002\210\001\001\022\024\n"
+    "\007boot_id\030\004 \001(\tH\003\210\001\001\022-\n\006deploy\030\005 \001(\0132\035.jo"
+    "n.cvdump.DeployFingerprint\0222\n\017channels_c"
+    "onfig\030\006 \003(\0132\031.jon.cvdump.ChannelConfig\022\032"
+    "\n\022machine_incomplete\030\007 \001(\010B\r\n\013_machine_i"
+    "dB\013\n\t_hostnameB\013\n\t_hw_modelB\n\n\010_boot_id\""
+    "e\n\021DeployFingerprint\022\023\n\013fingerprint\030\001 \001("
+    "\t\022\024\n\014jettison_sha\030\002 \001(\t\022\020\n\010describe\030\003 \001("
+    "\t\022\023\n\013deployed_at\030\004 \001(\t\"|\n\rChannelConfig\022"
+    "\017\n\007channel\030\001 \001(\t\022\r\n\005width\030\002 \001(\r\022\016\n\006heigh"
+    "t\030\003 \001(\r\022\021\n\tfps_limit\030\004 \001(\r\022\022\n\nsensor_fps"
+    "\030\005 \001(\r\022\024\n\014crop_margins\030\006 \001(\r\"\211\003\n\017Integri"
+    "tyReport\022)\n\006status\030\001 \001(\0162\031.jon.cvdump.Ar"
+    "chiveStatus\022\027\n\017lapped_segments\030\002 \001(\r\022\031\n\021"
+    "window_start_lost\030\003 \001(\010\022\032\n\022writer_seg_sk"
+    "ipped\030\004 \001(\010\022\033\n\023rec_control_unknown\030\005 \001(\010"
+    "\022\031\n\021rec_enable_failed\030\006 \001(\010\022 \n\030no_window"
+    "_video_channels\030\007 \003(\t\022\031\n\021truncated_sourc"
+    "es\030\010 \003(\t\022\034\n\024telemetry_incomplete\030\t \001(\010\022\035"
+    "\n\025io_records_incomplete\030\n \001(\010\022$\n\034gige_pa"
+    "cket_rings_incomplete\030\013 \001(\010\022#\n\033gige_stat"
+    "s_rings_incomplete\030\014 \001(\010\"K\n\014VideoChannel"
+    "\022\017\n\007channel\030\001 \001(\t\022*\n\010segments\030\002 \003(\0132\030.jo"
+    "n.cvdump.VideoSegment\"\213\001\n\014VideoSegment\022\020"
+    "\n\010sequence\030\001 \001(\r\022\014\n\004path\030\002 \001(\t\022\r\n\005bytes\030"
+    "\003 \001(\004\022\030\n\006sha256\030\004 \001(\tB\010\272H\005r\003\230\001@\022\020\n\010start"
+    "_ns\030\005 \001(\003\022\016\n\006end_ns\030\006 \001(\003\022\020\n\010open_end\030\007 "
+    "\001(\010\"\264\002\n\016GigePacketRing\022!\n\007channel\030\001 \001(\tB"
+    "\020\272H\rr\013R\003dayR\004heat\022\014\n\004path\030\002 \001(\t\022\r\n\005bytes"
+    "\030\003 \001(\004\022(\n\006sha256\030\004 \001(\tB\030\272H\025r\0232\021^([0-9a-f"
+    "]{64})\?$\022\024\n\014record_count\030\005 \001(\004\022\037\n\027overwr"
+    "itten_during_copy\030\006 \001(\004\022\026\n\016outside_windo"
+    "w\030\007 \001(\004\022\031\n\021window_start_lost\030\010 \001(\010\022\025\n\rab"
+    "sent_reason\030\t \001(\t\022\026\n\016writer_refused\030\n \001("
+    "\004\022\037\n\027overwritten_before_copy\030\013 \001(\004\"\307\002\n\rG"
+    "igeStatsRing\022!\n\007channel\030\001 \001(\tB\020\272H\rr\013R\003da"
+    "yR\004heat\022\014\n\004path\030\002 \001(\t\022\r\n\005bytes\030\003 \001(\004\022(\n\006"
+    "sha256\030\004 \001(\tB\030\272H\025r\0232\021^([0-9a-f]{64})\?$\022\024"
+    "\n\014record_count\030\005 \001(\004\022\037\n\027overwritten_duri"
+    "ng_copy\030\006 \001(\004\022\026\n\016outside_window\030\007 \001(\004\022\031\n"
+    "\021window_start_lost\030\010 \001(\010\022\025\n\rabsent_reaso"
+    "n\030\t \001(\t\022\026\n\016writer_refused\030\n \001(\004\022\037\n\027overw"
+    "ritten_before_copy\030\013 \001(\004\022\022\n\nrecord_len\030\014"
+    " \001(\r\"\220\002\n\013StreamGroup\022$\n\004kind\030\001 \001(\0162\026.jon"
+    ".cvdump.StreamKind\022\027\n\006source\030\002 \001(\tB\007\272H\004r"
+    "\002\020\001\022\'\n\005codec\030\003 \001(\0162\030.jon.cvdump.ArchiveC"
+    "odec\022\024\n\014record_count\030\004 \001(\004\022\025\n\rdecoded_by"
+    "tes\030\005 \001(\004\022 \n\016decoded_sha256\030\006 \001(\tB\010\272H\005r\003"
+    "\230\001@\022\021\n\ttruncated\030\007 \001(\010\022&\n\007columns\030\010 \003(\0132"
+    "\025.jon.cvdump.ColumnDef\022\017\n\007payload\030\t \001(\014\""
+    "\'\n\tColumnDef\022\014\n\004name\030\001 \001(\t\022\014\n\004type\030\002 \001(\t"
+    "\"D\n\022RedisStreamRecords\022.\n\007records\030\001 \003(\0132"
+    "\035.jon.cvdump.RedisStreamRecord\"M\n\021RedisS"
+    "treamRecord\022\n\n\002id\030\001 \001(\t\022,\n\006fields\030\002 \003(\0132"
+    "\034.jon.cvdump.RedisStreamField\"/\n\020RedisSt"
+    "reamField\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\014\"\031"
+    "\n\tTableRows\022\014\n\004rows\030\001 \003(\014*]\n\024ArchiveForm"
+    "atVersion\022&\n\"ARCHIVE_FORMAT_VERSION_UNSP"
+    "ECIFIED\020\000\022\035\n\031ARCHIVE_FORMAT_VERSION_V3\020\003"
+    "*E\n\014ArchiveCodec\022\035\n\031ARCHIVE_CODEC_UNSPEC"
+    "IFIED\020\000\022\026\n\022ARCHIVE_CODEC_NONE\020\001*\310\001\n\nStre"
+    "amKind\022\033\n\027STREAM_KIND_UNSPECIFIED\020\000\022\023\n\017S"
+    "TREAM_KIND_CAN\020\001\022\033\n\027STREAM_KIND_ROTARY_U"
+    "ART\020\002\022\031\n\025STREAM_KIND_FRAME_TAP\020\003\022\032\n\026STRE"
+    "AM_KIND_TSDB_TABLE\020\004\022\036\n\032STREAM_KIND_MOTI"
+    "ON_HISTORY\020\005\022\024\n\020STREAM_KIND_GIGE\020\006*\203\001\n\rA"
+    "rchiveStatus\022\036\n\032ARCHIVE_STATUS_UNSPECIFI"
+    "ED\020\000\022\033\n\027ARCHIVE_STATUS_COMPLETE\020\001\022\032\n\026ARC"
+    "HIVE_STATUS_PARTIAL\020\002\022\031\n\025ARCHIVE_STATUS_"
+    "FAILED\020\003*|\n\021SessionProvenance\022\"\n\036SESSION"
+    "_PROVENANCE_UNSPECIFIED\020\000\022\037\n\033SESSION_PRO"
+    "VENANCE_EUTROPIA\020\001\022\"\n\036SESSION_PROVENANCE"
+    "_SYNTHESIZED\020\002BIZGgit-codecommit.eu-cent"
+    "ral-1.amazonaws.com/v1/repos/jettison/jo"
+    "np/cvdumpb\006proto3"
 };
 static const ::_pbi::DescriptorTable* PROTOBUF_NONNULL const
     descriptor_table_jon_5fcv_5fdump_5farchive_2eproto_deps[1] = {
@@ -3428,13 +4023,13 @@ static ::absl::once_flag descriptor_table_jon_5fcv_5fdump_5farchive_2eproto_once
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_jon_5fcv_5fdump_5farchive_2eproto = {
     false,
     false,
-    3331,
+    4177,
     descriptor_table_protodef_jon_5fcv_5fdump_5farchive_2eproto,
     "jon_cv_dump_archive.proto",
     &descriptor_table_jon_5fcv_5fdump_5farchive_2eproto_once,
     descriptor_table_jon_5fcv_5fdump_5farchive_2eproto_deps,
     1,
-    16,
+    18,
     schemas,
     file_message_globals,
     TableStruct_jon_5fcv_5fdump_5farchive_2eproto::offsets,
@@ -3463,7 +4058,7 @@ StreamKind_descriptor() {
   return file_level_enum_descriptors_jon_5fcv_5fdump_5farchive_2eproto[2];
 }
 PROTOBUF_CONSTINIT const uint32_t StreamKind_internal_data_[] = {
-    393216u, 0u, };
+    458752u, 0u, };
 [[nodiscard]] const ::google::protobuf::EnumDescriptor* PROTOBUF_NONNULL
 ArchiveStatus_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_jon_5fcv_5fdump_5farchive_2eproto);
@@ -3515,6 +4110,20 @@ PROTOBUF_NDEBUG_INLINE CvDumpArchive::Impl_::Impl_(
           , arena, from.shots_
         }
         ,
+        gige_packet_rings_ {
+          visibility, ::_pbi::InternalMetadataOffset::Build<
+              ::jon::cvdump::CvDumpArchive,
+              PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_packet_rings_)>()
+          , arena, from.gige_packet_rings_
+        }
+        ,
+        gige_stats_rings_ {
+          visibility, ::_pbi::InternalMetadataOffset::Build<
+              ::jon::cvdump::CvDumpArchive,
+              PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_stats_rings_)>()
+          , arena, from.gige_stats_rings_
+        }
+        ,
         id_(arena, from.id_),
         generated_at_(arena, from.generated_at_),
         note_(arena, from.note_) {}
@@ -3534,13 +4143,13 @@ CvDumpArchive::CvDumpArchive(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.window_ = (CheckHasBit(cached_has_bits, 0x00000040U))
+  _impl_.window_ = (CheckHasBit(cached_has_bits, 0x00000100U))
                  ? Super_::CopyConstruct(arena, *from._impl_.window_)
                  : nullptr;
-  _impl_.machine_ = (CheckHasBit(cached_has_bits, 0x00000080U))
+  _impl_.machine_ = (CheckHasBit(cached_has_bits, 0x00000200U))
                  ? Super_::CopyConstruct(arena, *from._impl_.machine_)
                  : nullptr;
-  _impl_.integrity_ = (CheckHasBit(cached_has_bits, 0x00000100U))
+  _impl_.integrity_ = (CheckHasBit(cached_has_bits, 0x00000400U))
                  ? Super_::CopyConstruct(arena, *from._impl_.integrity_)
                  : nullptr;
   ::memcpy(reinterpret_cast<char*>(&_impl_) +
@@ -3569,6 +4178,16 @@ PROTOBUF_NDEBUG_INLINE CvDumpArchive::Impl_::Impl_(
         shots_ { visibility, ::_pbi::InternalMetadataOffset::Build<
             ::jon::cvdump::CvDumpArchive,
             PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.shots_)>()
+         }
+        ,
+        gige_packet_rings_ { visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::jon::cvdump::CvDumpArchive,
+            PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_packet_rings_)>()
+         }
+        ,
+        gige_stats_rings_ { visibility, ::_pbi::InternalMetadataOffset::Build<
+            ::jon::cvdump::CvDumpArchive,
+            PROTOBUF_FIELD_OFFSET(::jon::cvdump::CvDumpArchive, _impl_.gige_stats_rings_)>()
          }
         ,
         id_(arena),
@@ -3648,28 +4267,36 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
       _impl_.shots_.Clear();
     }
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-      this_._impl_.id_.ClearNonDefaultToEmpty();
+      _impl_.gige_packet_rings_.Clear();
     }
     if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-      this_._impl_.generated_at_.ClearNonDefaultToEmpty();
+      _impl_.gige_stats_rings_.Clear();
     }
     if (CheckHasBit(cached_has_bits, 0x00000020U)) {
-      this_._impl_.note_.ClearNonDefaultToEmpty();
+      this_._impl_.id_.ClearNonDefaultToEmpty();
     }
     if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      this_._impl_.generated_at_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      this_._impl_.note_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000700U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
       ABSL_DCHECK(this_._impl_.window_ != nullptr);
       this_._impl_.window_->Clear();
     }
-    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
       ABSL_DCHECK(this_._impl_.machine_ != nullptr);
       this_._impl_.machine_->Clear();
     }
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      ABSL_DCHECK(this_._impl_.integrity_ != nullptr);
+      this_._impl_.integrity_->Clear();
+    }
   }
-  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
-    ABSL_DCHECK(this_._impl_.integrity_ != nullptr);
-    this_._impl_.integrity_->Clear();
-  }
-  if (BatchCheckHasBit(cached_has_bits, 0x00000600U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x00001800U)) {
     ::memset(&this_._impl_.version_, 0,
              static_cast<::size_t>(
                  reinterpret_cast<char*>(&this_._impl_.provenance_) -
@@ -3700,7 +4327,7 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
 
   cached_has_bits = this_._impl_._has_bits_[0];
   // .jon.cvdump.ArchiveFormatVersion version = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
     if (this_._internal_version() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteEnumToArray(
@@ -3709,7 +4336,7 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
   }
 
   // string id = 2 [(.buf.validate.field) = {
-  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
     if (!this_._internal_id().empty()) {
       const ::std::string& _s = this_._internal_id();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -3719,7 +4346,7 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
   }
 
   // string generated_at = 3;
-  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
     if (!this_._internal_generated_at().empty()) {
       const ::std::string& _s = this_._internal_generated_at();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -3729,14 +4356,14 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
   }
 
   // .jon.cvdump.CaptureWindow window = 4;
-  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
         4, *this_._impl_.window_, this_._impl_.window_->GetCachedSize(), target,
         stream);
   }
 
   // .jon.cvdump.SessionProvenance provenance = 5;
-  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+  if (CheckHasBit(cached_has_bits, 0x00001000U)) {
     if (this_._internal_provenance() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteEnumToArray(
@@ -3745,7 +4372,7 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
   }
 
   // string note = 6;
-  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
     if (!this_._internal_note().empty()) {
       const ::std::string& _s = this_._internal_note();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -3755,14 +4382,14 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
   }
 
   // .jon.cvdump.MachineIdentity machine = 7;
-  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
         7, *this_._impl_.machine_, this_._impl_.machine_->GetCachedSize(), target,
         stream);
   }
 
   // .jon.cvdump.IntegrityReport integrity = 8;
-  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
         8, *this_._impl_.integrity_, this_._impl_.integrity_->GetCachedSize(), target,
         stream);
@@ -3800,6 +4427,30 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
       const auto& repfield = this_._internal_shots().Get(i);
       target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
           11, repfield, repfield.GetCachedSize(), target,
+          stream);
+    }
+  }
+
+  // repeated .jon.cvdump.GigePacketRing gige_packet_rings = 12;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    for (unsigned i = 0, n = static_cast<unsigned>(
+                             this_._internal_gige_packet_rings_size());
+         i < n; i++) {
+      const auto& repfield = this_._internal_gige_packet_rings().Get(i);
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          12, repfield, repfield.GetCachedSize(), target,
+          stream);
+    }
+  }
+
+  // repeated .jon.cvdump.GigeStatsRing gige_stats_rings = 13;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    for (unsigned i = 0, n = static_cast<unsigned>(
+                             this_._internal_gige_stats_rings_size());
+         i < n; i++) {
+      const auto& repfield = this_._internal_gige_stats_rings().Get(i);
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          13, repfield, repfield.GetCachedSize(), target,
           stream);
     }
   }
@@ -3849,53 +4500,67 @@ PROTOBUF_NOINLINE void CvDumpArchive::Clear() {
         total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
       }
     }
-    // string id = 2 [(.buf.validate.field) = {
+    // repeated .jon.cvdump.GigePacketRing gige_packet_rings = 12;
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      total_size += 1UL * this_._internal_gige_packet_rings_size();
+      for (const auto& msg : this_._internal_gige_packet_rings()) {
+        total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      }
+    }
+    // repeated .jon.cvdump.GigeStatsRing gige_stats_rings = 13;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      total_size += 1UL * this_._internal_gige_stats_rings_size();
+      for (const auto& msg : this_._internal_gige_stats_rings()) {
+        total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      }
+    }
+    // string id = 2 [(.buf.validate.field) = {
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       if (!this_._internal_id().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_id());
       }
     }
     // string generated_at = 3;
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
       if (!this_._internal_generated_at().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_generated_at());
       }
     }
     // string note = 6;
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
       if (!this_._internal_note().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_note());
       }
     }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00001f00U)) {
     // .jon.cvdump.CaptureWindow window = 4;
-    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
       total_size += 1 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.window_);
     }
     // .jon.cvdump.MachineIdentity machine = 7;
-    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
       total_size += 1 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.machine_);
     }
-  }
-  if (BatchCheckHasBit(cached_has_bits, 0x00000700U)) {
     // .jon.cvdump.IntegrityReport integrity = 8;
-    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
       total_size += 1 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.integrity_);
     }
     // .jon.cvdump.ArchiveFormatVersion version = 1;
-    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
       if (this_._internal_version() != 0) {
         total_size += 1 +
                       ::_pbi::WireFormatLite::EnumSize(this_._internal_version());
       }
     }
     // .jon.cvdump.SessionProvenance provenance = 5;
-    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
       if (this_._internal_provenance() != 0) {
         total_size += 1 +
                       ::_pbi::WireFormatLite::EnumSize(this_._internal_provenance());
@@ -3937,6 +4602,16 @@ void CvDumpArchive::MergeImpl(::google::protobuf::MessageLite& to_msg,
           from._internal_shots());
     }
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      _this->_internal_mutable_gige_packet_rings()->InternalMergeFromWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), arena,
+          from._internal_gige_packet_rings());
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      _this->_internal_mutable_gige_stats_rings()->InternalMergeFromWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), arena,
+          from._internal_gige_stats_rings());
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       if (!from._internal_id().empty()) {
         _this->_internal_set_id(from._internal_id());
       } else {
@@ -3945,7 +4620,7 @@ void CvDumpArchive::MergeImpl(::google::protobuf::MessageLite& to_msg,
         }
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
       if (!from._internal_generated_at().empty()) {
         _this->_internal_set_generated_at(from._internal_generated_at());
       } else {
@@ -3954,7 +4629,7 @@ void CvDumpArchive::MergeImpl(::google::protobuf::MessageLite& to_msg,
         }
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
       if (!from._internal_note().empty()) {
         _this->_internal_set_note(from._internal_note());
       } else {
@@ -3963,7 +4638,9 @@ void CvDumpArchive::MergeImpl(::google::protobuf::MessageLite& to_msg,
         }
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00001f00U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
       ABSL_DCHECK(from._impl_.window_ != nullptr);
       if (_this->_impl_.window_ == nullptr) {
         _this->_impl_.window_ = Super_::CopyConstruct(arena, *from._impl_.window_);
@@ -3971,7 +4648,7 @@ void CvDumpArchive::MergeImpl(::google::protobuf::MessageLite& to_msg,
         _this->_impl_.window_->MergeFrom(*from._impl_.window_);
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
       ABSL_DCHECK(from._impl_.machine_ != nullptr);
       if (_this->_impl_.machine_ == nullptr) {
         _this->_impl_.machine_ = Super_::CopyConstruct(arena, *from._impl_.machine_);
@@ -3979,9 +4656,7 @@ void CvDumpArchive::MergeImpl(::google::protobuf::MessageLite& to_msg,
         _this->_impl_.machine_->MergeFrom(*from._impl_.machine_);
       }
     }
-  }
-  if (BatchCheckHasBit(cached_has_bits, 0x00000700U)) {
-    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
       ABSL_DCHECK(from._impl_.integrity_ != nullptr);
       if (_this->_impl_.integrity_ == nullptr) {
         _this->_impl_.integrity_ = Super_::CopyConstruct(arena, *from._impl_.integrity_);
@@ -3989,12 +4664,12 @@ void CvDumpArchive::MergeImpl(::google::protobuf::MessageLite& to_msg,
         _this->_impl_.integrity_->MergeFrom(*from._impl_.integrity_);
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
       if (from._internal_version() != 0) {
         _this->_impl_.version_ = from._impl_.version_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
       if (from._internal_provenance() != 0) {
         _this->_impl_.provenance_ = from._impl_.provenance_;
       }
@@ -4022,6 +4697,8 @@ void CvDumpArchive::InternalSwap(CvDumpArchive* PROTOBUF_RESTRICT PROTOBUF_NONNU
   _impl_.video_.InternalSwap(&other->_impl_.video_);
   _impl_.streams_.InternalSwap(&other->_impl_.streams_);
   _impl_.shots_.InternalSwap(&other->_impl_.shots_);
+  _impl_.gige_packet_rings_.InternalSwap(&other->_impl_.gige_packet_rings_);
+  _impl_.gige_stats_rings_.InternalSwap(&other->_impl_.gige_stats_rings_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.generated_at_, &other->_impl_.generated_at_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.note_, &other->_impl_.note_, arena);
@@ -6326,9 +7003,9 @@ IntegrityReport::IntegrityReport(
                offsetof(Impl_, status_),
            reinterpret_cast<const char*>(&from._impl_) +
                offsetof(Impl_, status_),
-           offsetof(Impl_, io_records_incomplete_) -
+           offsetof(Impl_, gige_stats_rings_incomplete_) -
                offsetof(Impl_, status_) +
-               sizeof(Impl_::io_records_incomplete_));
+               sizeof(Impl_::gige_stats_rings_incomplete_));
 
   // @@protoc_insertion_point(copy_constructor:jon.cvdump.IntegrityReport)
 }
@@ -6351,9 +7028,9 @@ inline void IntegrityReport::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, status_),
            0,
-           offsetof(Impl_, io_records_incomplete_) -
+           offsetof(Impl_, gige_stats_rings_incomplete_) -
                offsetof(Impl_, status_) +
-               sizeof(Impl_::io_records_incomplete_));
+               sizeof(Impl_::gige_stats_rings_incomplete_));
 }
 IntegrityReport::~IntegrityReport() {
   // @@protoc_insertion_point(destructor:jon.cvdump.IntegrityReport)
@@ -6417,12 +7094,12 @@ PROTOBUF_NOINLINE void IntegrityReport::Clear() {
                  reinterpret_cast<char*>(&this_._impl_.status_)) +
                  sizeof(_impl_.rec_enable_failed_));
   }
-  if (BatchCheckHasBit(cached_has_bits, 0x00000300U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x00000f00U)) {
     ::memset(&this_._impl_.telemetry_incomplete_, 0,
              static_cast<::size_t>(
-                 reinterpret_cast<char*>(&this_._impl_.io_records_incomplete_) -
+                 reinterpret_cast<char*>(&this_._impl_.gige_stats_rings_incomplete_) -
                  reinterpret_cast<char*>(&this_._impl_.telemetry_incomplete_)) +
-                 sizeof(_impl_.io_records_incomplete_));
+                 sizeof(_impl_.gige_stats_rings_incomplete_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -6539,6 +7216,24 @@ PROTOBUF_NOINLINE void IntegrityReport::Clear() {
     }
   }
 
+  // bool gige_packet_rings_incomplete = 11;
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (this_._internal_gige_packet_rings_incomplete() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          11, this_._internal_gige_packet_rings_incomplete(), target);
+    }
+  }
+
+  // bool gige_stats_rings_incomplete = 12;
+  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+    if (this_._internal_gige_stats_rings_incomplete() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          12, this_._internal_gige_stats_rings_incomplete(), target);
+    }
+  }
+
   if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -6620,7 +7315,7 @@ PROTOBUF_NOINLINE void IntegrityReport::Clear() {
       }
     }
   }
-  if (BatchCheckHasBit(cached_has_bits, 0x00000300U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x00000f00U)) {
     // bool telemetry_incomplete = 9;
     if (CheckHasBit(cached_has_bits, 0x00000100U)) {
       if (this_._internal_telemetry_incomplete() != 0) {
@@ -6630,6 +7325,18 @@ PROTOBUF_NOINLINE void IntegrityReport::Clear() {
     // bool io_records_incomplete = 10;
     if (CheckHasBit(cached_has_bits, 0x00000200U)) {
       if (this_._internal_io_records_incomplete() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool gige_packet_rings_incomplete = 11;
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (this_._internal_gige_packet_rings_incomplete() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool gige_stats_rings_incomplete = 12;
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (this_._internal_gige_stats_rings_incomplete() != 0) {
         total_size += 2;
       }
     }
@@ -6694,7 +7401,7 @@ void IntegrityReport::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
   }
-  if (BatchCheckHasBit(cached_has_bits, 0x00000300U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x00000f00U)) {
     if (CheckHasBit(cached_has_bits, 0x00000100U)) {
       if (from._internal_telemetry_incomplete() != 0) {
         _this->_impl_.telemetry_incomplete_ = from._impl_.telemetry_incomplete_;
@@ -6703,6 +7410,16 @@ void IntegrityReport::MergeImpl(::google::protobuf::MessageLite& to_msg,
     if (CheckHasBit(cached_has_bits, 0x00000200U)) {
       if (from._internal_io_records_incomplete() != 0) {
         _this->_impl_.io_records_incomplete_ = from._impl_.io_records_incomplete_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (from._internal_gige_packet_rings_incomplete() != 0) {
+        _this->_impl_.gige_packet_rings_incomplete_ = from._impl_.gige_packet_rings_incomplete_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (from._internal_gige_stats_rings_incomplete() != 0) {
+        _this->_impl_.gige_stats_rings_incomplete_ = from._impl_.gige_stats_rings_incomplete_;
       }
     }
   }
@@ -6726,8 +7443,8 @@ void IntegrityReport::InternalSwap(IntegrityReport* PROTOBUF_RESTRICT PROTOBUF_N
   _impl_.no_window_video_channels_.InternalSwap(&other->_impl_.no_window_video_channels_);
   _impl_.truncated_sources_.InternalSwap(&other->_impl_.truncated_sources_);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.io_records_incomplete_)
-      + sizeof(IntegrityReport::_impl_.io_records_incomplete_)
+      PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.gige_stats_rings_incomplete_)
+      + sizeof(IntegrityReport::_impl_.gige_stats_rings_incomplete_)
       - PROTOBUF_FIELD_OFFSET(IntegrityReport, _impl_.status_)>(
           reinterpret_cast<char*>(&_impl_.status_),
           reinterpret_cast<char*>(&other->_impl_.status_));
@@ -7366,6 +8083,1019 @@ void VideoSegment::InternalSwap(VideoSegment* PROTOBUF_RESTRICT PROTOBUF_NONNULL
 }
 
 ::google::protobuf::Metadata VideoSegment::GetMetadata() const {
+  return Super_::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+GigePacketRing::GigePacketRing(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Super_(arena, GigePacketRing_get_class_data()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Super_(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:jon.cvdump.GigePacketRing)
+}
+PROTOBUF_NDEBUG_INLINE GigePacketRing::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::jon::cvdump::GigePacketRing& from_msg)
+      : _has_bits_{from._has_bits_},
+        channel_(arena, from.channel_),
+        path_(arena, from.path_),
+        sha256_(arena, from.sha256_),
+        absent_reason_(arena, from.absent_reason_) {}
+
+GigePacketRing::GigePacketRing(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const GigePacketRing& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Super_(arena, GigePacketRing_get_class_data()) {
+
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Super_(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GigePacketRing* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, bytes_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, bytes_),
+           offsetof(Impl_, window_start_lost_) -
+               offsetof(Impl_, bytes_) +
+               sizeof(Impl_::window_start_lost_));
+
+  // @@protoc_insertion_point(copy_constructor:jon.cvdump.GigePacketRing)
+}
+PROTOBUF_NDEBUG_INLINE GigePacketRing::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : channel_(arena),
+        path_(arena),
+        sha256_(arena),
+        absent_reason_(arena) {}
+
+inline void GigePacketRing::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, bytes_),
+           0,
+           offsetof(Impl_, window_start_lost_) -
+               offsetof(Impl_, bytes_) +
+               sizeof(Impl_::window_start_lost_));
+}
+GigePacketRing::~GigePacketRing() {
+  // @@protoc_insertion_point(destructor:jon.cvdump.GigePacketRing)
+  SharedDtor(*this);
+}
+inline void GigePacketRing::SharedDtor(MessageLite& self) {
+  GigePacketRing& this_ = static_cast<GigePacketRing&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.channel_.Destroy();
+  this_._impl_.path_.Destroy();
+  this_._impl_.sha256_.Destroy();
+  this_._impl_.absent_reason_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull GigePacketRing_class_data_ =
+        GigePacketRing::InternalGenerateClassData_(GigePacketRing_globals_._default);
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+GigePacketRing::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GigePacketRing_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(GigePacketRing_class_data_.tc_table);
+  return GigePacketRing_class_data_.base();
+}
+#else
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+GigePacketRing::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GigePacketRing_globals_);
+  ::google::protobuf::internal::PrefetchToLocalCache(
+      ::google::protobuf::internal::MessageGlobalsBase::ToParseTableBase(&GigePacketRing_globals_));
+  return GigePacketRing_globals_.GetClassData();
+}
+#endif  // !PROTOBUF_MESSAGE_GLOBALS
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const GigePacketRing::ParseTableT_
+    GigePacketRing::_table_ =
+        GigePacketRing::InternalGenerateParseTable_(GigePacketRing_class_data_.base());
+#endif  // !PROTOBUF_MESSAGE_GLOBALS
+PROTOBUF_NOINLINE void GigePacketRing::Clear() {
+  auto& this_ [[maybe_unused]] = *this;
+  // @@protoc_insertion_point(message_clear_start:jon.cvdump.GigePacketRing)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits [[maybe_unused]] = 0;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      this_._impl_.channel_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      this_._impl_.path_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      this_._impl_.sha256_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      this_._impl_.absent_reason_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x000000f0U)) {
+    ::memset(&this_._impl_.bytes_, 0,
+             static_cast<::size_t>(
+                 reinterpret_cast<char*>(&this_._impl_.outside_window_) -
+                 reinterpret_cast<char*>(&this_._impl_.bytes_)) +
+                 sizeof(_impl_.outside_window_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000700U)) {
+    ::memset(&this_._impl_.writer_refused_, 0,
+             static_cast<::size_t>(
+                 reinterpret_cast<char*>(&this_._impl_.window_start_lost_) -
+                 reinterpret_cast<char*>(&this_._impl_.writer_refused_)) +
+                 sizeof(_impl_.window_start_lost_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL GigePacketRing::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const GigePacketRing& this_ = static_cast<const GigePacketRing&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL GigePacketRing::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const GigePacketRing& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:jon.cvdump.GigePacketRing)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string channel = 1 [(.buf.validate.field) = {
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_channel().empty()) {
+      const ::std::string& _s = this_._internal_channel();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigePacketRing.channel");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // string path = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_path().empty()) {
+      const ::std::string& _s = this_._internal_path();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigePacketRing.path");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // uint64 bytes = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_bytes() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          3, this_._internal_bytes(), target);
+    }
+  }
+
+  // string sha256 = 4 [(.buf.validate.field) = {
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (!this_._internal_sha256().empty()) {
+      const ::std::string& _s = this_._internal_sha256();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigePacketRing.sha256");
+      target = stream->WriteStringMaybeAliased(4, _s, target);
+    }
+  }
+
+  // uint64 record_count = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (this_._internal_record_count() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          5, this_._internal_record_count(), target);
+    }
+  }
+
+  // uint64 overwritten_during_copy = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (this_._internal_overwritten_during_copy() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          6, this_._internal_overwritten_during_copy(), target);
+    }
+  }
+
+  // uint64 outside_window = 7;
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (this_._internal_outside_window() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          7, this_._internal_outside_window(), target);
+    }
+  }
+
+  // bool window_start_lost = 8;
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (this_._internal_window_start_lost() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          8, this_._internal_window_start_lost(), target);
+    }
+  }
+
+  // string absent_reason = 9;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (!this_._internal_absent_reason().empty()) {
+      const ::std::string& _s = this_._internal_absent_reason();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigePacketRing.absent_reason");
+      target = stream->WriteStringMaybeAliased(9, _s, target);
+    }
+  }
+
+  // uint64 writer_refused = 10;
+  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (this_._internal_writer_refused() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          10, this_._internal_writer_refused(), target);
+    }
+  }
+
+  // uint64 overwritten_before_copy = 11;
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (this_._internal_overwritten_before_copy() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          11, this_._internal_overwritten_before_copy(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:jon.cvdump.GigePacketRing)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t GigePacketRing::ByteSizeLong(const MessageLite& base) {
+  const GigePacketRing& this_ = static_cast<const GigePacketRing&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t GigePacketRing::ByteSizeLong() const {
+  const GigePacketRing& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:jon.cvdump.GigePacketRing)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits [[maybe_unused]] = 0;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    // string channel = 1 [(.buf.validate.field) = {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_channel().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_channel());
+      }
+    }
+    // string path = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_path().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_path());
+      }
+    }
+    // string sha256 = 4 [(.buf.validate.field) = {
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!this_._internal_sha256().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_sha256());
+      }
+    }
+    // string absent_reason = 9;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (!this_._internal_absent_reason().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_absent_reason());
+      }
+    }
+    // uint64 bytes = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_bytes() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_bytes());
+      }
+    }
+    // uint64 record_count = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (this_._internal_record_count() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_record_count());
+      }
+    }
+    // uint64 overwritten_during_copy = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (this_._internal_overwritten_during_copy() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_overwritten_during_copy());
+      }
+    }
+    // uint64 outside_window = 7;
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (this_._internal_outside_window() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_outside_window());
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000700U)) {
+    // uint64 writer_refused = 10;
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (this_._internal_writer_refused() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_writer_refused());
+      }
+    }
+    // uint64 overwritten_before_copy = 11;
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (this_._internal_overwritten_before_copy() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_overwritten_before_copy());
+      }
+    }
+    // bool window_start_lost = 8;
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (this_._internal_window_start_lost() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void GigePacketRing::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                      const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this = static_cast<GigePacketRing*>(&to_msg);
+  auto& from = static_cast<const GigePacketRing&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:jon.cvdump.GigePacketRing)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_channel().empty()) {
+        _this->_internal_set_channel(from._internal_channel());
+      } else {
+        if (_this->_impl_.channel_.IsDefault()) {
+          _this->_internal_set_channel("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_path().empty()) {
+        _this->_internal_set_path(from._internal_path());
+      } else {
+        if (_this->_impl_.path_.IsDefault()) {
+          _this->_internal_set_path("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!from._internal_sha256().empty()) {
+        _this->_internal_set_sha256(from._internal_sha256());
+      } else {
+        if (_this->_impl_.sha256_.IsDefault()) {
+          _this->_internal_set_sha256("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (!from._internal_absent_reason().empty()) {
+        _this->_internal_set_absent_reason(from._internal_absent_reason());
+      } else {
+        if (_this->_impl_.absent_reason_.IsDefault()) {
+          _this->_internal_set_absent_reason("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_bytes() != 0) {
+        _this->_impl_.bytes_ = from._impl_.bytes_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (from._internal_record_count() != 0) {
+        _this->_impl_.record_count_ = from._impl_.record_count_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (from._internal_overwritten_during_copy() != 0) {
+        _this->_impl_.overwritten_during_copy_ = from._impl_.overwritten_during_copy_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (from._internal_outside_window() != 0) {
+        _this->_impl_.outside_window_ = from._impl_.outside_window_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000700U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (from._internal_writer_refused() != 0) {
+        _this->_impl_.writer_refused_ = from._impl_.writer_refused_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (from._internal_overwritten_before_copy() != 0) {
+        _this->_impl_.overwritten_before_copy_ = from._impl_.overwritten_before_copy_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (from._internal_window_start_lost() != 0) {
+        _this->_impl_.window_start_lost_ = from._impl_.window_start_lost_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void GigePacketRing::CopyFrom(const GigePacketRing& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:jon.cvdump.GigePacketRing)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GigePacketRing::InternalSwap(GigePacketRing* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.channel_, &other->_impl_.channel_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, &other->_impl_.path_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sha256_, &other->_impl_.sha256_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.absent_reason_, &other->_impl_.absent_reason_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.window_start_lost_)
+      + sizeof(GigePacketRing::_impl_.window_start_lost_)
+      - PROTOBUF_FIELD_OFFSET(GigePacketRing, _impl_.bytes_)>(
+          reinterpret_cast<char*>(&_impl_.bytes_),
+          reinterpret_cast<char*>(&other->_impl_.bytes_));
+}
+
+::google::protobuf::Metadata GigePacketRing::GetMetadata() const {
+  return Super_::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+GigeStatsRing::GigeStatsRing(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Super_(arena, GigeStatsRing_get_class_data()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Super_(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:jon.cvdump.GigeStatsRing)
+}
+PROTOBUF_NDEBUG_INLINE GigeStatsRing::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::jon::cvdump::GigeStatsRing& from_msg)
+      : _has_bits_{from._has_bits_},
+        channel_(arena, from.channel_),
+        path_(arena, from.path_),
+        sha256_(arena, from.sha256_),
+        absent_reason_(arena, from.absent_reason_) {}
+
+GigeStatsRing::GigeStatsRing(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const GigeStatsRing& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : Super_(arena, GigeStatsRing_get_class_data()) {
+
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : Super_(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GigeStatsRing* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, bytes_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, bytes_),
+           offsetof(Impl_, overwritten_before_copy_) -
+               offsetof(Impl_, bytes_) +
+               sizeof(Impl_::overwritten_before_copy_));
+
+  // @@protoc_insertion_point(copy_constructor:jon.cvdump.GigeStatsRing)
+}
+PROTOBUF_NDEBUG_INLINE GigeStatsRing::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : channel_(arena),
+        path_(arena),
+        sha256_(arena),
+        absent_reason_(arena) {}
+
+inline void GigeStatsRing::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, bytes_),
+           0,
+           offsetof(Impl_, overwritten_before_copy_) -
+               offsetof(Impl_, bytes_) +
+               sizeof(Impl_::overwritten_before_copy_));
+}
+GigeStatsRing::~GigeStatsRing() {
+  // @@protoc_insertion_point(destructor:jon.cvdump.GigeStatsRing)
+  SharedDtor(*this);
+}
+inline void GigeStatsRing::SharedDtor(MessageLite& self) {
+  GigeStatsRing& this_ = static_cast<GigeStatsRing&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.channel_.Destroy();
+  this_._impl_.path_.Destroy();
+  this_._impl_.sha256_.Destroy();
+  this_._impl_.absent_reason_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull GigeStatsRing_class_data_ =
+        GigeStatsRing::InternalGenerateClassData_(GigeStatsRing_globals_._default);
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+GigeStatsRing::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GigeStatsRing_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(GigeStatsRing_class_data_.tc_table);
+  return GigeStatsRing_class_data_.base();
+}
+#else
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+GigeStatsRing::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GigeStatsRing_globals_);
+  ::google::protobuf::internal::PrefetchToLocalCache(
+      ::google::protobuf::internal::MessageGlobalsBase::ToParseTableBase(&GigeStatsRing_globals_));
+  return GigeStatsRing_globals_.GetClassData();
+}
+#endif  // !PROTOBUF_MESSAGE_GLOBALS
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const GigeStatsRing::ParseTableT_
+    GigeStatsRing::_table_ =
+        GigeStatsRing::InternalGenerateParseTable_(GigeStatsRing_class_data_.base());
+#endif  // !PROTOBUF_MESSAGE_GLOBALS
+PROTOBUF_NOINLINE void GigeStatsRing::Clear() {
+  auto& this_ [[maybe_unused]] = *this;
+  // @@protoc_insertion_point(message_clear_start:jon.cvdump.GigeStatsRing)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits [[maybe_unused]] = 0;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      this_._impl_.channel_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      this_._impl_.path_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      this_._impl_.sha256_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      this_._impl_.absent_reason_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x000000f0U)) {
+    ::memset(&this_._impl_.bytes_, 0,
+             static_cast<::size_t>(
+                 reinterpret_cast<char*>(&this_._impl_.outside_window_) -
+                 reinterpret_cast<char*>(&this_._impl_.bytes_)) +
+                 sizeof(_impl_.outside_window_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000f00U)) {
+    ::memset(&this_._impl_.writer_refused_, 0,
+             static_cast<::size_t>(
+                 reinterpret_cast<char*>(&this_._impl_.overwritten_before_copy_) -
+                 reinterpret_cast<char*>(&this_._impl_.writer_refused_)) +
+                 sizeof(_impl_.overwritten_before_copy_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL GigeStatsRing::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const GigeStatsRing& this_ = static_cast<const GigeStatsRing&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL GigeStatsRing::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const GigeStatsRing& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:jon.cvdump.GigeStatsRing)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string channel = 1 [(.buf.validate.field) = {
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_channel().empty()) {
+      const ::std::string& _s = this_._internal_channel();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigeStatsRing.channel");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // string path = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_path().empty()) {
+      const ::std::string& _s = this_._internal_path();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigeStatsRing.path");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // uint64 bytes = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_bytes() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          3, this_._internal_bytes(), target);
+    }
+  }
+
+  // string sha256 = 4 [(.buf.validate.field) = {
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (!this_._internal_sha256().empty()) {
+      const ::std::string& _s = this_._internal_sha256();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigeStatsRing.sha256");
+      target = stream->WriteStringMaybeAliased(4, _s, target);
+    }
+  }
+
+  // uint64 record_count = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (this_._internal_record_count() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          5, this_._internal_record_count(), target);
+    }
+  }
+
+  // uint64 overwritten_during_copy = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (this_._internal_overwritten_during_copy() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          6, this_._internal_overwritten_during_copy(), target);
+    }
+  }
+
+  // uint64 outside_window = 7;
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (this_._internal_outside_window() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          7, this_._internal_outside_window(), target);
+    }
+  }
+
+  // bool window_start_lost = 8;
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (this_._internal_window_start_lost() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          8, this_._internal_window_start_lost(), target);
+    }
+  }
+
+  // string absent_reason = 9;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (!this_._internal_absent_reason().empty()) {
+      const ::std::string& _s = this_._internal_absent_reason();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "jon.cvdump.GigeStatsRing.absent_reason");
+      target = stream->WriteStringMaybeAliased(9, _s, target);
+    }
+  }
+
+  // uint64 writer_refused = 10;
+  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (this_._internal_writer_refused() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          10, this_._internal_writer_refused(), target);
+    }
+  }
+
+  // uint64 overwritten_before_copy = 11;
+  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+    if (this_._internal_overwritten_before_copy() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+          11, this_._internal_overwritten_before_copy(), target);
+    }
+  }
+
+  // uint32 record_len = 12;
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (this_._internal_record_len() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+          12, this_._internal_record_len(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:jon.cvdump.GigeStatsRing)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t GigeStatsRing::ByteSizeLong(const MessageLite& base) {
+  const GigeStatsRing& this_ = static_cast<const GigeStatsRing&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t GigeStatsRing::ByteSizeLong() const {
+  const GigeStatsRing& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:jon.cvdump.GigeStatsRing)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits [[maybe_unused]] = 0;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    // string channel = 1 [(.buf.validate.field) = {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_channel().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_channel());
+      }
+    }
+    // string path = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_path().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_path());
+      }
+    }
+    // string sha256 = 4 [(.buf.validate.field) = {
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!this_._internal_sha256().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_sha256());
+      }
+    }
+    // string absent_reason = 9;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (!this_._internal_absent_reason().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_absent_reason());
+      }
+    }
+    // uint64 bytes = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_bytes() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_bytes());
+      }
+    }
+    // uint64 record_count = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (this_._internal_record_count() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_record_count());
+      }
+    }
+    // uint64 overwritten_during_copy = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (this_._internal_overwritten_during_copy() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_overwritten_during_copy());
+      }
+    }
+    // uint64 outside_window = 7;
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (this_._internal_outside_window() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_outside_window());
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000f00U)) {
+    // uint64 writer_refused = 10;
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (this_._internal_writer_refused() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_writer_refused());
+      }
+    }
+    // bool window_start_lost = 8;
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (this_._internal_window_start_lost() != 0) {
+        total_size += 2;
+      }
+    }
+    // uint32 record_len = 12;
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (this_._internal_record_len() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+            this_._internal_record_len());
+      }
+    }
+    // uint64 overwritten_before_copy = 11;
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (this_._internal_overwritten_before_copy() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+            this_._internal_overwritten_before_copy());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void GigeStatsRing::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                      const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this = static_cast<GigeStatsRing*>(&to_msg);
+  auto& from = static_cast<const GigeStatsRing&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:jon.cvdump.GigeStatsRing)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_channel().empty()) {
+        _this->_internal_set_channel(from._internal_channel());
+      } else {
+        if (_this->_impl_.channel_.IsDefault()) {
+          _this->_internal_set_channel("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_path().empty()) {
+        _this->_internal_set_path(from._internal_path());
+      } else {
+        if (_this->_impl_.path_.IsDefault()) {
+          _this->_internal_set_path("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!from._internal_sha256().empty()) {
+        _this->_internal_set_sha256(from._internal_sha256());
+      } else {
+        if (_this->_impl_.sha256_.IsDefault()) {
+          _this->_internal_set_sha256("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (!from._internal_absent_reason().empty()) {
+        _this->_internal_set_absent_reason(from._internal_absent_reason());
+      } else {
+        if (_this->_impl_.absent_reason_.IsDefault()) {
+          _this->_internal_set_absent_reason("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_bytes() != 0) {
+        _this->_impl_.bytes_ = from._impl_.bytes_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (from._internal_record_count() != 0) {
+        _this->_impl_.record_count_ = from._impl_.record_count_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (from._internal_overwritten_during_copy() != 0) {
+        _this->_impl_.overwritten_during_copy_ = from._impl_.overwritten_during_copy_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (from._internal_outside_window() != 0) {
+        _this->_impl_.outside_window_ = from._impl_.outside_window_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000f00U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (from._internal_writer_refused() != 0) {
+        _this->_impl_.writer_refused_ = from._impl_.writer_refused_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (from._internal_window_start_lost() != 0) {
+        _this->_impl_.window_start_lost_ = from._impl_.window_start_lost_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (from._internal_record_len() != 0) {
+        _this->_impl_.record_len_ = from._impl_.record_len_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (from._internal_overwritten_before_copy() != 0) {
+        _this->_impl_.overwritten_before_copy_ = from._impl_.overwritten_before_copy_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void GigeStatsRing::CopyFrom(const GigeStatsRing& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:jon.cvdump.GigeStatsRing)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GigeStatsRing::InternalSwap(GigeStatsRing* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.channel_, &other->_impl_.channel_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, &other->_impl_.path_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sha256_, &other->_impl_.sha256_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.absent_reason_, &other->_impl_.absent_reason_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.overwritten_before_copy_)
+      + sizeof(GigeStatsRing::_impl_.overwritten_before_copy_)
+      - PROTOBUF_FIELD_OFFSET(GigeStatsRing, _impl_.bytes_)>(
+          reinterpret_cast<char*>(&_impl_.bytes_),
+          reinterpret_cast<char*>(&other->_impl_.bytes_));
+}
+
+::google::protobuf::Metadata GigeStatsRing::GetMetadata() const {
   return Super_::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
